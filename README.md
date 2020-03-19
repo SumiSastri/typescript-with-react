@@ -1,5 +1,4 @@
 # Typescript with React
- Richard Bray Udemy course
 
  Documentation
  [https://www.typescriptlang.org/docs/handbook/basic-types.html]
@@ -42,3 +41,23 @@ enum List {Milk = 1, Bread, Eggs}
 let shoopingList: string = List[2];
 console.log(shoppingList); // Displays 'Bread' as its value is 2 above
 ```
+
+Awais Jamil & Richard Bray Udemy courses notes
+
+Problems that TypeScript solves - as it is statically typed it reduces errors as types are checked automatically preventing the accidental assignment of invalid values. 
+- Prototypal inheritance
+- Equality and type juggling
+- Scope
+- Lack of strictly typed types
+
+Type annotation
+``` let identifier: annotation = value;``` 
+Primitive types 
+```let name: string = 'Jhanavi' ```
+```let age: number = 5```
+```let big: boolean = true```
+
+```let list: Array<number> = [1, 2, 3];```
+```let listNumbers: number[] = [1, 2, 3];``` 
+```let listNames: string[] = ['Ravi', 'Ravinder', 'Ravindernath'];```
+```let checkBig: boolean[] = [true, false, false];```
