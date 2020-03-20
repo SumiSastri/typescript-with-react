@@ -13,19 +13,23 @@ Documentation
 
 Tutorials: Awais Jamil & Richard Bray (Udemy - free courses) 
 
+It is useful to go through the documentation first and then the tutorials - cheat sheet from documentation
+
 ### Section 1: Basic Types
 Documentation: [https://www.typescriptlang.org/docs/handbook/basic-types.html]
 
 Type annotation
 -  declare a variable, gve the variable name a type identifier and assign it a value - ```let/const name: type identifier = 'value' ```
 
-Primitive types - String, Template Literals (with embedded expressions) Number, Boolean, Array, Object, Null, Undefined all all the same as JavaScript types 
+#### Primitive types
+
+String, Template Literals (with embedded expressions) Number, Boolean, Array, Object, Null, Undefined all all the same as JavaScript types 
 
 - String ```let name: string = 'Jhanavi' ```
 - Number ```let age: number = 5```
 - Boolean ```let isDone: boolean = false;```
-- Template Literal
 
+- Template Literal
 ```
 let fullName: string = `Jhanavi Basappa`;
 let age: number = 16;
@@ -67,28 +71,28 @@ enum DoorStats{
     Ajar
 }
 ```
- #### The differences between Any, Null, Undefined, Never & Void
+- The differences between Any, Null, Undefined, Never & Void
 
-Any: Allows dynamic typing and is not strictly typed to any of the defined TypeScript types, allows JavaScript engines to decide what the implicit type is, it allows you to opt out of using TypeScript, runs normal compile time JS checks
+* Any: Allows dynamic typing and is not strictly typed to any of the defined TypeScript types, allows JavaScript engines to decide what the implicit type is, it allows you to opt out of using TypeScript, runs normal compile time JS checks
 
 ```
 let notSure: any = "not sure of the result, so it could be anything"
 
 ```
 
-Null:  Null describes a variable that has no value as compared with a value of zero, zero is a value. Therefore null describes the absence of a value.
+* Null:  Null describes a variable that has no value as compared with a value of zero, zero is a value. Therefore null describes the absence of a value.
 
-Undefined: Allows the possibility for no definition of the type
+* Undefined: Allows the possibility for no definition of the type
 
 Often used as union types to provide variations of the possible answers ```string| null | undefined``` 
 
-Never: Is used to indicate an error message, if you want something to never happen you use this type definition
+* Never: Is used to indicate an error message, if you want something to never happen you use this type definition
 ```
 function error(message: string): never {
     throw new Error(message);
 }
 ```
-Void: Can also be used as an error message - commonly used for functions that do not return any value
+* Void: Can also be used as an error message - commonly used for functions that do not return any value
 
 ```
 function warnUser(): void {
@@ -97,16 +101,34 @@ function warnUser(): void {
 ```
 
 ### Section 2 : Advanced Types
+[https://www.typescriptlang.org/docs/handbook/advanced-types.html]
 
 Advanced TypeScript - When you need to assign multiple types to a variable, you will need advanced typescript notation.
- [https://www.typescriptlang.org/docs/handbook/advanced-types.html]
+ 
 
  The advanced types
+ - Objects
  - Functions
  - Union Types
  - Type Aliases
- - The differences between Any, Null, Undefined, Never & Void
  - Type Guards
+ - Intersections
+
+#### Objects 
+
+Each name-value pair is defined with a type and assigned to a variable
+
+```
+const teacherName {
+        id: number,
+        name: string,
+        surname: string
+}
+```
+#### Function
+
+Every parameter in the argument is assigned a type
+
 ```
  function createStudentName(firstName: string, lastName: string){
      return firstName + " "+ lastName
@@ -119,6 +141,30 @@ Advanced TypeScript - When you need to assign multiple types to a variable, you 
      return firstName + " "+ lastName
  }
  ```
+#### Type Guards 
+
+Checks types within the scope of the function argument. It is Typescript checking typescript for example in this function, it is not clear whether the return should be a number or a string even if you add TypeScript types. The type guards makes sure you are not mixing types and creating errors in compile time.
+
+```
+ function addTwoNumbers(num1, num2){
+     return num1 + num2
+ }
+ ```
+ The parameters of this function can be assigned a union type of either string or number so you need to also assign the return to a type and use the toString method so that the numbers are always returned as a string. You also need to create the function return as a conditional statement so that it is clear what the function control flow is checking and the default is treating both arguments in the function as a string to prevent errors.
+
+ ```
+function addTwoNumbers(num1:string|number, num2: string|number): string|number {
+    if (typeof num1 === "string"){
+        console.log("The first function parameter is a string ")
+        return num1 + num2
+    }
+    if (typeof num1 === "number" && typeofarg2 === "number"){
+        console.log("Both parameters of the function are numbers")
+        return num1 + num2
+    }
+     return num1.toString() + num2.toString()
+ }
+ ``` 
 
 #### Union Types
 Two or more types with the pipe symbol
@@ -144,32 +190,6 @@ A convenient naming convention for Union Types
  }
  
  ```
-
-#### Type Guards 
-
-Checks types within the scope of the function argument. It is Typescript checking typescript for example in this function, it is not clear whether the return should be a number or a string even if you add TypeScript types. The type guards makes sure you are not mixing types and creating errors in compile time.
-
-```
- function addTwoNumbers(num1, num2){
-     return num1 + num2
- }
- ```
- The parameters of this function can be assigned a union type of either string or number so you need to also assign the return to a type and use the toString method so that the numbers are always returned as a string. You also need to create the function return as a conditional statement so that it is clear what the function control flow is checking and the default is treating both arguments in the function as a string to prevent errors.
-
- ```
-function addTwoNumbers(num1:string|number, num2: string|number): string|number {
-    if (typeof num1 === "string"){
-        console.log("The first function parameter is a string ")
-        return num1 + num2
-    }
-    if (typeof num1 === "number" && typeofarg2 === "number"){
-        console.log("Both parameters of the function are numbers")
-        return num1 + num2
-    }
-     return num1.toString() + num2.toString()
- }
- ```
-
 
 
  - Intersections - two or more types with the amperestand
