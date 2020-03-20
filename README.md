@@ -23,17 +23,27 @@ Type annotation
 
 #### Primitive types
 
-String, Template Literals (with embedded expressions) Number, Boolean, Array, Object, Null, Undefined all all the same as JavaScript types 
+String, Template Literals, Number, Numeric Literals, Boolean, Array, Object, Null, Undefined all all the same as JavaScript types 
 
 - String ```let name: string = 'Jhanavi' ```
 - Number ```let age: number = 5```
 - Boolean ```let isDone: boolean = false;```
 
 - Template Literal
+Allows embedded expressions 
+
 ```
 let fullName: string = `Jhanavi Basappa`;
 let age: number = 16;
 let sentence: string = `Hello, my name is ${ fullName }. I'll be ${ age + 1 } years old next month.`;
+```
+- Numeric Literal
+Defines specifically all the numbers exactly expected from the function
+
+```
+function rollDice(): 1 | 2 | 3 | 4 | 5 | 6 {
+    // ...
+}
 ```
 - Array - can be written in 2 ways
 
@@ -125,11 +135,25 @@ const teacherName {
         surname: string
 }
 ```
-#### Function
+ Optional key value pairs can be notated with the question mark, while the readonly keyword does not allow you to change the key-value pair
+
+```
+const teacherName {
+readonly id: number,
+        name?: string,
+        surname: string
+}
+
+let personTeacher: PersonTyoe = {id: 1, name: 'Mr Guru'}
+```
+#### Functions
 
 Every parameter in the argument is assigned a type
 
 ```
+function createStudentName(firstName, lastName){
+    return firstName + " "+ lastName
+}
  function createStudentName(firstName: string, lastName: string){
      return firstName + " "+ lastName
  }
@@ -141,9 +165,24 @@ Every parameter in the argument is assigned a type
      return firstName + " "+ lastName
  }
  ```
+Optional parameters have to be last and preceeded by a required param 
+  
+ ```
+  function createStudentName(firstName: string, middleName?: string, lastName: string){
+     return firstName + middleName + lastName
+     <!-- this will result in an error -->
+ }
+ function createStudentName(firstName: string, lastName: string, middleName?: string,){
+     return firstName + middleName + lastName
+     <!-- CORRECT -->
+ }
+
+ ```
+
 #### Type Guards 
 
 Checks types within the scope of the function argument. It is Typescript checking typescript for example in this function, it is not clear whether the return should be a number or a string even if you add TypeScript types. The type guards makes sure you are not mixing types and creating errors in compile time.
+Keywords - typeof(for objects)/ instanceof (for constructors)/ in (for objects and constructors)
 
 ```
  function addTwoNumbers(num1, num2){
@@ -164,7 +203,7 @@ function addTwoNumbers(num1:string|number, num2: string|number): string|number {
     }
      return num1.toString() + num2.toString()
  }
- ``` 
+``` 
 
 #### Union Types
 Two or more types with the pipe symbol
@@ -190,26 +229,12 @@ A convenient naming convention for Union Types
  }
  
  ```
+### Intersections
+Two or more types with the amperestand
 
+### Discriminated Unions
 
- - Intersections - two or more types with the amperestand
- 
-
-
-Optional key value pairs can be notated with the question mark, while the readonly keyword does not allow you to change the key-value pair
-
-```
-interface PersonTeacher {
-readonly id: number,
-        name?: string,
-        surname: string
-}
-
-let personTeacher: PersonTyoe = {id: 1, name: 'Mr Guru'}
-```
-
-
- ### Spread operator and Type Aliases
+### Spread operator
 
 All key-value pairs need to be given a type and a type alias assigned to call the operator, here studentName is the alias for the spread operator
 
@@ -234,7 +259,7 @@ disabled?: boolean | undefined;
 }, 
 const teacherName {
 readonly id: number,
-        name?: string,
+        name: string,
         surname: string
 }
 ```
@@ -246,7 +271,8 @@ function createName (firstName: string, ...otherNames: string[]){
 }
 ```
 
-- Interface Type - defined by the key word interface, the variable is in Pascal case, the object instance is assigned to the interface and strongly typed. Whenever the object is used then both the id and the name are required when invoked in compile time.
+### Interface Type
+ Defined by the key word interface, the variable is in Pascal case, the object instance is assigned to the interface and strongly typed. Whenever the object is used then both the id and the name are required when invoked in compile time.
 
 ```
 interface PersonTeacher {
@@ -257,3 +283,4 @@ interface PersonTeacher {
 let personTeacher: PersonTyoe = {id: 1, name: 'Mr Guru'}
 ```
 
+ 
