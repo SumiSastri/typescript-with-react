@@ -232,7 +232,7 @@ A convenient naming convention for Union Types
  
  ```
 #### Interface Type
-  Defined by the key word interface, the variable is in Pascal case, the object instance is assigned to the interface and strongly typed. Whenever the object is used then both the id and the name are required when invoked in compile time. If you name the variable with a capital I you will be able to identify the Inteface types quickly - this is optional
+  A way to create a custom type that follows the types defined by the interface, using the keyword interface, the variable is in Pascal case, the object instance is assigned to the interface and strongly typed. Whenever the object is used then both the id and the name are required when invoked in compile time. If you name the variable with a capital I you will be able to identify the Inteface types quickly - this is optional
 
 ```
 interface IpersonTeacher {
@@ -241,11 +241,20 @@ interface IpersonTeacher {
     fullName?: string
 }
 
-let IpersonTeacher: PersonTyoe = {id: 1, name: 'Mr Guru'}
+let IpersonTeacher: PersonType = {id: 1, name: 'Mr Guru'}
 ```
-### Section 3: Classes & Inheritance with Typescript
+### Section 3: Classes & Lexical/ Polymorphic- this 
 
-Interfaces: A way to create a custom type that follows the types defined by the interface
+Interfaces and classes
+
+class Car {
+    make: string,
+    model: number
+    speed(): number{(miles * time)} 
+}
+
+let Car = new Car()
+
 
 
 
@@ -290,4 +299,4 @@ function createName (firstName: string, ...otherNames: string[]){
     return firstName + " " + otherNames..join(" ")
 }
 ```
-### Lexical/ Polymorphic- this
+### 
