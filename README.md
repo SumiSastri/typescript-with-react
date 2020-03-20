@@ -10,6 +10,8 @@ Problems that TypeScript solves - as it is statically typed it reduces errors as
 Documentation
  [https://www.typescriptlang.org/docs/handbook/basic-types.html]
  [https://www.typescriptlang.org/docs/handbook/advanced-types.html]
+ [https://www.typescriptlang.org/docs/handbook/classes.html]
+ [https://www.typescriptlang.org/docs/handbook/utility-types.html]
 
 Tutorials: Awais Jamil & Richard Bray (Udemy - free courses) 
 
@@ -48,11 +50,9 @@ function rollDice(): 1 | 2 | 3 | 4 | 5 | 6 {
 - Array - can be written in 2 ways
 
   -  ```let list: Array<number> = [1, 2, 3];```
+   OR
   -  ```let listNames: string[] = ['Ravi', 'Ravinder', 'Ravindernath'];```
   -  ```let checkBig: boolean[] = [true, false, false];```
-
-  OR
-
   -  ```let listNumbers: number[] = [1, 2, 3];``` 
 
 Additional TypeScript types
@@ -144,7 +144,7 @@ readonly id: number,
         surname: string
 }
 
-let personTeacher: PersonTyoe = {id: 1, name: 'Mr Guru'}
+let personTeacher: PersonType = {id: 1, name: 'Mr Guru'}
 ```
 #### Functions
 
@@ -204,6 +204,8 @@ function addTwoNumbers(num1:string|number, num2: string|number): string|number {
      return num1.toString() + num2.toString()
  }
 ``` 
+### Intersection Types
+Two or more types with the amperestand
 
 #### Union Types
 Two or more types with the pipe symbol
@@ -229,12 +231,30 @@ A convenient naming convention for Union Types
  }
  
  ```
-### Intersections
-Two or more types with the amperestand
+#### Interface Type
+  Defined by the key word interface, the variable is in Pascal case, the object instance is assigned to the interface and strongly typed. Whenever the object is used then both the id and the name are required when invoked in compile time. If you name the variable with a capital I you will be able to identify the Inteface types quickly - this is optional
 
-### Discriminated Unions
+```
+interface IpersonTeacher {
+    id: number,
+    name: string,
+    fullName?: string
+}
 
-### Spread operator
+let IpersonTeacher: PersonTyoe = {id: 1, name: 'Mr Guru'}
+```
+### Section 3: Classes & Inheritance with Typescript
+
+Interfaces: A way to create a custom type that follows the types defined by the interface
+
+
+
+
+
+
+#### Discriminated Unions
+
+#### Spread operator
 
 All key-value pairs need to be given a type and a type alias assigned to call the operator, here studentName is the alias for the spread operator
 
@@ -270,17 +290,4 @@ function createName (firstName: string, ...otherNames: string[]){
     return firstName + " " + otherNames..join(" ")
 }
 ```
-
-### Interface Type
- Defined by the key word interface, the variable is in Pascal case, the object instance is assigned to the interface and strongly typed. Whenever the object is used then both the id and the name are required when invoked in compile time.
-
-```
-interface PersonTeacher {
-    id: number,
-    name: string
-}
-
-let personTeacher: PersonTyoe = {id: 1, name: 'Mr Guru'}
-```
-
- 
+### Lexical/ Polymorphic- this
