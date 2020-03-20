@@ -13,7 +13,6 @@ Typescript is a superset of JavaScript. It is what C++ is to C. Browsers do not 
 There are 12 basic types this is from the basic documentation -   [https://www.typescriptlang.org/docs/handbook/basic-types.html]
 String, Number, Boolean, Array, Object, Null, Undefined all all the same as JavaScript types
 
-Null and Undefined: Often used as union types to provide variations of the possible answers ```string| null | undefined``` this is an advanced type - check second section
 
 Any: Allows dynamic typing and is not strictly typed to any of the defined TypeScript types
 
@@ -56,14 +55,14 @@ Problems that TypeScript solves - as it is statically typed it reduces errors as
 Type annotation
 ``` let identifier: annotation = value;``` 
 Primitive types 
-```let name: string = 'Jhanavi' ```
-```let age: number = 5```
-```let big: boolean = true```
+- ```let name: string = 'Jhanavi' ```
+- ```let age: number = 5```
+- ```let big: boolean = true```
 
-```let list: Array<number> = [1, 2, 3];```
-```let listNumbers: number[] = [1, 2, 3];``` 
-```let listNames: string[] = ['Ravi', 'Ravinder', 'Ravindernath'];```
-```let checkBig: boolean[] = [true, false, false];```
+-   ```let list: Array<number> = [1, 2, 3];```
+    ```let listNumbers: number[] = [1, 2, 3];``` 
+    ```let listNames: string[] = ['Ravi', 'Ravinder', 'Ravindernath'];```
+    ```let checkBig: boolean[] = [true, false, false];```
 
 Enum: The state of the door as open is indexed at 0 with closed and ajar at 1 and 2. Typescript does not recognise console logs as these are JavaScript commands - note the case in a enum declarations
 
@@ -123,37 +122,12 @@ A convenient naming convention for Union Types
  }
  
  ```
-#### Type Guards 
+ ### Spread operator and Type Aliases
 
-Checks types within the scope of the function argument. It is Typescript checking typescript for example in this function, it is not clear whether the return should be a number or a string even if you add TypeScript types. The type guards makes sure you are not mixing types and creating errors in compile time.
-
-```
- function addTwoNumbers(num1, num2){
-     return num1 + num2
- }
- ```
- The parameters of this function can be assigned a union type of either string or number so you need to also assign the return to a type and use the toString method so that the numbers are always returned as a string. You also need to create the function return as a conditional statement so that it is clear what the function control flow is checking and the default is treating both arguments in the function as a string to prevent errors.
-
- ```
-function addTwoNumbers(num1:string|number, num2: string|number): string|number {
-    if (typeof num1 === "string"){
-        console.log("The first function parameter is a string ")
-        return num1 + num2
-    }
-    if (typeof num1 === "number" && typeofarg2 === "number"){
-        console.log("Both parameters of the function are numbers")
-        return num1 + num2
-    }
-     return num1.toString() + num2.toString()
- }
- ```
- 
- - Intersections - two or more types with the amperestand
- 
- - Spread operator - all key-value pairs need to be given a type
+All key-value pairs need to be given a type and a type alias assigned to call the operator, here studentName is the alias for the spread operator
 
 ``` 
-{...studentName} 
+<!-- {...studentName} will throw errors -->
 const studentName: { 
 className?: string | undefined; 
 id?: string | undefined; 
@@ -187,7 +161,7 @@ function createName (firstName: string, ...otherNames: string[]){
 
  
 
- - Null and Undefined
+
 
 - Interface Type - defined by the key word interface, the variable is in Pascal case, the object instance is assigned to the interface and strongly typed. Whenever the object is used then both the id and the name are required when invoked in compile time.
 
@@ -199,6 +173,38 @@ interface PersonTeacher {
 
 let personTeacher: PersonTyoe = {id: 1, name: 'Mr Guru'}
 ```
+#### Type Guards 
+
+Checks types within the scope of the function argument. It is Typescript checking typescript for example in this function, it is not clear whether the return should be a number or a string even if you add TypeScript types. The type guards makes sure you are not mixing types and creating errors in compile time.
+
+```
+ function addTwoNumbers(num1, num2){
+     return num1 + num2
+ }
+ ```
+ The parameters of this function can be assigned a union type of either string or number so you need to also assign the return to a type and use the toString method so that the numbers are always returned as a string. You also need to create the function return as a conditional statement so that it is clear what the function control flow is checking and the default is treating both arguments in the function as a string to prevent errors.
+
+ ```
+function addTwoNumbers(num1:string|number, num2: string|number): string|number {
+    if (typeof num1 === "string"){
+        console.log("The first function parameter is a string ")
+        return num1 + num2
+    }
+    if (typeof num1 === "number" && typeofarg2 === "number"){
+        console.log("Both parameters of the function are numbers")
+        return num1 + num2
+    }
+     return num1.toString() + num2.toString()
+ }
+ ```
+
+#### Null, Undefined & Void
+
+ Often used as union types to provide variations of the possible answers ```string| null | undefined``` . Null describes a variable that has no value as compared with a value of zero, zero is a value. Therefore null describes the absence of a value.
+
+ - Intersections - two or more types with the amperestand
+ 
+
 
 Optional key value pairs can be notated with the question mark, while the readonly keyword does not allow you to change the key-value pair
 
