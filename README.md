@@ -1,20 +1,86 @@
 # Typescript with React
+Typescript is a superset of JavaScript. It is what C++ is to C. Browsers do not compile Typescript, so it requires a transpiler to convert back into Javascript.
 
- Documentation
+Problems that TypeScript solves - as it is statically typed it reduces errors as types are checked automatically preventing the accidental assignment of invalid values. 
+- Prototypal inheritance
+- Equality and type juggling
+- Scope
+- Lack of strictly typed types
+
+Documentation
  [https://www.typescriptlang.org/docs/handbook/basic-types.html]
  [https://www.typescriptlang.org/docs/handbook/advanced-types.html]
 
- Tutorials: Awais Jamil & Richard Bray Udemy courses notes
-
-Typescript is a superset of JavaScript. It is what C++ is to C. Browsers do not compile Typescript, so it requires a transpiler to convert back into Javascript.
+Tutorials: Awais Jamil & Richard Bray (Udemy - free courses) 
 
 ### Section 1: Basic Types
+Documentation: [https://www.typescriptlang.org/docs/handbook/basic-types.html]
 
-There are 12 basic types this is from the basic documentation -   [https://www.typescriptlang.org/docs/handbook/basic-types.html]
-String, Number, Boolean, Array, Object, Null, Undefined all all the same as JavaScript types
+Type annotation
+-  declare a variable, gve the variable name a type identifier and assign it a value - ```let/const name: type identifier = 'value' ```
 
+Primitive types - String, Template Literals (with embedded expressions) Number, Boolean, Array, Object, Null, Undefined all all the same as JavaScript types 
 
-Any: Allows dynamic typing and is not strictly typed to any of the defined TypeScript types
+- String ```let name: string = 'Jhanavi' ```
+- Number ```let age: number = 5```
+- Boolean ```let isDone: boolean = false;```
+- Template Literal
+
+```
+let fullName: string = `Jhanavi Basappa`;
+let age: number = 16;
+let sentence: string = `Hello, my name is ${ fullName }. I'll be ${ age + 1 } years old next month.`;
+```
+- Array - can be written in 2 ways
+
+  -  ```let list: Array<number> = [1, 2, 3];```
+  -  ```let listNames: string[] = ['Ravi', 'Ravinder', 'Ravindernath'];```
+  -  ```let checkBig: boolean[] = [true, false, false];```
+
+  OR
+
+  -  ```let listNumbers: number[] = [1, 2, 3];``` 
+
+Additional TypeScript types
+
+- Tuple:
+It is a defined number of elements in an array - this is strictly fixed in terms of the number of elements, TypeScript allows you also to sctrictly define the type of the elements in the tuple.
+
+```let list: number[] = [1, 2, 3];``` in Typescript - which strictly types the JavaScript array ```let list = [1,2,3]``` You can also write this in Typescript as ```let list: Array<number> = [1, 2, 3];```
+
+Tuples allow you to outline a FIXED number of elements in an array ```let list =[ 1, 'milk']``` in TypeScript it is ```let list: [number, string]```
+
+- Enum:
+Gives a readable name to numerical values  ``` enum List {Milk, Bread, Eggs}``` the values are zero indexed by default, so milk is 0, bread is 1 and eggs 2. These values can be changed manually ```enum List {Milk = 1, Bread = 2, Eggs = 4}``` or the start of the index can be changed ```enum List {Milk = 1, Bread, Eggs}```, then bread becomes 2 and eggs 3. You can look up the index value in an enum to check what its value is.
+
+```
+enum List {Milk = 1, Bread, Eggs}
+let shoopingList: string = List[2];
+console.log(shoppingList); // Displays 'Bread' as its value is 2 above
+```
+The state of the door as open is indexed at 0 with closed and ajar at 1 and 2. Typescript does not recognise console logs as these are JavaScript commands - note the case in a enum declarations
+
+```
+enum DoorStats{
+    Open,
+    Closed,
+    Ajar
+}
+```
+ #### The differences between Any, Null, Undefined, Never & Void
+
+Any: Allows dynamic typing and is not strictly typed to any of the defined TypeScript types, allows JavaScript engines to decide what the implicit type is, it allows you to opt out of using TypeScript, runs normal compile time JS checks
+
+```
+let notSure: any = "not sure of the result, so it could be anything"
+
+```
+
+Null:  Null describes a variable that has no value as compared with a value of zero, zero is a value. Therefore null describes the absence of a value.
+
+Undefined: Allows the possibility for no definition of the type
+
+Often used as union types to provide variations of the possible answers ```string| null | undefined``` 
 
 Never: Is used to indicate an error message, if you want something to never happen you use this type definition
 ```
@@ -30,49 +96,6 @@ function warnUser(): void {
 }
 ```
 
-Tuple:
-It is a defined number of elements in an array - this is strictly fixed in terms of the number of elements, TypeScript allows you also to sctrictly define the type of the elements in the tuple.
-
-```let list: number[] = [1, 2, 3];``` in Typescript - which strictly types the JavaScript array ```let list = [1,2,3]``` You can also write this in Typescript as ```let list: Array<number> = [1, 2, 3];```
-
-Tuples allow you to outline a FIXED number of elements in an array ```let list =[ 1, 'milk']``` in TypeScript it is ```let list: [number, string]```
-
-Enum:
-Gives a readable name to numerical values  ``` enum List {Milk, Bread, Eggs}``` the values are zero indexed by default, so milk is 0, bread is 1 and eggs 2. These values can be changed manually ```enum List {Milk = 1, Bread = 2, Eggs = 4}``` or the start of the index can be changed ```enum List {Milk = 1, Bread, Eggs}```, then bread becomes 2 and eggs 3. You can look up the index value in an enum to check what its value is.
-
-```
-enum List {Milk = 1, Bread, Eggs}
-let shoopingList: string = List[2];
-console.log(shoppingList); // Displays 'Bread' as its value is 2 above
-```
-
-Problems that TypeScript solves - as it is statically typed it reduces errors as types are checked automatically preventing the accidental assignment of invalid values. 
-- Prototypal inheritance
-- Equality and type juggling
-- Scope
-- Lack of strictly typed types
-
-Type annotation
-``` let identifier: annotation = value;``` 
-Primitive types 
-- ```let name: string = 'Jhanavi' ```
-- ```let age: number = 5```
-- ```let big: boolean = true```
-
--   ```let list: Array<number> = [1, 2, 3];```
-    ```let listNumbers: number[] = [1, 2, 3];``` 
-    ```let listNames: string[] = ['Ravi', 'Ravinder', 'Ravindernath'];```
-    ```let checkBig: boolean[] = [true, false, false];```
-
-Enum: The state of the door as open is indexed at 0 with closed and ajar at 1 and 2. Typescript does not recognise console logs as these are JavaScript commands - note the case in a enum declarations
-
-```
-enum DoorStats{
-    Open,
-    Closed,
-    Ajar
-}
-```
 ### Section 2 : Advanced Types
 
 Advanced TypeScript - When you need to assign multiple types to a variable, you will need advanced typescript notation.
@@ -82,9 +105,8 @@ Advanced TypeScript - When you need to assign multiple types to a variable, you 
  - Functions
  - Union Types
  - Type Aliases
+ - The differences between Any, Null, Undefined, Never & Void
  - Type Guards
- - Null & Undefined
-
 ```
  function createStudentName(firstName: string, lastName: string){
      return firstName + " "+ lastName
@@ -122,6 +144,51 @@ A convenient naming convention for Union Types
  }
  
  ```
+
+#### Type Guards 
+
+Checks types within the scope of the function argument. It is Typescript checking typescript for example in this function, it is not clear whether the return should be a number or a string even if you add TypeScript types. The type guards makes sure you are not mixing types and creating errors in compile time.
+
+```
+ function addTwoNumbers(num1, num2){
+     return num1 + num2
+ }
+ ```
+ The parameters of this function can be assigned a union type of either string or number so you need to also assign the return to a type and use the toString method so that the numbers are always returned as a string. You also need to create the function return as a conditional statement so that it is clear what the function control flow is checking and the default is treating both arguments in the function as a string to prevent errors.
+
+ ```
+function addTwoNumbers(num1:string|number, num2: string|number): string|number {
+    if (typeof num1 === "string"){
+        console.log("The first function parameter is a string ")
+        return num1 + num2
+    }
+    if (typeof num1 === "number" && typeofarg2 === "number"){
+        console.log("Both parameters of the function are numbers")
+        return num1 + num2
+    }
+     return num1.toString() + num2.toString()
+ }
+ ```
+
+
+
+ - Intersections - two or more types with the amperestand
+ 
+
+
+Optional key value pairs can be notated with the question mark, while the readonly keyword does not allow you to change the key-value pair
+
+```
+interface PersonTeacher {
+readonly id: number,
+        name?: string,
+        surname: string
+}
+
+let personTeacher: PersonTyoe = {id: 1, name: 'Mr Guru'}
+```
+
+
  ### Spread operator and Type Aliases
 
 All key-value pairs need to be given a type and a type alias assigned to call the operator, here studentName is the alias for the spread operator
@@ -159,10 +226,6 @@ function createName (firstName: string, ...otherNames: string[]){
 }
 ```
 
- 
-
-
-
 - Interface Type - defined by the key word interface, the variable is in Pascal case, the object instance is assigned to the interface and strongly typed. Whenever the object is used then both the id and the name are required when invoked in compile time.
 
 ```
@@ -173,47 +236,4 @@ interface PersonTeacher {
 
 let personTeacher: PersonTyoe = {id: 1, name: 'Mr Guru'}
 ```
-#### Type Guards 
 
-Checks types within the scope of the function argument. It is Typescript checking typescript for example in this function, it is not clear whether the return should be a number or a string even if you add TypeScript types. The type guards makes sure you are not mixing types and creating errors in compile time.
-
-```
- function addTwoNumbers(num1, num2){
-     return num1 + num2
- }
- ```
- The parameters of this function can be assigned a union type of either string or number so you need to also assign the return to a type and use the toString method so that the numbers are always returned as a string. You also need to create the function return as a conditional statement so that it is clear what the function control flow is checking and the default is treating both arguments in the function as a string to prevent errors.
-
- ```
-function addTwoNumbers(num1:string|number, num2: string|number): string|number {
-    if (typeof num1 === "string"){
-        console.log("The first function parameter is a string ")
-        return num1 + num2
-    }
-    if (typeof num1 === "number" && typeofarg2 === "number"){
-        console.log("Both parameters of the function are numbers")
-        return num1 + num2
-    }
-     return num1.toString() + num2.toString()
- }
- ```
-
-#### Null, Undefined & Void
-
- Often used as union types to provide variations of the possible answers ```string| null | undefined``` . Null describes a variable that has no value as compared with a value of zero, zero is a value. Therefore null describes the absence of a value.
-
- - Intersections - two or more types with the amperestand
- 
-
-
-Optional key value pairs can be notated with the question mark, while the readonly keyword does not allow you to change the key-value pair
-
-```
-interface PersonTeacher {
-readonly id: number,
-        name?: string,
-        surname: string
-}
-
-let personTeacher: PersonTyoe = {id: 1, name: 'Mr Guru'}
-```
