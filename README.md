@@ -6,7 +6,7 @@
 
  Tutorials: Awais Jamil & Richard Bray Udemy courses notes
 
- Typescript is a superset of JavaScript. It is what C++ is to C. Browsers do not compile Typescript, so it requires a transpiler to convert back into Javascript.
+Typescript is a superset of JavaScript. It is what C++ is to C. Browsers do not compile Typescript, so it requires a transpiler to convert back into Javascript.
 
 ### Section 1: Basic Types
 
@@ -80,30 +80,86 @@ Advanced TypeScript - When you need to assign multiple types to a variable, you 
  [https://www.typescriptlang.org/docs/handbook/advanced-types.html]
 
  The advanced types
- - Function declaration with Typescript
+ - Functions
+ - Union Types
+ - Type Aliases
+ - Type Guards
+ - Null & Undefined
+
 ```
  function createStudentName(firstName: string, lastName: string){
      return firstName + " "+ lastName
  }
  ```
  Adding a default - this will give you the surname Doe if nothing is filled in
+ 
  ```
   function createStudentName(firstName: string, lastName: "Doe"){
      return firstName + " "+ lastName
  }
  ```
 
- - Union Types - two or more types with the pipe symbol
+#### Union Types
+Two or more types with the pipe symbol
+  
  ```let numberType: string| number```
+
+#### Type Aliases
+A convenient naming convention for Union Types
+
+ ```
+ let stringOrNumber = string| number
  
- - Intersections - two or more types with the amperestand, a good example of this is with the spread operator. Typescript expects you to define each of the items in the spread
+ function addTwoNumbers(num1:stringOrNumber num2: stringOrNumber): stringOrNumber {
+    if (typeof num1 === "string"){
+        console.log("The first function parameter is a string ")
+        return num1 + num2
+    }
+    if (typeof num1 === "number" && typeofarg2 === "number"){
+        console.log("Both parameters of the function are numbers")
+        return num1 + num2
+    }
+     return num1.toString() + num2.toString()
+ }
  
-``` {...studentName} is changed to 
+ ```
+#### Type Guards 
+
+Checks types within the scope of the function argument. It is Typescript checking typescript for example in this function, it is not clear whether the return should be a number or a string even if you add TypeScript types. The type guards makes sure you are not mixing types and creating errors in compile time.
+
+```
+ function addTwoNumbers(num1, num2){
+     return num1 + num2
+ }
+ ```
+ The parameters of this function can be assigned a union type of either string or number so you need to also assign the return to a type and use the toString method so that the numbers are always returned as a string. You also need to create the function return as a conditional statement so that it is clear what the function control flow is checking and the default is treating both arguments in the function as a string to prevent errors.
+
+ ```
+function addTwoNumbers(num1:string|number, num2: string|number): string|number {
+    if (typeof num1 === "string"){
+        console.log("The first function parameter is a string ")
+        return num1 + num2
+    }
+    if (typeof num1 === "number" && typeofarg2 === "number"){
+        console.log("Both parameters of the function are numbers")
+        return num1 + num2
+    }
+     return num1.toString() + num2.toString()
+ }
+ ```
+ 
+ - Intersections - two or more types with the amperestand
+ 
+ - Spread operator - all key-value pairs need to be given a type
+
+``` 
+{...studentName} 
 const studentName: { 
 className?: string | undefined; 
 id?: string | undefined; 
 disabled?: boolean | undefined; 
-} ```
+} 
+```
 
 2 spread operators are changed to a variable and the variable is invoked
 
@@ -121,7 +177,7 @@ readonly id: number,
         surname: string
 }
 ```
-In a function
+In a function with an array
 
 ```
 function createName (firstName: string, ...otherNames: string[]){
@@ -129,9 +185,7 @@ function createName (firstName: string, ...otherNames: string[]){
 }
 ```
 
- - Type Guards - Checks types within the scope of the function argument 
-
- - Type Aliases - a convenient naming convention for Union Types
+ 
 
  - Null and Undefined
 
