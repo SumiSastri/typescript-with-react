@@ -1,7 +1,7 @@
-# Typescript with React
-Typescript is a superset of JavaScript. It is what C++ is to C. Browsers do not compile Typescript, so it requires a transpiler to convert back into Javascript.
+# Typescript overview
+Typescript, is an open-source library created by Microsoft. It is a superset of JavaScript. It is what C++ is to C. Browsers do not compile Typescript, so it requires a transpiler (compiler) to convert back into Javascript.
 
-Problems that TypeScript solves - as it is statically typed it reduces errors as types are checked automatically preventing the accidental assignment of invalid values. 
+Problems that TypeScript solves - as it is statically typed it reduces errors (bugs) as types are checked automatically preventing the accidental assignment of invalid values. It is easier to maintain in the long-term as it handles.
 - Prototypal inheritance
 - Equality and type juggling
 - Scope
@@ -13,7 +13,7 @@ Documentation
  [https://www.typescriptlang.org/docs/handbook/classes.html]
  [https://www.typescriptlang.org/docs/handbook/utility-types.html]
 
-Tutorials: Awais Jamil & Richard Bray (Udemy - free courses) 
+Tutorials: Daniel Stern, Awais Jamil & Richard Bray (Udemy - free courses), Moshe You Tube
 
 It is useful to go through the documentation first and then the tutorials - cheat sheet from documentation
 
@@ -146,6 +146,42 @@ readonly id: number,
 
 let personTeacher: PersonType = {id: 1, name: 'Mr Guru'}
 ```
+#### Spread operator
+
+All key-value pairs need to be given a type and a type alias assigned to call the operator, here studentName is the alias for the spread operator
+
+``` 
+<!-- {...studentName} will throw errors -->
+const studentName: { 
+className?: string | undefined; 
+id?: string | undefined; 
+disabled?: boolean | undefined; 
+} 
+```
+
+2 spread operators are changed to a variable and the variable is invoked
+
+``` 
+{...studentName, ...teacherName}
+const studentName & teacherName = 
+const studentName: { 
+className?: string | undefined; 
+id?: string | undefined; 
+disabled?: boolean | undefined; 
+}, 
+const teacherName {
+readonly id: number,
+        name: string,
+        surname: string
+}
+```
+In a function with an array
+
+```
+function createName (firstName: string, ...otherNames: string[]){
+    return firstName + " " + otherNames..join(" ")
+}
+```
 #### Functions
 
 Every parameter in the argument is assigned a type
@@ -178,7 +214,6 @@ Optional parameters have to be last and preceeded by a required param
  }
 
  ```
-
 #### Type Guards 
 
 Checks types within the scope of the function argument. It is Typescript checking typescript for example in this function, it is not clear whether the return should be a number or a string even if you add TypeScript types. The type guards makes sure you are not mixing types and creating errors in compile time.
@@ -229,74 +264,66 @@ A convenient naming convention for Union Types
     }
      return num1.toString() + num2.toString()
  }
- 
  ```
 #### Interface Type
-  A way to create a custom type that follows the types defined by the interface, using the keyword interface, the variable is in Pascal case, the object instance is assigned to the interface and strongly typed. Whenever the object is used then both the id and the name are required when invoked in compile time. If you name the variable with a capital I you will be able to identify the Inteface types quickly - this is optional
+
+  When params of a function become bloated, it is better to use an object to describe the params
 
 ```
-interface IpersonTeacher {
+   let personTeacher = (id, name, fullName) => {
+ <!-- ... function conditions -->
+  }
+   let personTeacher= (teacher) => {
+ <!-- ... function conditions passing an object and calling the function as below -->
+   }
+ personTeacher({
+     id: number,
+    name: string,
+    fullName: string
+    })
+  
+   let personTeacher = ({id: number, name: string, fullName: string}) => {
+ <!-- ... inline annotation  -->
+  }
+  ```
+  However, a cleaner way way is to create a custom type that then can be used anywhere in the code base. Create the interface with all the parameters using the keyword interface. The variable is in Pascal case as it is a constructor. The object instance is assigned to the interface and then invoked. An interface is a blueprint for an object 
+
+```
+interface PersonTeacher {
     id: number,
     name: string,
-    fullName?: string
+    fullName: string
 }
 
-let IpersonTeacher: PersonType = {id: 1, name: 'Mr Guru'}
+let PersonTeacher = (teacher:PersonTeacher)
+<!-- every teacher must have a teacher type, or a teacher object as defined by the interface PersonTeacher, makes compiled JavaScript bug-free -->
 ```
-### Section 3: Classes & Lexical/ Polymorphic- this 
+### Section 3: Classes, Constructors & Inheritance
 
-Interfaces and classes
+Class variables are public by nature. To make a variable private it has to be defined as private, which means it can only be used in the scope of the class
 
+```
 class Car {
-    make: string,
-    model: number
-    speed(): number{(miles * time)} 
+    <!-- by creating private variables they can be passed into a constructor
+    private _carMake: string,
+    private _carModel: number, 
+    -->
+    }
+    constructor (private make, private model){
+      <!-- it is transpiled by ts into 
+      this._carMake = carMake
+      this._carModel= carModel 
+      -->
+    }
+    getMakeAndModel (): string| number{
+        return this._carMake.toString() + " " + this._carModel.toString()
+    }
 }
 
-let Car = new Car()
-
-
-
-
-
-
-
-#### Discriminated Unions
-
-#### Spread operator
-
-All key-value pairs need to be given a type and a type alias assigned to call the operator, here studentName is the alias for the spread operator
-
-``` 
-<!-- {...studentName} will throw errors -->
-const studentName: { 
-className?: string | undefined; 
-id?: string | undefined; 
-disabled?: boolean | undefined; 
-} 
-```
-
-2 spread operators are changed to a variable and the variable is invoked
-
-``` 
-{...studentName, ...teacherName}
-const studentName & teacherName = 
-const studentName: { 
-className?: string | undefined; 
-id?: string | undefined; 
-disabled?: boolean | undefined; 
-}, 
-const teacherName {
-readonly id: number,
-        name: string,
-        surname: string
-}
-```
-In a function with an array
+let car = new Car()
+car.getMakeAndModel()
 
 ```
-function createName (firstName: string, ...otherNames: string[]){
-    return firstName + " " + otherNames..join(" ")
-}
-```
-### 
+### Section 4: Utility Types or Generics
+
+A custom type that can be used again and again
