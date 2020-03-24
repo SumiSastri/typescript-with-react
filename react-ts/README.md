@@ -1,4 +1,3 @@
-Typescript integrates with Gulp, Grunt and React
 
 ### Scaffodling
 

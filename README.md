@@ -12,8 +12,9 @@ Documentation
  [https://www.typescriptlang.org/docs/handbook/advanced-types.html]
  [https://www.typescriptlang.org/docs/handbook/classes.html]
  [https://www.typescriptlang.org/docs/handbook/utility-types.html]
+ [https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html]
 
-Tutorials: Daniel Stern, Awais Jamil & Richard Bray (Udemy - free courses), Moshe You Tube
+Tutorials: Karthik Daniel Stern, Awais Jamil & Richard Bray (Udemy - free courses), Moshe You Tube
 
 It is useful to go through the documentation first and then the tutorials - cheat sheet from documentation
 
@@ -183,25 +184,29 @@ function createName (firstName: string, ...otherNames: string[]){
 }
 ```
 #### Functions
+[https://www.typescriptlang.org/docs/handbook/functions.html]
 
-Every parameter in the argument is assigned a type
+Function declaration - function, name of the function and params of the function with curly braces
 
 ```
 function createStudentName(firstName, lastName){
     return firstName + " "+ lastName
 }
+```
+* Typescript function declaration has types assigned to every param 
+```
  function createStudentName(firstName: string, lastName: string){
      return firstName + " "+ lastName
  }
  ```
- Adding a default - this will give you the surname Doe if nothing is filled in
+ * Adding a defaults in TypeScript (this will give you the surname Doe if nothing is filled in)
  
  ```
   function createStudentName(firstName: string, lastName: "Doe"){
      return firstName + " "+ lastName
  }
  ```
-Optional parameters have to be last and preceeded by a required param 
+* Optional parameters with a question mark (note it has to be last and preceeded by a required param) 
   
  ```
   function createStudentName(firstName: string, middleName?: string, lastName: string){
@@ -214,6 +219,15 @@ Optional parameters have to be last and preceeded by a required param
  }
 
  ```
+* Rest params - placeholders for mutliple arguments of the same type
+
+- Anonymous Functions
+
+let getStudentNames = 
+
+- Lamda or Arrow Functions
+
+
 #### Type Guards 
 
 Checks types within the scope of the function argument. It is Typescript checking typescript for example in this function, it is not clear whether the return should be a number or a string even if you add TypeScript types. The type guards makes sure you are not mixing types and creating errors in compile time.
@@ -300,7 +314,7 @@ let PersonTeacher = (teacher:PersonTeacher)
 ```
 ### Section 3: Classes, Constructors & Inheritance
 
-Class variables are public by nature. To make a variable private it has to be defined as private, which means it can only be used in the scope of the class
+Class variables are public by nature. To make a variable private it has to be defined as private, which means it can only be used in the scope of the class. 
 
 ```
 class Car {
@@ -324,6 +338,61 @@ let car = new Car()
 car.getMakeAndModel()
 
 ```
-### Section 4: Utility Types or Generics
+### Section 4: Modules
 
-A custom type that can be used again and again
+Module loaders are used to load multiple dependent modules from different locations of an app. They are fast and asynchronous and hasten application loading times defining methods in one module before the methods are called in an another module. Some popular module loaders and system languages. These are outlined in the ```tsconfig.json``` files.
+* CommonJs
+* SystemJS
+* ES2015
+* AMD
+* UMD
+* Browserify
+* Webpack
+* RequireJS
+ 
+```
+interface StudentInfo{
+    Name: String,
+    Age: Number
+}
+export {StudentInfo}
+<!-- Or as an alias 
+export {StudentInfo as HighSchoolStudents}
+-->
+```
+When it is imported, the file can be used in a new instance of the interface of the class component, make sure the right type is being used in the imported file.
+
+```
+import {StudentInfo} from <'filepath'>
+
+<!-- Importing the alias
+import {HighSchoolStudents} from <'filepath'>
+ -->
+
+let student: StudentInfo ={
+<!-- with the alias 
+let student: HighSchoolStudents{ 
+    -->
+    Name: "Rasheed",
+    Age: 21
+}
+```
+Default exports are different as you can only have one default export per module so when you export a file you use the export default key word with the module you want to export. 
+
+```
+export default class Car {
+    constructor (private make, private model){}
+    getMakeAndModel (): string| number{
+        return this._carMake.toString() + " " + this._carModel.toString()
+    }
+}
+```
+When you import it you do not need the curly braces, because it is implicit that this is exactly the same name of the file you have exported. If you do not have the curly braces you can also change he import
+
+```
+import Car from <'filepath'>
+<!-- import CarMakesAndModels from <'filepath'> -->
+<!-- let car = new CarMakesAndModels () -->
+let car = new Car ('BMW', 300)
+console.log(car.getMakeAndModel())
+```
