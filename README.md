@@ -14,9 +14,10 @@ Documentation
  [https://www.typescriptlang.org/docs/handbook/utility-types.html]
  [https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html]
 
-Tutorials: Karthik Daniel Stern, Awais Jamil & Richard Bray (Udemy - free courses), Moshe You Tube
-
+Tutorials: Karthik Daniel Stern, Awais Jamil & Richard Bray (Udemy - free courses), Moshe, Vishwas(CodeEvoluiton) You Tube 
 It is useful to go through the documentation first and then the tutorials - cheat sheet from documentation
+
+node-ts directory has the examples that are run with node-typescript and compiled into javascript.
 
 ### Section 1: Basic Types
 Documentation: [https://www.typescriptlang.org/docs/handbook/basic-types.html]
@@ -59,18 +60,18 @@ function rollDice(): 1 | 2 | 3 | 4 | 5 | 6 {
 Additional TypeScript types
 
 - Tuple:
-It is a defined number of elements in an array - this is strictly fixed in terms of the number of elements, TypeScript allows you also to sctrictly define the type of the elements in the tuple.
+It is a defined number of elements in an array - this is strictly fixed in terms of the number of elements, TypeScript allows you also to sctrictly define the type of the elements in the tuple. An array only allows for one type in the whole array, while a tuple allows mixed types.
 
 ```let list: number[] = [1, 2, 3];``` in Typescript - which strictly types the JavaScript array ```let list = [1,2,3]``` You can also write this in Typescript as ```let list: Array<number> = [1, 2, 3];```
 
-Tuples allow you to outline a FIXED number of elements in an array ```let list =[ 1, 'milk']``` in TypeScript it is ```let list: [number, string]```
+Tuples allow you to outline a FIXED number of elements in an array of mixed types ```let list =[ 1, 'milk']``` in TypeScript it is ```let list: [number, string]```
 
 - Enum:
 Gives a readable name to numerical values  ``` enum List {Milk, Bread, Eggs}``` the values are zero indexed by default, so milk is 0, bread is 1 and eggs 2. These values can be changed manually ```enum List {Milk = 1, Bread = 2, Eggs = 4}``` or the start of the index can be changed ```enum List {Milk = 1, Bread, Eggs}```, then bread becomes 2 and eggs 3. You can look up the index value in an enum to check what its value is.
 
 ```
 enum List {Milk = 1, Bread, Eggs}
-let shoopingList: string = List[2];
+let shoppingList: string = List[2];
 console.log(shoppingList); // Displays 'Bread' as its value is 2 above
 ```
 The state of the door as open is indexed at 0 with closed and ajar at 1 and 2. Typescript does not recognise console logs as these are JavaScript commands - note the case in a enum declarations
@@ -111,12 +112,13 @@ function warnUser(): void {
 }
 ```
 
+* Unknown:  
+
 ### Section 2 : Advanced Types
 [https://www.typescriptlang.org/docs/handbook/advanced-types.html]
 
 Advanced TypeScript - When you need to assign multiple types to a variable, you will need advanced typescript notation.
  
-
  The advanced types
  - Objects
  - Functions
@@ -186,7 +188,7 @@ function createName (firstName: string, ...otherNames: string[]){
 #### Functions
 [https://www.typescriptlang.org/docs/handbook/functions.html]
 
-Function declaration - function, name of the function and params of the function with curly braces
+* Function declaration - function name declared with the function keyword
 
 ```
 function createStudentName(firstName, lastName){
@@ -221,13 +223,22 @@ function createStudentName(firstName, lastName){
  ```
 * Rest params - placeholders for mutliple arguments of the same type
 
-- Anonymous Functions
+* Anonymous Functions - function assigned to a variable, function key word used, called during runtime 
 
-let getStudentNames = 
+```
+let getTeacherTimeTable = function (subject:string, classNumber: number) {
+    return `{subject} {classNumber}` 
+}
+console.log (getTeacherTimeTable(Maths, 7))
+```
 
-- Lamda or Arrow Functions
-
-
+* Lamda or Arrow Functions - function assigned to a variable, function keyword removed, fat arrow is an implict return
+```
+let getTeacherNames = (firstName:string, lastName: string) => {
+    return `{firstName} {lastName}` 
+}
+console.log ((getTeacherNames(Arthur, Chamraj))
+```
 #### Type Guards 
 
 Checks types within the scope of the function argument. It is Typescript checking typescript for example in this function, it is not clear whether the return should be a number or a string even if you add TypeScript types. The type guards makes sure you are not mixing types and creating errors in compile time.
@@ -279,38 +290,52 @@ A convenient naming convention for Union Types
      return num1.toString() + num2.toString()
  }
  ```
-#### Interface Type
+#### Interface Type - Duck Typing, Structural SubTyping
 
-  When params of a function become bloated, it is better to use an object to describe the params
+  When params of a function become bloated, it is better to use an object to describe the params, interface declaration describes the contract between the code and its use in other parts of the code base. The personTeacher object is the code and the interface declaration gives a type for each param as a key-value pair in an object. 
 
 ```
-   let personTeacher = (id, name, fullName) => {
- <!-- ... function conditions -->
+<!-- Anonymous Function -->
+   let personTeacher = (id, firstName, lastName) => {
+        return `{id} {firstName} {lastName}`
   }
+  console.log(personTeacher (5, Ruth, Kinsella))
+
    let personTeacher= (teacher) => {
- <!-- ... function conditions passing an object and calling the function as below -->
+        return `{id} {firstName} {lastName}`
+  }
+  console.log(personTeacher (5, Ruth, Kinsella))
    }
+
+<!-- Creating an object for the params -->
  personTeacher({
-     id: number,
-    name: string,
-    fullName: string
+    id: number,
+    firstName: string,
+    lastName: string
     })
-  
-   let personTeacher = ({id: number, name: string, fullName: string}) => {
- <!-- ... inline annotation  -->
+
+<!-- ... inline annotation of anonymous function -->
+   let personTeacher = ({id: number, firstName: string, lastName: string}) => {
+
   }
   ```
-  However, a cleaner way way is to create a custom type that then can be used anywhere in the code base. Create the interface with all the parameters using the keyword interface. The variable is in Pascal case as it is a constructor. The object instance is assigned to the interface and then invoked. An interface is a blueprint for an object 
+  However, a cleaner way way is to create a custom type that then can be used anywhere in the code base. Create the interface with all the parameters using the keyword interface. The variable is in Pascal case as it is a constructor. The object instance is assigned to the interface and then invoked. An interface becomes a blueprint for an object or the contract between the object and how it will be used in other parts of the code base.
 
 ```
+<!-- interface declaration -->
 interface PersonTeacher {
     id: number,
-    name: string,
-    fullName: string
+    firstName: string,
+    lastName: string
+}
+<!-- anonymous function with an interface showing the contract between the code (interface declaration) and its use later in the code base (the anonymous function). The contract is every teacher in this anonymous function must have a teacher type, which is a strictly typed teacher object as defined by the interface PersonTeacher -->
+
+let teacher: PersonTeacher){
+    id: 5,
+    firstName: 'Ruth',
+    lastName: 'Kalyanasundaram'
 }
 
-let PersonTeacher = (teacher:PersonTeacher)
-<!-- every teacher must have a teacher type, or a teacher object as defined by the interface PersonTeacher, makes compiled JavaScript bug-free -->
 ```
 ### Section 3: Classes, Constructors & Inheritance
 
