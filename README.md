@@ -1,11 +1,17 @@
 # Typescript overview
-Typescript, is an open-source library created by Microsoft. It is a superset of JavaScript. It is what C++ is to C. Browsers do not compile Typescript, so it requires a transpiler (compiler) to convert back into Javascript.
+Typescript, is an open-source library created by Microsoft. It is a superset of JavaScript that allows static typing. It is what C++ is to C. Browsers do not compile Typescript, so it requires a transpiler (compiler) to convert back into Javascript. Based on the dotnet system and is closely related to object oriented programming languages.
 
 Problems that TypeScript solves - as it is statically typed it reduces errors (bugs) as types are checked automatically preventing the accidental assignment of invalid values. It is easier to maintain in the long-term as it handles.
-- Prototypal inheritance
+
+- Bad type coercion
+- Bugs in run time caught in compile type
+- Dynamic typing changed to static typing
 - Equality and type juggling
-- Scope
-- Lack of strictly typed types
+- Scope clarity
+- Works on classes, object oriented programming concepts like inheritance
+- Support for more types - enums, tuples etc.
+- Structuring large code base difficult to maintain purely in JS due to these shortcomings
+- Compatible with node, react, angular and other libraries
 
 Documentation
  [https://www.typescriptlang.org/docs/handbook/basic-types.html]
@@ -14,7 +20,8 @@ Documentation
  [https://www.typescriptlang.org/docs/handbook/utility-types.html]
  [https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html]
 
-Tutorials: Karthik Daniel Stern, Awais Jamil & Richard Bray (Udemy - free courses), Moshe, Vishwas(CodeEvoluiton) You Tube 
+Tutorials: Karthik Daniel Stern, Awais Jamil & Richard Bray (Udemy - free courses), Moshe, Vishwas(CodeEvoluiton) You Tube
+[https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV] 
 It is useful to go through the documentation first and then the tutorials - cheat sheet from documentation
 
 node-ts directory has the examples that are run with node-typescript and compiled into javascript.
@@ -338,6 +345,7 @@ let teacher: PersonTeacher){
 
 ```
 ### Section 3: Classes, Constructors & Inheritance
+[https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV]
 
 Class variables are public by nature. To make a variable private it has to be defined as private, which means it can only be used in the scope of the class. 
 
