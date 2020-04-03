@@ -26,11 +26,19 @@ It is useful to go through the documentation first and then the tutorials - chea
 
 node-ts directory has the examples that are run with node-typescript and compiled into javascript.
 
+Libraries and type definitions [https://www.npmjs.com/~types]
+eg. ```@types/react``` for react or the Microsoft search [https://microsoft.github.io/TypeSearch/]
+
 ### Section 1: Basic Types
 Documentation: [https://www.typescriptlang.org/docs/handbook/basic-types.html]
 
 Type annotation
 -  declare a variable, gve the variable name a type identifier and assign it a value - ```let/const name: type identifier = 'value' ```
+
+##### A note on variables
+
+Variable declaration - ES6 ```let``` and ```const``` key words can be used they will be transpiled back into ```var`` by the
+typescript compiler. 
 
 #### Primitive types
 
@@ -90,7 +98,7 @@ enum DoorStats{
     Ajar
 }
 ```
-- The differences between Any, Null, Undefined, Never & Void
+- The differences between Any, Null, Undefined, Unknown, Never & Void
 
 * Any: Allows dynamic typing and is not strictly typed to any of the defined TypeScript types, allows JavaScript engines to decide what the implicit type is, it allows you to opt out of using TypeScript, runs normal compile time JS checks
 
@@ -156,66 +164,25 @@ readonly id: number,
 
 let personTeacher: PersonType = {id: 1, name: 'Mr Guru'}
 ```
-#### Spread operator
 
-All key-value pairs need to be given a type and a type alias assigned to call the operator, here studentName is the alias for the spread operator
-
-``` 
-<!-- {...studentName} will throw errors -->
-const studentName: { 
-className?: string | undefined; 
-id?: string | undefined; 
-disabled?: boolean | undefined; 
-} 
-```
-
-2 spread operators are changed to a variable and the variable is invoked
-
-``` 
-{...studentName, ...teacherName}
-const studentName & teacherName = 
-const studentName: { 
-className?: string | undefined; 
-id?: string | undefined; 
-disabled?: boolean | undefined; 
-}, 
-const teacherName {
-readonly id: number,
-        name: string,
-        surname: string
-}
-```
-In a function with an array
-
-```
-function createName (firstName: string, ...otherNames: string[]){
-    return firstName + " " + otherNames..join(" ")
-}
-```
 #### Functions
 [https://www.typescriptlang.org/docs/handbook/functions.html]
 
 * Function declaration - function name declared with the function keyword
-
-```
-function createStudentName(firstName, lastName){
-    return firstName + " "+ lastName
-}
-```
-* Typescript function declaration has types assigned to every param 
+  Typescript function declaration has types assigned to every param 
 ```
  function createStudentName(firstName: string, lastName: string){
      return firstName + " "+ lastName
  }
  ```
- * Adding a defaults in TypeScript (this will give you the surname Doe if nothing is filled in)
+ * Default types - adds default to lastName if no value provided
  
  ```
-  function createStudentName(firstName: string, lastName: "Doe"){
+  function createStudentName(firstName: string, lastName: string = "Doe"){
      return firstName + " "+ lastName
  }
  ```
-* Optional parameters with a question mark (note it has to be last and preceeded by a required param) 
+* Optional types - notated with question markm at end of all params
   
  ```
   function createStudentName(firstName: string, middleName?: string, lastName: string){
@@ -228,15 +195,24 @@ function createStudentName(firstName, lastName){
  }
 
  ```
-* Rest params - placeholders for mutliple arguments of the same type
+* Rest params - placeholders for mutliple arguments of the same type in an array
+
+```
+function getNumbers(...nums: number[]){
+    nums.forEach(element => {
+        console.log('Number:' + element)
+    })
+}
+getNumbers(1,2,3,4)
+```
 
 * Anonymous Functions - function assigned to a variable, function key word used, called during runtime 
 
 ```
 let getTeacherTimeTable = function (subject:string, classNumber: number) {
-    return `{subject} {classNumber}` 
+    return `${subject} Teacher for the ${classNumber} Standard` 
 }
-console.log (getTeacherTimeTable(Maths, 7))
+console.log (getTeacherTimeTable('Maths', 7))
 ```
 
 * Lamda or Arrow Functions - function assigned to a variable, function keyword removed, fat arrow is an implict return
@@ -244,7 +220,7 @@ console.log (getTeacherTimeTable(Maths, 7))
 let getTeacherNames = (firstName:string, lastName: string) => {
     return `{firstName} {lastName}` 
 }
-console.log ((getTeacherNames(Arthur, Chamraj))
+console.log ((getTeacherNames('Arthur', 'Chamraj'))
 ```
 #### Type Guards 
 
@@ -297,6 +273,71 @@ A convenient naming convention for Union Types
      return num1.toString() + num2.toString()
  }
  ```
+ #### Spread operator
+
+All key-value pairs need to be given a type and a type alias assigned to call the operator, here studentName is the alias for the spread operator
+
+``` 
+<!-- {...studentName} will throw errors -->
+const studentName: { 
+className?: string | undefined; 
+id?: string | undefined; 
+disabled?: boolean | undefined; 
+} 
+```
+
+2 spread operators are changed to a variable and the variable is invoked
+
+``` 
+{...studentName, ...teacherName}
+const studentName & teacherName = 
+const studentName: { 
+className?: string | undefined; 
+id?: string | undefined; 
+disabled?: boolean | undefined; 
+}, 
+const teacherName {
+readonly id: number,
+        name: string,
+        surname: string
+}
+```
+In a function with an array
+
+```
+function createName (firstName: string, ...otherNames: string[]){
+    return firstName + " " + otherNames..join(" ")
+}
+```
+
+### Section 3: Classes, Constructors & Inheritance
+[https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV]
+
+Class variables are public by nature. To make a variable private it has to be defined as private, which means it can only be used in the scope of the class. 
+
+```
+class Car {
+    <!-- by creating private variables they can be passed into a constructor
+    private _carMake: string,
+    private _carModel: number, 
+    -->
+    }
+    constructor (private make, private model){
+      <!-- it is transpiled by ts into 
+      this._carMake = carMake
+      this._carModel= carModel 
+      -->
+    }
+    getMakeAndModel (): string| number{
+        return this._carMake.toString() + " " + this._carModel.toString()
+    }
+}
+
+let car = new Car()
+car.getMakeAndModel()
+
+```
+
 #### Interface Type - Duck Typing, Structural SubTyping
 
   When params of a function become bloated, it is better to use an object to describe the params, interface declaration describes the contract between the code and its use in other parts of the code base. The personTeacher object is the code and the interface declaration gives a type for each param as a key-value pair in an object. 
@@ -344,34 +385,7 @@ let teacher: PersonTeacher){
 }
 
 ```
-### Section 3: Classes, Constructors & Inheritance
-[https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV]
-
-Class variables are public by nature. To make a variable private it has to be defined as private, which means it can only be used in the scope of the class. 
-
-```
-class Car {
-    <!-- by creating private variables they can be passed into a constructor
-    private _carMake: string,
-    private _carModel: number, 
-    -->
-    }
-    constructor (private make, private model){
-      <!-- it is transpiled by ts into 
-      this._carMake = carMake
-      this._carModel= carModel 
-      -->
-    }
-    getMakeAndModel (): string| number{
-        return this._carMake.toString() + " " + this._carModel.toString()
-    }
-}
-
-let car = new Car()
-car.getMakeAndModel()
-
-```
-### Section 4: Modules
+### Section 4: Modules, index.d.ts
 
 Module loaders are used to load multiple dependent modules from different locations of an app. They are fast and asynchronous and hasten application loading times defining methods in one module before the methods are called in an another module. Some popular module loaders and system languages. These are outlined in the ```tsconfig.json``` files.
 * CommonJs
