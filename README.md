@@ -144,7 +144,8 @@ Advanced TypeScript - When you need to assign multiple types to a variable, you 
  - Objects
  - Functions
  - Classes
- - Constructors
+ - Class Inheritance
+ - Lexical This 
 
 #### Objects 
 
@@ -219,56 +220,12 @@ console.log ((getTeacherNames('Arthur', 'Chamraj'))
 ### Section 3: Classes, Constructors & Inheritance
 [https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV]
 
-Classes are special types of functions created in ES6 to replace prototypal inheritance. The best way to see this demonstrated is after the typescript transpiler converts the files back into JavaScript.
-
-- Boiler plate JavaScript
-```
- var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-```
-
-- Function declaration class keyword followed by the name of the class
-
-```var Animal = /** @class */ (function () {}```
-// followed by the construcgtor and an anonymous function as a method
-// the variable then reassigns the special class function and all its methods
-
-
-Class variables are public by nature. To make a variable private it has to be defined as private, which means it can only be used in the scope of the class. 
-
-```
-class Car {
-    <!-- by creating private variables they can be passed into a constructor
-    private _carMake: string,
-    private _carModel: number, 
-    -->
-    }
-    constructor (private make, private model){
-      <!-- it is transpiled by ts into 
-      this._carMake = carMake
-      this._carModel= carModel 
-      -->
-    }
-    getMakeAndModel (): string| number{
-        return this._carMake.toString() + " " + this._carModel.toString()
-    }
-}
-
-let car = new Car()
-car.getMakeAndModel()
-
-```
+Classes are special types of functions created in ES6 to replace prototypal inheritance. While functions are hoisted, classes can not be called before they are declared. The class function is declared not with the function key word but the class keyword. The block of code in the class function (or the class body) can only contain methods not properties. There are 3 types of methods
+  - the constructor method - creates and initalises an object, only one allowed in every class
+  - prototype methods - that can be modified
+  - static methods - that can not be modified
+  - classes can be extended with a super method declared after the constructor method
+  - class abstraction
 
 #### Interface Type - Duck Typing, Structural SubTyping
 
