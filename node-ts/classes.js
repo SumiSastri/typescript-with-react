@@ -1,4 +1,3 @@
-// interfaces - do not show up in the compiled javascript
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -12,50 +11,96 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-function drawRectangle(options) {
-    var width = options.width;
-    var length = options.length;
-    // optional params 
-    if (options.height) {
-        var height = options.height;
+// classes are special types of functions
+var Person = /** @class */ (function () {
+    function Person() {
     }
-    // function logic
-}
-drawRectangle({
-    width: 100,
-    length: 200,
-    height: 15
-});
-// Classes - look at prototypal inheritance in the javascript file and how classes work under the hood
+    return Person;
+}());
+var p1 = new Person;
+console.log(typeof Person);
+// functions are hoisted you can call the function before it is declared
+employee();
+function employee() { console.log("Hi Sam"); }
+employee();
+// classes can not be called before they are declared
+// on compile it will throw the error Block-scoped variable 't1' used before its declaration.
+// console.log(t1) NOT HOISTED
+var Teacher = /** @class */ (function () {
+    function Teacher() {
+    }
+    return Teacher;
+}());
+var t1 = new Teacher;
+console.log(t1);
+// adding a method to a class follows prototypal inheritance of objects and will log as true
+var Greet = /** @class */ (function () {
+    function Greet() {
+    }
+    Greet.prototype.greetTeacher = function () { };
+    return Greet;
+}());
+var g1 = new Greet;
+console.log(g1.greetTeacher === Greet.prototype.greetTeacher);
+// function declaration using the class key word 
+// the class body can only contain methods not properties
+// the constructor method - creates and initalises an object - there can only be one constructor in every class 
 var Animal = /** @class */ (function () {
     function Animal(theName) {
         this.name = theName;
+        console.log("Animal Constructor Method Logged: " + this.name);
     }
     Animal.prototype.walk = function (distance) {
-        console.log("Hi my name is " + this.name + " I can walk " + distance + " miles");
+        console.log("Animal Protype Method Logged: Hi my name is " + this.name + " I can walk " + distance + " miles");
+    };
+    Animal.talk = function (word) {
+        console.log("Animal Static Method Logged: I say " + word);
+    };
+    Animal.prototype.getId = function (id) {
+        return id;
     };
     return Animal;
 }());
-// instantiate the constructor method and new instance of the class animal
 var myAnimal = new Animal("KingKong");
 myAnimal.walk(20);
-// Class extention and inheritance - the properties of the extended class 
-// are inherited with the super method that passes the params of the constructor props
-// the extended class inherities all the properties and methods of the parent class
-// the new extended class can have its own methods and overwrite inherited methods - see walk
+Animal.talk("GrrrrorrillaGrowl");
+console.log(myAnimal.getId(10));
+// Class extention and inheritance - static & constructor methods logged even though this class does not have either 
+var Insect = /** @class */ (function (_super) {
+    __extends(Insect, _super);
+    function Insect() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return Insect;
+}(Animal));
+var myInsect = new Insect("BizzieBee");
+console.log(myInsect);
+Insect.talk("Buzzabuzaabeebee");
+console.log(myInsect.getId(15));
+// The extended class must have the super method, this calls the constructor method of the parent class - Animal first
+// Then the reptile constructor method called with super method
+// The reptile prototype method can overwrite the Animal prototype method
+// Static methods can not be overwritten
 var Reptile = /** @class */ (function (_super) {
     __extends(Reptile, _super);
     function Reptile(theName) {
-        return _super.call(this, theName) || this;
+        var _this = _super.call(this, theName) || this;
+        console.log("Reptile Constructor Method Logged: " + _this.name);
+        return _this;
     }
+    // getId(x:number){
+    //     return super.getId()
+    // }
     Reptile.prototype.walk = function (distance) {
-        console.log("I crawl so I can walk " + distance + " miles");
+        console.log("Reptile Prototype Method Logged: I crawl so I can walk " + distance + " miles");
     };
     return Reptile;
 }(Animal));
 var myReptile = new Reptile("Kaa");
 myReptile.walk(0);
 console.log(myReptile);
+Reptile.talk('hisssssssssnake');
+console.log(myReptile.getId(14));
 // Abstraction - this allows class extention but not modification
 var AnimalSpecies = /** @class */ (function () {
     function AnimalSpecies(theName) {

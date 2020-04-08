@@ -64,8 +64,14 @@ This follows Savjee from Simply Explained You Tube Tutorial[https://www.youtube.
 
 In the advanced types compilation of ts files into js it is useful to see what is going on under the hood in the js files
 
-- Objects
+- Objects - objects literals, objects with methods
 - Functions, returning empty functions, params - union types, default types
-- Classes
+- Classes - classes help in writing dry code 
+    - look at the difference between boiler plate code of the objects file vs the classes file
+    - classes make the code more extensible, instead of copying and pasting objects a class with a constructor can be used anywhere in the code base
+    
+- Classes are special functions, unlike functions, classes are not hoisted
+
 - Extending Classes - class inheritance, class abstraction, lexical this and arrow functions
 - More reading on the ```this``` keyword [http://unschooled.org/2012/03/understanding-javascript-this/]
+- Interface Type, Rest Operator, Spread Operator

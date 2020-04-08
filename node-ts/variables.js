@@ -1,3 +1,35 @@
+// reassignment with var and let, as let is block scoped its value will not be reassigned
+var a = 1;
+var b = 2;
+if (a === 1) {
+    var a = 123;
+    var b_1 = 456;
+    console.log(a);
+    console.log(b_1);
+}
+console.log(a);
+console.log(b);
+//  block scoped let and const cant be redeclared, typescript version 3 also throws errors with var
+var x = 10;
+// var x = "Ninja"
+console.log(x);
+var y = 20;
+// let y = "Ninja"
+console.log(y);
+//  consts have to be initialised
+// const z; does not work
+var z = 2;
+// const z = "Ninja"
+console.log(z);
+//  lets can be reassigned values
+x = y + x;
+console.log(x);
+y = x * y;
+console.log(y);
+// consts can not have values reassigned
+// const z = x+y
+// console.log(z)
+// hoisting of variables 
 function greetSoldier(name) {
     // var is hoisted and has functional scope
     if (name === "Napoleon") {
@@ -57,34 +89,3 @@ function greetGuru(name) {
 }
 greetGuru("Guru");
 greetGuru("Nanak");
-// reassignment with var and let, as let is block scoped its value will not be reassigned
-var a = 1;
-var b = 2;
-if (a === 1) {
-    var a = 123;
-    var b_1 = 456;
-    console.log(a);
-    console.log(b_1);
-}
-console.log(a);
-console.log(b);
-//  block scoped let and const cant be redeclared, typescript version 3 also throws errors with var
-var x = 10;
-// var x = "Ninja"
-console.log(x);
-var y = 20;
-// let y = "Ninja"
-console.log(y);
-//  consts have to be initialised
-// const z; does not work
-var z = 2;
-// const z = "Ninja"
-console.log(z);
-//  lets can be reassigned values
-x = y + x;
-console.log(x);
-y = x * y;
-console.log(y);
-// consts can not have values reassigned
-// const z = x+y
-// console.log(z)
