@@ -1,5 +1,4 @@
-## Typescript fundamentals
-
+# Typescript fundamentals
 This section covers the fundamentals of Typescript using node as a compiler 
 
 ##### Scaffolding & File Structure 
@@ -47,14 +46,14 @@ Now that you have set up the files to compile correctly you can watch changes li
 
 For advanced types it is better to update the tsc files in watch mode
 
-### Section 1: Basic Concepts & Types
+##  Section 1: Basic Concepts & Types
 
 Documentation: [https://www.typescriptlang.org/docs/handbook/basic-types.html]
 
 * Type annotation
 -  declare a variable, gve the variable name a type identifier and assign it a value - ```let/const name: type identifier = 'value' ```
 
-* A note on variables
+#### A note on variables
 
 Variable declaration - ES6 ```let``` and ```const``` key words can be used they will be transpiled back into ```var``` by the typescript compiler. 
 
@@ -81,8 +80,7 @@ function rollDice(): 1 | 2 | 3 | 4 | 5 | 6 {
     // ...
 }
 ```
-
-- The differences between Any, Null, Undefined, Unknown, Never, Void & Unknown
+#### The differences between Any, Null, Undefined, Unknown, Never, Void & Unknown
 
 * Any: Allows dynamic typing and is not strictly typed to any of the defined TypeScript types, allows JavaScript engines to decide what the implicit type is, it allows you to opt out of using TypeScript, runs normal compile time JS checks
 
@@ -93,11 +91,10 @@ let notSure: any = "not sure of the result, so it could be anything"
 
 * Null:  Null describes a variable that has no value as compared with a value of zero, zero is a value. Therefore null describes the absence of a value.
 
-* Undefined: Allows the possibility for no definition of the type
-
-Often used as union types to provide variations of the possible answers ```string| null | undefined``` 
+* Undefined: Allows the possibility for no definition of the type. Often used as union types to provide variations of the possible answers ```string| null | undefined``` 
 
 * Never: Is used to indicate an error message, if you want something to never happen you use this type definition
+
 ```
 function error(message: string): never {
     throw new Error(message);
@@ -110,35 +107,22 @@ function warnUser(): void {
     console.log("This is my warning message");
 }
 ```
-
 * Unknown: Will be returned when the type is not known
 
-### Section 2 : Advanced Types
+## Section 2 : Advanced Types
 Everything in JavaScript is an object including Arrays, Tuples & Enums, there are .ts extensions to each of these advanced types
 
- - Objects
+ - Objects and object oriented programming
  - Functions
- - Arrays
- - Tuples
- - Enums
- - Classes
+ - Arrays, Tuples & Enums
 
 In the advanced types compilation of ts files into js it is useful to see what is going on under the hood in the js files
 [https://www.typescriptlang.org/docs/handbook/advanced-types.html] 
 
-#### Objects & Object Oriented Programming (OOP)
+#### Objects 
 
-Object literals, optional types 
+Object literals have properties and methods. With type script each property has both a type and a value. Unless notated with a question mark, properties are by default mandatory 
 
-```
-const teacherName {
-readonly id: number,
-        name?: string,
-        surname: string
-}
-
-let personTeacher: PersonType = {id: 1, name: 'Mr Guru'}
-```
 Two ways of notating objects
 
 ```
@@ -151,26 +135,27 @@ console.log(teacher)
 console.log(teacher["first name"])
 console.log(teacher[lN])
 ```
+#### OOP - Object Oriented Programming
+OOP is a style of programming different from functional programming. Functional programming where a series of prescriptive factory functions are  written leads to interdependency of code and what is known as spaghetti code.
+
+OOP on the other hand is based on four core principles that make code more extensible and reusable
+
+- Encapsulation - encapsulating all the variables and the methods in an object, reduces complexity and increases extensibility of code
+
+- Inheritance - the properties and methods of objects can be reassigned to new objects, they will inherit the same types and values as the parent object. They eliminate redundant code
+
+- Abstraction - by default properties are public and available to all objects based on the objects prototypal inheritance. However some properties and methods can be contained privately within the object, or abstracted within the object. This makes the interface of this object with the rest of the code simpler. It also reduces the impact of change, private 
+methods change the object without leaking to the code outside and causing side effects
+
+- Polymorphism - many forms of the object helps refactor code and make it simpler. For example you can eliminates long if/else and switch conditional statements to render different elements of the HTML DOM eg. ```element.render``` can be written as a method to render different HTML elements by creating a class with a render method - this concept is used in React and MVC (model, view, control) libraries whilst DOM manipulation is based on factory functions
 
 #### Functions
 
 Documentation for functions in typescript
 [https://www.typescriptlang.org/docs/handbook/functions.html]
 
-* Function declaration - function name declared with the function keyword
-  Typescript function declaration has types assigned to every param 
-```
- function createStudentName(firstName: string, lastName: string){
-     return firstName + " "+ lastName
- }
- ```
- * Default types - adds default to lastName if no value provided
- 
- ```
-  function createStudentName(firstName: string, lastName: string = "Doe"){
-     return firstName + " "+ lastName
- }
- ```
+* Function declaration - function name declared with the function keyword/ Typescript function declaration has types assigned to every param 
+* Default types - adds default to lastName if no value provided
 * Optional types - notated with question mark at end of all params
   
  ```
@@ -184,7 +169,6 @@ Documentation for functions in typescript
  }
 
  ```
-
 * Anonymous Functions - function assigned to a variable, function key word used, called during runtime 
 
 ```
@@ -211,8 +195,6 @@ console.log ((getTeacherNames('Arthur', 'Chamraj'))
   -  ```let checkBig: boolean[] = [true, false, false];```
   -  ```let listNumbers: number[] = [1, 2, 3];``` 
 
-* Additional TypeScript types
-
 - Tuple:
 It is a defined number of elements in an array - this is strictly fixed in terms of the number of elements, TypeScript allows you also to sctrictly define the type of the elements in the tuple. An array only allows for one type in the whole array, while a tuple allows mixed types.
 
@@ -237,7 +219,7 @@ enum DoorStats{
     Ajar
 }
 ```
-### Section 3: Classes & Constructors
+## Section 3: Classes & Constructors
 [https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV]
 
 Classes are special types of functions created in ES6 to replace prototypal inheritance. While functions are hoisted, classes can not be called before they are declared. The class function is declared not with the function key word but the class keyword. The block of code in the class function (or the class body) can only contain methods not properties. There are 3 types of methods
@@ -403,7 +385,7 @@ function createName (firstName: string, ...otherNames: string[]){
  - Type Guards
  - Intersections
 
-### Section 4: Modules, index.d.ts
+##  Section 4: Modules, index.d.ts
 
 Module loaders are used to load multiple dependent modules from different locations of an app. They are fast and asynchronous and hasten application loading times defining methods in one module before the methods are called in an another module. Some popular module loaders and system languages. These are outlined in the ```tsconfig.json``` files.
 * CommonJs
