@@ -32,7 +32,7 @@ console.log(fullName)
 fullName("Ram", "Narayan", "R")
 console.log(fullName)
 
-// Anonymous functions
+// Anonymous functions are called duering runtime with ts they are strictly typed in compile time
 let getTeacherTimeTable = function (subject:string, classNumber: number) {
     return `${subject} Teacher for the ${classNumber} Standard` 
 }

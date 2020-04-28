@@ -77,6 +77,7 @@ Reptile.talk('hisssssssssnake')
 console.log(myReptile.getId(14))
 
 // Abstraction - this allows class extention but not modification
+// It is designed to be derived from - it is therefore a base class
 
 abstract class AnimalSpecies {
     // by default properties are public and available to all prototypes of class
