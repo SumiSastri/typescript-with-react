@@ -89,3 +89,14 @@ function greetGuru(name) {
 }
 greetGuru("Guru");
 greetGuru("Nanak");
+//  lets see this with a number
+var number = 5;
+function multiply(number) {
+    return number * 5;
+}
+console.log(multiply(10), "logs 10 multiplies it by 5 not the variable value of 5 as it is out of scope");
+function multiplyNewNumber(number1) {
+    number1 = 5;
+    return number1 * 5;
+}
+console.log(multiplyNewNumber(2), "logs new function but variable value not updated");

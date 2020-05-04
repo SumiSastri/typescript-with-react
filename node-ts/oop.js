@@ -1,5 +1,3 @@
-"use strict";
-exports.__esModule = true;
 function getTotalPrice(price, salesTax, miscExpense) {
     if (price === void 0) { price = 0; }
     if (salesTax === void 0) { salesTax = 0; }
@@ -8,6 +6,7 @@ function getTotalPrice(price, salesTax, miscExpense) {
 }
 console.log(getTotalPrice(10, 0.2, 2), "logs factory function");
 console.log(getTotalPrice(100, 0.20, 12));
+// In oop, no params are declared in the method, they are outlined in the props
 var calculatePrice = {
     price: 25,
     salesTax: 0.1,

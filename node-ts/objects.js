@@ -1,16 +1,7 @@
-// Encapsulation - type of object with properties assigned types
-// Each object literal has a type and a value
+// Each object has static properties with a type and value
 var _a;
-var firstName = "Janet";
-var lastName = "Pink";
-var person = {
-    firstName: firstName,
-    lastName: lastName
-};
-console.log(person.firstName, "LOG: person.firstName");
-console.log(person.lastName, "LOG: person.lastName");
-console.log(person, "LOG: person as object literal");
-// ES2015 - looks like json notation - prop of teacher has a space and enclosed in quotes
+// ES2015 - bracket notation - more verbose, useful in certain circumstances 
+// example is when the value has spaces or dashes between one element and the other
 var fN = "first name";
 var lN = "last name";
 var teacher = (_a = {
@@ -22,22 +13,40 @@ console.log(teacher, "LOG: teacher as object literal");
 console.log(teacher["first name"], "LOG teacher[\"first name]");
 console.log(teacher[fN], "LOG teacher[fN] ");
 console.log(teacher[lN], "LOG teacher [lN]");
-// if the type name and the property name are the same, the prop type does not need to be re-declared in the encapsulation
-var firstName1 = "Janice";
-var lastName1 = "Purple";
-var person1 = {
-    firstName1: firstName1,
-    lastName1: lastName1
+//  Object literal to create a new object you have to create a new object person1
+var firstName = "Janet";
+var lastName = "Pink";
+var person = {
+    firstName: firstName,
+    lastName: lastName
 };
-console.log(person1.firstName1, "logs reassigned person object to person1 object");
-// object - inheritance once object properties and methods encapsulated they are inhereted by 
-var studentfName = "Asha";
-var studentlName = "Tamasha";
-var student = {
-    studentfName: studentfName,
-    studentlName: studentlName
+console.log(person.firstName, "LOG: person.firstName returns prop");
+console.log(person, "LOG: person as object literal");
+// if the type name and the property name are the same, the prop type does not need to be re-declared 
+function createCircle(radius) {
+    return {
+        radius: radius,
+        calcCircumference: function () {
+            return radius * radius;
+        }
+    };
+}
+var circle0 = createCircle(45);
+console.log(circle0, "logs radius set to 45 in new vairable circle0 for factory function createCircle");
+console.log(circle0.calcCircumference(), "logs method to calc circumference of circle0");
+// Nested objects, draw is a method that contains logic not a value it is not technically a prop 
+var circle = {
+    radius: 1.344,
+    location: {
+        x: 100,
+        y: 1
+    },
+    draw: function () {
+        return this.radius * this.location.x;
+    }
 };
-console.log(student, "logs student Asha Tamasha as original object literal");
+console.log(circle.draw(), "logs nested object circle.draw method returns logic");
+// Factory functions allow you to duplicate objects with their props and methods
 function createStudentRecord(studentfName, studentlName, age) {
     var studentFullName = studentfName + " " + studentlName;
     return {
@@ -47,8 +56,9 @@ function createStudentRecord(studentfName, studentlName, age) {
         isInHighSchool: function () { return age > 14; }
     };
 }
+// Factory function inheritance
 var student1 = createStudentRecord("Preethi", "Patel", 8);
-console.log(student1, "logs reassigned student Asha Tamasha to student1 with Preethi Patel values");
+console.log(student1, "logs student1 with Preethi Patel values");
 console.log(student1.studentfName, "logs student1 first name");
 console.log(student1.studentlName, "logs student1 last name");
 console.log(student1.studentFullName, "logs the method that returns student1 full name");
@@ -59,3 +69,18 @@ console.log(student2.studentfName, "logs inherited first name property");
 console.log(student2.studentlName, "logs inherited last name property");
 console.log(student2.studentFullName, "logs inherited method creating full name");
 console.log(student2.isInHighSchool(), "logs inherited method checking if student is in high school");
+// deleting props or methods
+function createTeacherRecord(teacherFN, teacherLN, teacherGrade) {
+    var greetTeacher = "Good morning " + teacherFN + " " + teacherLN;
+    return {
+        teacherFN: teacherFN,
+        teacherLN: teacherLN,
+        greetTeacher: greetTeacher,
+        isHighSchoolTeacher: function () { return teacherGrade > 7; }
+    };
+}
+var teacher1 = createTeacherRecord('Mona', 'Rick', 10);
+console.log(teacher1, "logs object teacher1 after instantiation");
+delete teacher1.teacherLN;
+delete teacher1['teacherFN'];
+console.log(teacher1.teacherFN, "logs deleted teacher 1 first name as undefined");

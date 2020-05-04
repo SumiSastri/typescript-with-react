@@ -8,18 +8,18 @@
 - 2016-2020 continuous updates small incremental changes each year
 
 # Typescript overview
-Typescript, is an open-source library created by Microsoft. It is a superset of JavaScript that allows static typing. It is what C++ is to C. Browsers do not compile Typescript, so it requires a transpiler (compiler) to convert back into JavaScript. Based on the dotnet system and is closely related to object oriented programming languages.
+Typescript, is an open-source library created by Anders Hejlsberg for Microsoft. It is a superset of JavaScript that allows static typing. It is what C++ is to C. Browsers do not compile Typescript, so it requires a transpiler (compiler) to convert back into JavaScript. Based on the dotnet system and is closely related to object oriented programming languages.
 
 Problems that TypeScript solves - as it is statically typed it reduces errors (bugs) as types are checked automatically preventing the accidental assignment of invalid values. It is easier to maintain in the long-term as it handles.
 
 - Corrects type coercian of disparite types in compile time
-- Bugs caught early in compile type not when it is too late in runtime
+- Bugs caught early in compile type not when it is too late (in runtime)
 - Dynamic typing changed to static typing 
 - Scope clarity of variables in functions/ methods
 - Support for more types - enums, tuples
 - Better structure of code base
-- Compatible with node, react, angular and multiple libraries
 - Transpiles ECMA-6 onwards back to js for cross-browser rendering
+- Cross platform - client and server side/ across different libraries
 
 Documentation
  [https://www.typescriptlang.org/docs/handbook/basic-types.html]
@@ -33,19 +33,9 @@ eg. ```@types/react``` for react or the Microsoft search [https://microsoft.gith
 
 It is useful to go through the documentation first and then the tutorials
 
-# Tutorials followed for node-ts files
+TypeScript Playground is to Typescript what JFiddle is to JavaScript [https://www.typescriptlang.org/play/]
 
-Vishwas from CodeEvolution You Tube Tutorials
-ES6 [https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV] 
-Typescript [https://www.youtube.com/watch?v=WBPrJSw7yQA]
 
-Savjee Simply Explained 
-TypeScript [https://www.youtube.com/playlist?list=PLzvRQMJ9HDiQyjtcrtvDkeQMJIrv5ABbm]
-
-More reading on the ```this``` keyword [http://unschooled.org/2012/03/understanding-javascript-this/]
-
-Moshe
-OOP [https://www.youtube.com/watch?v=PFmuCDHHpwk]
 
 
 

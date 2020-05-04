@@ -1,4 +1,3 @@
-import { number } from "prop-types";
 
 function getTotalPrice(price: number =0, salesTax: number = 0,miscExpense: number = 0) : number {
     return price + (price*salesTax) + miscExpense;
@@ -17,3 +16,4 @@ let calculatePrice = {
 }
 console.log(calculatePrice, `logs object literal`)
 console.log(calculatePrice.printReceipt(), `logs print receipt as oop method`)
+

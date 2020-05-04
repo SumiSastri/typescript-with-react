@@ -1,4 +1,4 @@
-//  functions
+//  functions are objects with logic all functions are therefore methods of the global object
 let user = "George Baker"
 function greet(person:string){
     return `Hello  ${person} `
@@ -12,8 +12,6 @@ function greeter (name:string): void{
 }
 console.log(greet(user1))
 
-// function declaration
-// Optional parameters - place last - they will also be called last
 // Union types -  null and void are good subtypes to use as optional params with the union type notated with the pipe symbol
 // Default types -  if you do not want undefined to appear in the log, use a default type of empty string as in the middleName
 
@@ -55,6 +53,9 @@ console.log(addTwo(4,6))
 let addNum = (num:number): string => (10 + num).toString()
 console.log(addNum(234))
 
+let returnNumber = (): number => 10
+console.log(returnNumber())
+
 // returning void
-let returnNoParams = (): number => 10
-console.log(returnNoParams())
+let returnVoid = (): void => 
+console.log(`logs nothing`)

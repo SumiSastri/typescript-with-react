@@ -101,3 +101,18 @@ function greetSoldier(name: string){
         }
         greetGuru("Guru")
         greetGuru("Nanak")
+
+        //  lets see this with a number
+
+        let number: number = 5        
+        function multiply(number:number){
+            return number * 5
+        }
+        console.log(multiply(10),`logs 10 multiplies it by 5 not the variable value of 5 as it is out of scope`)
+
+ 
+        function multiplyNewNumber(number1:number){
+            number1 = 5
+            return number1 * 5
+        }
+        console.log(multiplyNewNumber(2),`logs new function but variable value of 2 not updated as out of scope`)

@@ -1,4 +1,4 @@
-//  functions
+//  functions are objects with logic all functions are therefore methods of the global object
 var user = "George Baker";
 function greet(person) {
     return "Hello  " + person + " ";
@@ -10,8 +10,6 @@ function greeter(name) {
     console.log('Hello  + " " + name');
 }
 console.log(greet(user1));
-// function declaration
-// Optional parameters - place last - they will also be called last
 // Union types -  null and void are good subtypes to use as optional params with the union type notated with the pipe symbol
 // Default types -  if you do not want undefined to appear in the log, use a default type of empty string as in the middleName
 function fullName(firstName, middleName, lastName) {
@@ -26,7 +24,7 @@ fullName("Ram", "R", "Narayan");
 console.log(fullName);
 fullName("Ram", "Narayan", "R");
 console.log(fullName);
-// Anonymous functions
+// Anonymous functions are called duering runtime with ts they are strictly typed in compile time
 var getTeacherTimeTable = function (subject, classNumber) {
     return subject + " Teacher for the " + classNumber + " Standard";
 };
@@ -40,10 +38,13 @@ var getTeacherNames = function (firstName, lastName) { return firstName + " " + 
 console.log(getTeacherNames('Arthur', 'Chamraj'));
 var addTwo = function (num1, num2) { return num1 + num2; };
 console.log(addTwo(4, 6));
-// single param still needs the parenthesis but mixed type return with method possible '244' returned as string
-// it does not spell out the number
+// single param still needs the parenthesis but mixed type return with method possible 
+// '244' returned as string - it does not spell out the number
 var addNum = function (num) { return (10 + num).toString(); };
 console.log(addNum(234));
+var returnNumber = function () { return 10; };
+console.log(returnNumber());
 // returning void
-var returnNoParams = function () { return 10; };
-console.log(returnNoParams());
+var returnVoid = function () {
+    return console.log("logs nothing");
+};
