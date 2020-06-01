@@ -3,15 +3,14 @@ interface IPerson {
     firstName: string
     lastName: string
 }
-let teacher10: IPerson = {id:10, firstName:"Joan", lastName:"Hicks"}
-console.log(teacher10)
+let person: IPerson = {id:10, firstName:"Joan", lastName:"Hicks"}
+console.log(person)
 
 interface IPersonJuniorSchool extends IPerson {
     subject: string
     timeTable: Array<number>
 }
 interface IStudent extends IPerson{
-    Name: any
     Age: number,
     Sex: string,
     Phone: number,

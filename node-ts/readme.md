@@ -297,24 +297,37 @@ They can be written in 2 ways in TypeScript
 
 With an array of objects, you can use array methods on the array, and use mixed types in the object nested in the array
 ```
+//enum declaration
 enum LanguagesKnown {English, French, Italian, Spanish}
-let student1 = {
+
+// object declaration
+let student = {
     Name: "Anil",
     Age: 5,
     Sex: 'M',
     Phone: 1314,
     Email: "anil@anil.com",
-    LanguagesKnown: [LanguagesKnown.Italian]
+    Languages: [LanguagesKnown.Italian]
 }
-let studentInfo = [
-    {Name:"Rani", Age: 20, Sex: "F", Phone: 1234, Email:'rani@ranijhansi.com', LanguagesKnown: [LanguagesKnown[0]]},
-    {Name:"Raja", Age: 29, Sex: "M", Phone: 4567, Email:'raja@rajaram.com', LanguagesKnown: [LanguagesKnown[1]]},
-    {Name:"Ruby", Age: 5, Sex: "F", Phone: 8910, Email:'ruby@rubyroo.com', LanguagesKnown: [LanguagesKnown.Italian]},
-    {Name:"Ruba", Age: 12, Sex: "M", Phone: 1112, Email:'ruba@rubaroo.com', LanguagesKnown: [LanguagesKnown.Spanish]}
+let studentsInfo = [
+    {Name:"Rani", Age: 20, Sex: "F", Phone: 1234, Email:'rani@ranijhansi.com', Languages: [LanguagesKnown[0]]},
+    {Name:"Raja", Age: 29, Sex: "M", Phone: 4567, Email:'raja@rajaram.com', Languages: [LanguagesKnown[1]]},
+    {Name:"Ruby", Age: 5, Sex: "F", Phone: 8910, Email:'ruby@rubyroo.com', Languages: [LanguagesKnown.Italian]},
+    {Name:"Ruba", Age: 12, Sex: "M", Phone: 1112, Email:'ruba@rubaroo.com', Languages: [LanguagesKnown.Spanish]}
 ]
 // use an array method
-studentInfo.push(student1)
-console.log("LOGS: Array of objects:", studentInfo )
+studentsInfo.push(student)
+console.log("LOGS: Array of objects:", studentsInfo )
+
+// Looping through an array with a function
+function getStudentInfo(students: any[]){
+    // let students = [] do not need to declare the variable as it is in the param
+    students.forEach(student => {
+        console.log(`Hi I'm ${student.Name}, I speak ${student.Languages} phone me on: ${student.Phone}`)    
+    });
+}
+getStudentInfo(studentsInfo)
+<!-- Logs with the index will give you the name of the language, logs with the name of the language gives you the number of the index in the enum -->
 ```
 - Tuples are defined number of elements in an array - this is strictly fixed in terms of the number of elements, TypeScript allows you also to sctrictly define the type of the elements in the tuple. An array only allows for one type in the whole array, while a tuple allows mixed types.
 
@@ -468,8 +481,28 @@ Accidental bugs can be called when the ```this``` key word points to the global 
 * Interfaces - Duck Typing, Structural SubTyping
 Interfaces are custom types that describe types in a class. They enforce the type of each item in an object that can be used later. Interfaces describe the contract between the code in the class and its use in other parts of the code base. They are not converted to JavaScript and have zero runtime impact.
 
-Note: There can only be one base class but there can be several interface types for that class.
+Note: There can only be one base class but there can be several interface types for that class and extensions of that interface inherit the type of the base class.
+```
+interface IPerson {
+    id: number
+    firstName: string
+    lastName: string
+}
+let person: IPerson = {id:10, firstName:"Joan", lastName:"Hicks"}
+console.log(person)
 
+interface IPersonJuniorSchool extends IPerson {
+    subject: string
+    timeTable: Array<number>
+}
+interface IStudent extends IPerson{
+    Age: number,
+    Sex: string,
+    Phone: number,
+    Email: string,
+    Languages: string
+}
+```
 This is a useful reference for Interfaces:
 [https://www.tutorialspoint.com/typescript/typescript_interfaces.htm]
 

@@ -17,6 +17,7 @@ console.log(listMixedTypes);
 var listMixedTypes2 = ["Mixed-Up-Array:", false, 2,];
 console.log(listMixedTypes2);
 // Karthik Udemy - Array of Objects, using enums in arrays
+// // enum declaration
 var LanguagesKnown;
 (function (LanguagesKnown) {
     LanguagesKnown[LanguagesKnown["English"] = 0] = "English";
@@ -24,27 +25,20 @@ var LanguagesKnown;
     LanguagesKnown[LanguagesKnown["Italian"] = 2] = "Italian";
     LanguagesKnown[LanguagesKnown["Spanish"] = 3] = "Spanish";
 })(LanguagesKnown || (LanguagesKnown = {}));
-// interface IStudent{
-//     Name: string,
-//     Age: number,
-//     Sex: string,
-//     Phone: number,
-//     Email: string,
-//     LanguagesKnown:LanguagesKnown
-// }
+// object declaration
 var student = {
     Name: "Anil",
     Age: 5,
     Sex: 'M',
     Phone: 1314,
     Email: "anil@anil.com",
-    LanguagesKnown: [LanguagesKnown.Italian]
+    Languages: [LanguagesKnown.Italian]
 };
 var studentsInfo = [
-    { Name: "Rani", Age: 20, Sex: "F", Phone: 1234, Email: 'rani@ranijhansi.com', LanguagesKnown: [LanguagesKnown[0]] },
-    { Name: "Raja", Age: 29, Sex: "M", Phone: 4567, Email: 'raja@rajaram.com', LanguagesKnown: [LanguagesKnown[1]] },
-    { Name: "Ruby", Age: 5, Sex: "F", Phone: 8910, Email: 'ruby@rubyroo.com', LanguagesKnown: [LanguagesKnown.Italian] },
-    { Name: "Ruba", Age: 12, Sex: "M", Phone: 1112, Email: 'ruba@rubaroo.com', LanguagesKnown: [LanguagesKnown.Spanish] }
+    { Name: "Rani", Age: 20, Sex: "F", Phone: 1234, Email: 'rani@ranijhansi.com', Languages: [LanguagesKnown[0]] },
+    { Name: "Raja", Age: 29, Sex: "M", Phone: 4567, Email: 'raja@rajaram.com', Languages: [LanguagesKnown[1]] },
+    { Name: "Ruby", Age: 5, Sex: "F", Phone: 8910, Email: 'ruby@rubyroo.com', Languages: [LanguagesKnown.Italian] },
+    { Name: "Ruba", Age: 12, Sex: "M", Phone: 1112, Email: 'ruba@rubaroo.com', Languages: [LanguagesKnown.Spanish] }
 ];
 // use an array method
 studentsInfo.push(student);
@@ -53,20 +47,7 @@ console.log("LOGS: Array of objects:", studentsInfo);
 function getStudentInfo(students) {
     // let students = [] do not need to declare the variable as it is in the param
     students.forEach(function (student) {
-        console.log("Hi I'm " + student.Name + ", I speak " + student.LanguagesKnown + " phone me on: " + student.Phone);
+        console.log("Hi I'm " + student.Name + ", I speak " + student.Languages + " phone me on: " + student.Phone);
     });
 }
 getStudentInfo(studentsInfo);
-// Function declaration
-function studentName(firstName, middleName, lastName) {
-    if (middleName === void 0) { middleName = ""; }
-    console.log("Hi my name is " + firstName + " " + middleName + " " + lastName);
-}
-studentName("Ram");
-console.log(studentName);
-studentName("Ram", "Narayan");
-console.log(studentName);
-studentName("Ram", "R", "Narayan");
-console.log(studentName);
-studentName("Ram", "Narayan", "R");
-console.log(studentName);
