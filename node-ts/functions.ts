@@ -16,22 +16,22 @@ console.log(greet(user1))
 // Default types -  if you do not want undefined to appear in the log, use a default type of empty string as in the middleName
 
 // Function declaration Udemy Karthik
-function fullName(firstName: string, middleName: string ="", lastName?: string | undefined | null ): void{
+function studentName(firstName: string, middleName: string ="", lastName?: string | undefined | null ): void{
     console.log (`Hi my name is ${firstName} ${middleName} ${lastName}`)
 }
-fullName("Ram")
-console.log(fullName)
+studentName("Ram")
+console.log(studentName)
 
-fullName ("Ram", "Narayan")
-console.log(fullName)
+studentName ("Ram", "Narayan")
+console.log(studentName)
 
-fullName("Ram", "R", "Narayan")
-console.log(fullName)
+studentName("Ram", "R", "Narayan")
+console.log(studentName)
 
-fullName("Ram", "Narayan", "R")
-console.log(fullName)
+studentName("Ram", "Narayan", "R")
+console.log(studentName)
 
-// Anonymous functions are called during runtime with ts they are strictly typed in compile time
+// Function Expression - Anonymous functions are called during runtime with ts they are strictly typed in compile time
 let getTeacherTimeTable = function (subject:string, classNumber: number) {
     return `${subject} Teacher for the ${classNumber} Standard` 
 }

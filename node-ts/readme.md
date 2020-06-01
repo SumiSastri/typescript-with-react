@@ -255,7 +255,7 @@ Documentation for functions in typescript
 * Optional params - notated with question mark 
 * Union type params - notated with the pipe symbol - allows the last name to be a string, undefined, or null
  
-Function declaration - function name declared with the function keyword.  
+* Function declaration - function name declared with the function keyword.  
  ```
   <!-- this will result in an error as the optional type is in the middle-->
 
@@ -268,7 +268,7 @@ Function declaration - function name declared with the function keyword.
     console.log (`Hi my name is ${firstName} ${middleName} ${lastName}`)
 } 
  ```
-* Anonymous Functions - function assigned to a variable, function key word used, called during runtime 
+* Function Expression or Anonymous Functions - function assigned to a variable & the variable is called to invoke the function. The function key word is used after the variable assignment to the function.
 
 ```
 let getTeacherTimeTable = function (subject:string, classNumber: number) {
@@ -277,7 +277,7 @@ let getTeacherTimeTable = function (subject:string, classNumber: number) {
 console.log (getTeacherTimeTable('Maths', 7))
 ```
 
-* Lamda or Arrow Functions - function assigned to a variable, function keyword removed, fat arrow is an implict return amd binds lexical ```this``` to the object it points to, in this case the function
+* Lamdas are Anonymous (Arrow) Functions -  the function is assigned to a variable, the fat arrow is an implict return amd binds lexical ```this``` to the object it points to, in this case the function. The function key word is also remoeved.
 
 ```
 let getTeacherNames = (firstName:string, lastName: string) => {
@@ -465,10 +465,10 @@ Accidental bugs can be called when the ```this``` key word points to the global 
 
 ##### Types & Classes 
 
-* Interface Type - Duck Typing, Structural SubTyping)
-Interfaces are custom types that describe the types in a class. There can only be one base class but there can be several interface types for that class. Interfaces are not  converted to JavaScript. and have zero runtime impact.
+* Interfaces - Duck Typing, Structural SubTyping
+Interfaces are custom types that describe types in a class. They enforce the type of each item in an object that can be used later. Interfaces describe the contract between the code in the class and its use in other parts of the code base. They are not converted to JavaScript and have zero runtime impact.
 
-Interface declaration describes the contract between the code in the class and its use in other parts of the code base. The personTeacher object is the code and the interface declaration gives a type for each param as a key-value pair in an object. Interface names in some code bases may start with an I - IPersonTeacher - so that they are immediately recognised as interface types. It is not considered to be best practice.
+Note: There can only be one base class but there can be several interface types for that class.
 
 This is a useful reference for Interfaces:
 [https://www.tutorialspoint.com/typescript/typescript_interfaces.htm]

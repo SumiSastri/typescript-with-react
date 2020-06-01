@@ -27,6 +27,9 @@ console.log(person1.greet())
 // note how the super calls the method from the Teacher class
 
 class Student {
+    Languages: any
+    Name: any
+    Phone: any
     // private fN = fN
     // private lN = lN
     constructor (private fN:string, private lN:string){

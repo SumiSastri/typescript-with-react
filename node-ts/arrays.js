@@ -24,7 +24,15 @@ var LanguagesKnown;
     LanguagesKnown[LanguagesKnown["Italian"] = 2] = "Italian";
     LanguagesKnown[LanguagesKnown["Spanish"] = 3] = "Spanish";
 })(LanguagesKnown || (LanguagesKnown = {}));
-var student1 = {
+// interface IStudent{
+//     Name: string,
+//     Age: number,
+//     Sex: string,
+//     Phone: number,
+//     Email: string,
+//     LanguagesKnown:LanguagesKnown
+// }
+var student = {
     Name: "Anil",
     Age: 5,
     Sex: 'M',
@@ -39,13 +47,26 @@ var studentsInfo = [
     { Name: "Ruba", Age: 12, Sex: "M", Phone: 1112, Email: 'ruba@rubaroo.com', LanguagesKnown: [LanguagesKnown.Spanish] }
 ];
 // use an array method
-studentsInfo.push(student1);
+studentsInfo.push(student);
 console.log("LOGS: Array of objects:", studentsInfo);
 // Looping through an array with a function
 function getStudentInfo(students) {
-    // let students = []
+    // let students = [] do not need to declare the variable as it is in the param
     students.forEach(function (student) {
         console.log("Hi I'm " + student.Name + ", I speak " + student.LanguagesKnown + " phone me on: " + student.Phone);
     });
 }
 getStudentInfo(studentsInfo);
+// Function declaration
+function studentName(firstName, middleName, lastName) {
+    if (middleName === void 0) { middleName = ""; }
+    console.log("Hi my name is " + firstName + " " + middleName + " " + lastName);
+}
+studentName("Ram");
+console.log(studentName);
+studentName("Ram", "Narayan");
+console.log(studentName);
+studentName("Ram", "R", "Narayan");
+console.log(studentName);
+studentName("Ram", "Narayan", "R");
+console.log(studentName);

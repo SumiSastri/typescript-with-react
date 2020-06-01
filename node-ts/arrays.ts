@@ -21,9 +21,17 @@ let listMixedTypes2: Array<any> = ["Mixed-Up-Array:", false, 2, ]
 console.log (listMixedTypes2)
 
 // Karthik Udemy - Array of Objects, using enums in arrays
-
 enum LanguagesKnown {English, French, Italian, Spanish}
-let student1 = {
+// interface IStudent{
+//     Name: string,
+//     Age: number,
+//     Sex: string,
+//     Phone: number,
+//     Email: string,
+//     LanguagesKnown:LanguagesKnown
+// }
+
+let student = {
     Name: "Anil",
     Age: 5,
     Sex: 'M',
@@ -38,15 +46,31 @@ let studentsInfo = [
     {Name:"Ruba", Age: 12, Sex: "M", Phone: 1112, Email:'ruba@rubaroo.com', LanguagesKnown: [LanguagesKnown.Spanish]}
 ]
 // use an array method
-studentsInfo.push(student1)
+studentsInfo.push(student)
 console.log("LOGS: Array of objects:", studentsInfo )
 
 // Looping through an array with a function
 function getStudentInfo(students: any[]){
-    // let students = []
+    // let students = [] do not need to declare the variable as it is in the param
     students.forEach(student => {
         console.log(`Hi I'm ${student.Name}, I speak ${student.LanguagesKnown} phone me on: ${student.Phone}`)    
     });
 }
 getStudentInfo(studentsInfo)
+
+// Function declaration
+function studentName(firstName: string, middleName: string ="", lastName?: string | undefined | null ): void{
+    console.log (`Hi my name is ${firstName} ${middleName} ${lastName}`)
+}
+studentName("Ram")
+console.log(studentName)
+
+studentName ("Ram", "Narayan")
+console.log(studentName)
+
+studentName("Ram", "R", "Narayan")
+console.log(studentName)
+
+studentName("Ram", "Narayan", "R")
+console.log(studentName)
 

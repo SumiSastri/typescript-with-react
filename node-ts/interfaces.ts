@@ -10,6 +10,14 @@ interface IPersonJuniorSchool extends IPerson {
     subject: string
     timeTable: Array<number>
 }
+interface IStudent extends IPerson{
+    Name: any
+    Age: number,
+    Sex: string,
+    Phone: number,
+    Email: string,
+    Languages: string
+}
 
-export {IPerson, IPersonJuniorSchool}
+export {IPerson, IPersonJuniorSchool, IStudent}
 

@@ -31,3 +31,29 @@ while (i<5) {
 }
 
 // do while break & continue
+
+// forEach
+enum LanguagesKnown {English, French, Italian, Spanish}
+let student = {
+    Name: "Anil",
+    Age: 5,
+    Sex: 'M',
+    Phone: 1314,
+    Email: "anil@anil.com",
+    Languages: [LanguagesKnown.Italian]
+}
+let studentsInfo = [
+    {Name:"Rani", Age: 20, Sex: "F", Phone: 1234, Email:'rani@ranijhansi.com', Languages: [LanguagesKnown[0]]},
+    {Name:"Raja", Age: 29, Sex: "M", Phone: 4567, Email:'raja@rajaram.com', Languages: [LanguagesKnown[1]]},
+    {Name:"Ruby", Age: 5, Sex: "F", Phone: 8910, Email:'ruby@rubyroo.com', Languages: [LanguagesKnown.Italian]},
+    {Name:"Ruba", Age: 12, Sex: "M", Phone: 1112, Email:'ruba@rubaroo.com', Languages: [LanguagesKnown.Spanish]}
+]
+// Looping through an array with a function
+function getStudentInfo(students: any[]){
+    // let students = [] do not need to declare the variable as it is in the param
+    students.forEach(student => {
+        console.log(`Hi I'm ${student.Name}, I speak ${student.LanguagesKnown} phone me on: ${student.Phone}`)    
+    });
+}
+getStudentInfo(studentsInfo)
+
