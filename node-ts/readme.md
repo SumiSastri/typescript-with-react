@@ -573,29 +573,36 @@ function addTwoNumbers(num1:string|number, num2: string|number): string|number {
 Two or more types with the amperestand 
 
 * Type Aliases
-A convenient naming convention for Union Types
+A convenient naming convention that allows you export a type of class by another name
 
- ```
- let stringOrNumber = string| number
- 
- function addTwoNumbers(num1:stringOrNumber num2: stringOrNumber): stringOrNumber {
-    if (typeof num1 === "string"){
-        console.log("The first function parameter is a string ")
-        return num1 + num2
-    }
-    if (typeof num1 === "number" && typeofarg2 === "number"){
-        console.log("Both parameters of the function are numbers")
-        return num1 + num2
-    }
-     return num1.toString() + num2.toString()
- }
- ```
+```
+interface IPerson {
+    id: number
+    firstName: string
+    lastName: string
+}
+let person: IPerson = {id:10, firstName:"Joan", lastName:"Hicks"}
+console.log(person)
 
+interface IPersonJuniorSchool extends IPerson {
+    subject: string
+    timeTable: Array<number>
+}
+interface IStudent extends IPerson{
+    Age: number,
+    Sex: string,
+    Phone: number,
+    Email: string,
+    Languages: string
+}
+<!-- Aliases the interface to a more readable type when it is used in code base -->
+export {IPerson, IPersonJuniorSchool as TeacherJrSchool, IStudent}
+```
 ##  Section 4: Modules, index.d.ts
 
 Modules are executed in their own scope. To share code from one module to another, a module loader is required. Files are then exported from one module and can be used any any module that imports the exported module. 
 
-Module loaders are used to load multiple dependent modules from different locations of an app. They are fast and asynchronous and hasten application loading times defining methods in one module before the methods are called in an another module. The module loader compiles code in run-time and executes the code blocks that are exported and imported within the code base.
+Module loaders are used to load multiple dependent modules from different locations of an app. They are fast and asynchronous and hasten application loading times defining methods in one module before the methods are called in an another module. The module loader compiles code in run-time and executes the code blocks that are exported and imported within the code base. Each has their own syntax, the default is ```common.js``` but ```require.js``` is also used - checking documentation for syntax is useful if you are using different module loaders.
 
 Some popular module loaders
 * CommonJs (for node)
@@ -608,10 +615,28 @@ Some popular module loaders
 * RequireJS
  
 Exports of variables, classes, functions are all possible in this modular structure. 
-Multiple classes and variables can be exported with the asterix symbol used to import these exports  ```import * as nameOfexport from '/filepath'``` the export file exports the code blocks, like so: ```export{codeblock1, codeblock2, codeblock3 as nameOfexport }```
+
+- Default export - there can be only one per module
+- Export all - Multiple classes and variables can be exported with the asterix symbol used to import these exports  ```import * as nameOfexport from '/filepath'``` the export file exports the code blocks, like so: ```export{codeblock1, codeblock2, codeblock3 as nameOfexport }```
+- Export an Alias - See Type Aliases
 
 * A note on namespaces 
 
-Declared with the ```namespace``` keyword helps manage a clash of modules with the same name
+Declared with the ```namespace``` keyword helps manage a clash of modules with the same name, mainly used to maintain legacy code, modules are better than the use of namespaces.
+
+```
+namespace studentPayments {
+    export function calcuateFees(terms:number, fee:number){
+        return terms*fee
+    }
+}
+```
+
+Calling a namespace using triple slash is important as it is not module just a name space, the file extension ```.ts``` also has to be named explicitly
+```
+/// <reference path = "./nameOfFilePath.ts" >
+
+let feesPayed = studentPayments.calculateFees(4, 2000)
+```
 
 * A note on the ts.config file - defines the complier being used - in this file you can see common.js is the compiler 

@@ -19,6 +19,7 @@ var student = {
     Email: "anil@anil.com",
     Languages: LanguagesSpoken[LanguagesSpoken.Italian]
 };
+// assign the array to the interface type imported
 var studentsInfo = [
     { id: 0, firstName: "Rani", lastName: "Raja", Age: 20, Sex: "F", Phone: 1234, Email: 'rani@ranijhansi.com', Languages: LanguagesSpoken[LanguagesSpoken[0]] },
     { id: 1, firstName: "Raja", lastName: "Rani", Age: 29, Sex: "M", Phone: 4567, Email: 'raja@rajaram.com', Languages: LanguagesSpoken[LanguagesSpoken[1]] },
@@ -28,11 +29,12 @@ var studentsInfo = [
 // use an array method
 studentsInfo.push(student);
 console.log("LOGS: Array of objects:", studentsInfo);
-// Looping through an array assigning the exact interface type
+// Looping through an array assigning the exact interface type and exporting it as a default
 function getStudentInfo(students) {
     // let students = [] do not need to declare the variable as it is in the param
     students.forEach(function (student) {
         console.log("Hi I'm " + student.firstName + ", I speak " + student.Languages + " phone me on: " + student.Phone);
     });
 }
+exports["default"] = getStudentInfo;
 getStudentInfo(studentsInfo);

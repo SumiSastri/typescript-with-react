@@ -18,5 +18,5 @@ interface IStudent extends IPerson{
     Languages: string
 }
 
-export {IPerson, IPersonJuniorSchool, IStudent}
+export {IPerson, IPersonJuniorSchool as TeacherJrSchool, IStudent}
 

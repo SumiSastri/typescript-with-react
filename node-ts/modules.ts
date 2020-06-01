@@ -26,8 +26,8 @@ let studentsInfo: IStudent[] = [
 studentsInfo.push(student)
 console.log("LOGS: Array of objects:", studentsInfo )
 
-// Looping through an array assigning the exact interface type
-function getStudentInfo(students: IStudent[]){
+// Looping through an array assigning the exact interface type and exporting it as a default
+export default function getStudentInfo (students: IStudent[]){
     // let students = [] do not need to declare the variable as it is in the param
     students.forEach(student => {
         console.log(`Hi I'm ${student.firstName}, I speak ${student.Languages} phone me on: ${student.Phone}`)    
