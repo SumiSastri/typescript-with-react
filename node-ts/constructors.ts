@@ -65,7 +65,6 @@ console.log(myReptile.getId(14))
 // It is designed to be derived from - it is therefore a base class
 // The protected props and methods prevent access of these outside the blueprint and ensures the blue print is not changed
 
-
 abstract class AnimalSpecies {
     // by default properties are public and available to all prototypes of class
     // private means this name is only available for this class

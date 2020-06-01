@@ -1,5 +1,7 @@
-// reassignment with var and let, as let is block scoped its value will not be reassigned
-var a = 1;
+"use strict";
+// Inferred type of a is number
+var a = 10;
+// var a = "ninja" you can reassign value but not type - this produces an error
 var b = 2;
 if (a === 1) {
     var a = 123;
@@ -11,15 +13,13 @@ console.log(a);
 console.log(b);
 //  block scoped let and const cant be redeclared, typescript version 3 also throws errors with var
 var x = 10;
-// var x = "Ninja"
+// var x:string = "Ninja" - can not reassign the type explicitly 
 console.log(x);
 var y = 20;
-// let y = "Ninja"
 console.log(y);
 //  consts have to be initialised
 // const z; does not work
 var z = 2;
-// const z = "Ninja"
 console.log(z);
 //  lets can be reassigned values
 x = y + x;
@@ -29,9 +29,8 @@ console.log(y);
 // consts can not have values reassigned
 // const z = x+y
 // console.log(z)
-// hoisting of variables 
+// hoisting of variables
 function greetSoldier(name) {
-    // var is hoisted and has functional scope
     if (name === "Napoleon") {
         greet = "Hello General Bonaparte";
     }
@@ -40,6 +39,7 @@ function greetSoldier(name) {
     }
     var greet;
     console.log(greet);
+    // var is hoisted and has functional scope 
 }
 greetSoldier("Napoleon");
 greetSoldier("Bananrama");
@@ -76,9 +76,9 @@ greetPerson("Joanna");
 //     }
 //     greetTeacher("Josephine")
 //     greetTeacher("Joanna") 
-// let needs to be hoisted but is transpiled as var in the js 
 function greetGuru(name) {
     var greet;
+    // let needs to be hoisted but is transpiled as var in the js 
     if (name === "Guru") {
         greet = "Good Morning Guruji";
     }
@@ -99,4 +99,4 @@ function multiplyNewNumber(number1) {
     number1 = 5;
     return number1 * 5;
 }
-console.log(multiplyNewNumber(2), "logs new function but variable value not updated");
+console.log(multiplyNewNumber(2), "logs new function but variable value of 2 not updated as out of scope");

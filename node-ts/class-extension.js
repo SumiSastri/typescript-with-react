@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -54,5 +55,3 @@ var Student = /** @class */ (function () {
     return Student;
 }());
 var s1 = new Student("Kisha", "Moorthy");
-s1.fN = ("Narain");
-s1.lN = ("Murthy");

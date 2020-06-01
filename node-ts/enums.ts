@@ -1,5 +1,4 @@
 // Enums add numeric values to an object
-
  enum List1 {Milk, Bread, Eggs}
  let eggs1 : List1 = List1.Eggs
  console.log(eggs1)
@@ -10,4 +9,7 @@
  let eggs3 : List3 = List3.Eggs
  console.log(eggs3)
 
-
+// Udemy Karthik - defines a named numeric constant as an object - it is zero indexed
+enum LanguagesKnown {English, French, Italian, Spanish}
+console.log("Logs the enum", LanguagesKnown)
+console.log("Logs 3 in the enum:", LanguagesKnown[3])

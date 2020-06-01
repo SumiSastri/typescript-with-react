@@ -1,6 +1,4 @@
-var juniorSchoolTeacher = { id: 1, firstName: "Joan", lastName: "Hicks" };
-console.log(juniorSchoolTeacher);
-var personTeacher = function (id, firstName, lastName) {
-    console.log(id + ") " + firstName + " " + lastName);
-};
-personTeacher(5, "Ruth", "Kinsella");
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var teacher10 = { id: 10, firstName: "Joan", lastName: "Hicks" };
+console.log(teacher10);

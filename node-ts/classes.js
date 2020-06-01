@@ -1,3 +1,4 @@
+"use strict";
 // classes are special types of functions with the class key word
 var Person = /** @class */ (function () {
     function Person() {
@@ -8,9 +9,9 @@ console.log(Person, "logs class Person we see it is a function");
 var p1 = new Person;
 console.log(typeof Person);
 // functions are hoisted you can call the function before it is declared
-employee("logs Hi John before hosited");
+employee();
 function employee() { console.log("logs greeting to employee function Hi Sam before hoisted"); }
-employee("logs Hi Mary after function declaration");
+employee();
 // classes can not be called before they are declared
 // on compile it will throw the error Block-scoped variable 't1' used before its declaration.
 //  uncomment this console log to demonstrate
@@ -32,3 +33,6 @@ var Greet = /** @class */ (function () {
 }());
 var g1 = new Greet;
 console.log(g1.greetTeacher === Greet.prototype.greetTeacher);
+// Greet.call()
+// Greet.bind()
+// Greet.apply()

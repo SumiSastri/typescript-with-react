@@ -1,9 +1,9 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 // Test configuration
 var message = "hellow and welcome back";
 console.log(message);
-// Primitive type examples
+// Primitive types are strings, numbers, booleans
 var name = "Rehana";
 var student = false;
 var teacher = true;

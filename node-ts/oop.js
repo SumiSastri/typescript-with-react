@@ -1,3 +1,4 @@
+"use strict";
 function getTotalPrice(price, salesTax, miscExpense) {
     if (price === void 0) { price = 0; }
     if (salesTax === void 0) { salesTax = 0; }

@@ -12,9 +12,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-exports.__esModule = true;
-var fs_1 = require("fs");
-fs_1.lstat; // There are no classes in javascript - look at class.js 
+// There are no classes in javascript - look at class.js 
 // class Animal is actually function Animal(){} - a function that creates an empty object in the browser memory
 var Animal = /** @class */ (function () {
     function Animal(theName) {
@@ -33,17 +31,19 @@ var Animal = /** @class */ (function () {
     return Animal;
 }());
 console.log(this, "logs this points to the empty object created in the window/ browser memory");
+// { __esModule: true } 'logs this points to the empty object created in the window/ browser memory or in node the _esModule'
 console.log(Animal, "logs class Animal");
-// This returns { [Function: Animal] talk: [Function] } proving that class Animal is function Animal(){} 
-// the static method talk() is logged but not the prototypal inheritance walk() && getId() methods
-// The animal class has been encapsulated, it is intantiated with the new key word
+// { [Function: Animal] talk: [Function] } 'logs class Animal' proves it is a function
+// The animal class has been encapsulated, it is instantiated with the new key word
+// The new key word creates a new instance of the class
 var myAnimal = new Animal("KingKong");
 console.log(myAnimal, "logs myAnimal");
 myAnimal.walk(20);
 Animal.talk("GrrrrorrillaGrowl");
 console.log(myAnimal.getId(10));
 console.log(this, "logs this after myAnimal");
-// Class extention and inheritance 
+// { __esModule: true } 'logs this after myAnimal' proves it inherits props and method from the Animal blueprint
+// Class extention and inheritance extends the blue print of the animal class
 var Insect = /** @class */ (function (_super) {
     __extends(Insect, _super);
     function Insect() {
@@ -81,6 +81,7 @@ Reptile.talk('hisssssssssnake');
 console.log(myReptile.getId(14));
 // Abstraction - this allows class extention but not modification
 // It is designed to be derived from - it is therefore a base class
+// The protected props and methods prevent access of these outside the blueprint and ensures the blue print is not changed
 var AnimalSpecies = /** @class */ (function () {
     function AnimalSpecies(theName) {
         this.name = theName;

@@ -11,3 +11,5 @@ interface IPersonJuniorSchool extends IPerson {
     timeTable: Array<number>
 }
 
+export {IPerson, IPersonJuniorSchool}
+

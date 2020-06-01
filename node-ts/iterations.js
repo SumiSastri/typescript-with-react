@@ -1,4 +1,4 @@
-var colors = ['red', 'blue', 'green'];
+"use strict";
 // iterating over the keys in an object to find props and methods
 function Circle(radius) {
     this.radius = radius;
@@ -28,3 +28,4 @@ while (i < 5) {
     console.log(" logs while loop " + i);
     i++;
 }
+// do while break & continue

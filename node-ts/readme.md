@@ -26,11 +26,11 @@ console.log(message);
 * tsc filename - this runs the tsc (typescript compiler) on the .ts file and compiles it to javascript
 * node filename - The terminal console should print your message as the node environment is set up
 
-However as this is a typescript-node-javascript project, you will get an error on the .ts file
+As this is a typescript-node-javascript project, you will get an error on the .ts file
 The .ts file is a script file and shares global scope and throws the error
 Node modules have their own scope and need common.js exports to export the module which is an empty function ```{}```
 
-* tsc primitive-types again and you will see the node environment in work - the export is imported into the .js file
+* tsc primitive-types you will see the node environment in work - the export is imported into the .js file
 
 ```
 "use strict";
@@ -80,15 +80,21 @@ Documentation: [https://www.typescriptlang.org/docs/handbook/basic-types.html]
 
 #### A note on variables
 
-Variables are a name space allocated in browser memory. With TypeScript you name the variable and add the type before you provide the value.
+Variables are a namespace allocated in browser memory. With TypeScript you name the variable and add the type before you provide the value.
 
 Variable declaration - ES6 ```let``` and ```const``` key words can be used they will be transpiled back into ```var``` by the typescript compiler. 
 
-In Typescript you can use the key words of ES6 ```let``` and ```const``` that need to be declared at the top of a function block as they do not get hoisted, you will note that they are changed to the ```var``` key word in the typescript transpiler. The ```var``` key word is hoisted no matter where it is placed in the function scope. ```let``` and ```const``` only have block scope - defined in a code block between curly braces. ```let``` values when transpiled are reassigned to a new variable - see the .js file where ```let b``` is reassigned to ```let b_1``` in the transpiled code.
+In Typescript you can use the key words of ES6 ```let``` and ```const``` that need to be declared at the top of a function block as they do not get hoisted, you will note that they are changed to the ```var``` key word in the typescript transpiler. 
+
+The ```var``` key word is hoisted no matter where it is placed in the function scope. ```let``` and ```const``` only have block scope - defined in a code block between curly braces. ```let``` values when transpiled are reassigned to a new variable - see the .js file where ```let b``` is reassigned to ```let b_1``` in the transpiled code.
+
+Variable values can be reassigned but the types can't, types are inferred but even when the type is explicitly defined you can't reassign the type of a variable.
+
+For example ```var a = 10``` infers the type as a number. You can reassign the value of a to 20, but if you reassign the value to ten ```var a = 'ten' ``` this will throw a compile time error in TypeScript. As TypeScript is a scripting language it runs each line of the code checks it and verifies the type. This strict typing in compile time prevents errors in run time.
 
 Closures and immediately invoked functions (iffy's) should use the ```let``` or ```const``` key words.
 
-#### Primitive types/ value types passed by value
+#### Primitive types
 
 - String ```let name: string = 'Jhanavi' ```
 - Number ```let age: number = 5```
@@ -232,22 +238,22 @@ let calculatePrice = {
 
 - Inheritance - the properties and methods of objects can be reassigned to new objects, they will inherit the same types and values as the parent object. They eliminate redundant code
 
-- Abstraction - by default properties are public and available to all objects based on the objects prototypal inheritance. However some properties and methods can be contained privately within the object, or abstracted within the object. This makes the interface of this object with the rest of the code simpler. It also reduces the impact of change, private 
-methods change the object without leaking to the code outside and causing side effects
+- Abstraction - by default properties are public and available to all objects based on the objects prototypal inheritance. However some properties and methods can be contained privately within the object, or abstracted within the object. This makes the interface of this object with the rest of the code simpler. It also reduces the impact of change, private methods change the object without leaking to the code outside and causing side effects
 
 - Polymorphism - many forms of the object helps refactor code and make it simpler. For example you can eliminates long if/else and switch conditional statements to render different elements of the HTML DOM eg. ```element.render``` can be written as a method to render different HTML elements by creating a class with a render method - this concept is used in React and MVC (model, view, control) libraries whilst DOM manipulation is based on factory functions
 
 #### Functions
-Functions are objects with a block of logic. All functions are therefore methods. 
+Functions are objects with a block of logic. All functions are therefore methods. Functions are core building blocks of both JavaScript and TypeScript. They perform the key role of telling the code how to do things or what needs to be executed.
 
 Documentation for functions in typescript
 [https://www.typescriptlang.org/docs/handbook/functions.html]
 
-* Type inference every param has an assigned type that is inferred however these can be changed by explicit definition
-* Default types - a default value can be added (eg. the empty string for middle name is a default type )
-* Mandatory types - all types in an object are mandatory unless explicity notated as optional
-* Optional types - notated with question mark at end of all params
-* Union types - notated with the pipe symbol - allows the last name to be a string, undefined, or null
+* Parameter type inference - params have an inferred type by use, but also can be explicitly defined
+* Default params - a default param can be added as a fall-back value
+* Rest param - these are placeholders for a list of params of the same type
+* Mandatory params - all params in the function are mandatory unless explicity notated as optional
+* Optional params - notated with question mark 
+* Union type params - notated with the pipe symbol - allows the last name to be a string, undefined, or null
  
 Function declaration - function name declared with the function keyword.  
  ```
@@ -289,13 +295,36 @@ They can be written in 2 ways in TypeScript
   -  ```let checkBig: boolean[] = [true, false, false];```
   -  ```let listNumbers: number[] = [1, 2, 3];``` 
 
+With an array of objects, you can use array methods on the array, and use mixed types in the object nested in the array
+```
+enum LanguagesKnown {English, French, Italian, Spanish}
+let student1 = {
+    Name: "Anil",
+    Age: 5,
+    Sex: 'M',
+    Phone: 1314,
+    Email: "anil@anil.com",
+    LanguagesKnown: [LanguagesKnown.Italian]
+}
+let studentInfo = [
+    {Name:"Rani", Age: 20, Sex: "F", Phone: 1234, Email:'rani@ranijhansi.com', LanguagesKnown: [LanguagesKnown[0]]},
+    {Name:"Raja", Age: 29, Sex: "M", Phone: 4567, Email:'raja@rajaram.com', LanguagesKnown: [LanguagesKnown[1]]},
+    {Name:"Ruby", Age: 5, Sex: "F", Phone: 8910, Email:'ruby@rubyroo.com', LanguagesKnown: [LanguagesKnown.Italian]},
+    {Name:"Ruba", Age: 12, Sex: "M", Phone: 1112, Email:'ruba@rubaroo.com', LanguagesKnown: [LanguagesKnown.Spanish]}
+]
+// use an array method
+studentInfo.push(student1)
+console.log("LOGS: Array of objects:", studentInfo )
+```
 - Tuples are defined number of elements in an array - this is strictly fixed in terms of the number of elements, TypeScript allows you also to sctrictly define the type of the elements in the tuple. An array only allows for one type in the whole array, while a tuple allows mixed types.
 
 ```let list: number[] = [1, 2, 3];``` in Typescript - which strictly types the JavaScript array ```let list = [1,2,3]``` You can also write this in Typescript as ```let list: Array<number> = [1, 2, 3];```
 
 Tuples allow you to outline a FIXED number of elements in an array of mixed types ```let list =[ 1, 'milk']``` in TypeScript it is ```let list: [number, string]```
 
-- Enum is an ordered list in an object and provides readable names to numerical values  ``` enum List {Milk, Bread, Eggs}``` the values are zero indexed by default, so milk is 0, bread is 1 and eggs 2. These values can be changed manually ```enum List {Milk = 1, Bread = 2, Eggs = 4}``` or the start of the index can be changed ```enum List {Milk = 1, Bread, Eggs}```, then bread becomes 2 and eggs 3. You can look up the index value in an enum to check what its value is.
+- Enums add a numeric value to an object  ``` enum List {Milk, Bread, Eggs}``` the values are zero indexed by default, so milk is 0, bread is 1 and eggs 2. 
+
+These values can be changed manually ```enum List {Milk = 1, Bread = 2, Eggs = 4}``` or the start of the index can be changed ```enum List {Milk = 1, Bread, Eggs}```, then bread becomes 2 and eggs 3. You can look up the index value in an enum to check what its value is.
 
 ```
 enum List {Milk = 1, Bread, Eggs}
@@ -311,6 +340,8 @@ enum DoorStats{
     Ajar
 }
 ```
+Enums do not exist in JavaScript. They are transpiled back as a function, so look at the ```enums.js``` file and note how the function tranforms the enum object into an ordered list of key-value pairs.
+
 #### Deconstructing Objects & Arrays
 
 * Spread operator

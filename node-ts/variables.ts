@@ -1,5 +1,6 @@
- // reassignment with var and let, as let is block scoped its value will not be reassigned
-    var a = 1
+// Inferred type of a is number
+    var a = 10
+    // var a = "ninja" you can reassign value but not type - this produces an error
     var b = 2
 
     if (a === 1){
@@ -13,18 +14,16 @@
 
 //  block scoped let and const cant be redeclared, typescript version 3 also throws errors with var
 
-    var x = 10
-    // var x = "Ninja"
+    var x:number = 10
+    // var x:string = "Ninja" - can not reassign the type explicitly 
     console.log(x)
 
     let y = 20
-    // let y = "Ninja"
     console.log(y)
 
 //  consts have to be initialised
     // const z; does not work
     const z = 2 
-    // const z = "Ninja"
     console.log(z)
 
 //  lets can be reassigned values
@@ -38,9 +37,8 @@ console.log(y)
 // const z = x+y
 // console.log(z)
 
-// hoisting of variables 
-function greetSoldier(name: string){
-    // var is hoisted and has functional scope
+// hoisting of variables
+function greetSoldier(name: string){  
         if (name === "Napoleon"){
             greet = "Hello General Bonaparte";
         } else {
@@ -48,6 +46,7 @@ function greetSoldier(name: string){
         }
         var greet;
         console.log(greet);
+        // var is hoisted and has functional scope 
     }
     greetSoldier("Napoleon")
     greetSoldier("Bananrama")
@@ -64,7 +63,6 @@ function greetSoldier(name: string){
         greetPerson("Joanna")
     
     // block scope variable greet not hoisted, code executes with errors
-    
     // function greetTeacher(name: string){
     //         if (name === "Guru"){
     //             let greet = "Good Morning Guruji";
@@ -88,10 +86,9 @@ function greetSoldier(name: string){
     //     greetTeacher("Josephine")
     //     greetTeacher("Joanna") 
     
-    // let needs to be hoisted but is transpiled as var in the js 
-    
         function greetGuru(name: string){
             let greet;
+            // let needs to be hoisted but is transpiled as var in the js 
             if (name === "Guru"){
                 greet = "Good Morning Guruji";
             } else {
@@ -116,3 +113,5 @@ function greetSoldier(name: string){
             return number1 * 5
         }
         console.log(multiplyNewNumber(2),`logs new function but variable value of 2 not updated as out of scope`)
+
+        

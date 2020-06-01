@@ -1,3 +1,4 @@
+"use strict";
 // Lexical this
 var x = 5;
 var y = x;

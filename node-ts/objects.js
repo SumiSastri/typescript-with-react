@@ -1,3 +1,4 @@
+"use strict";
 // Each object has static properties with a type and value
 var _a;
 // ES2015 - bracket notation - more verbose, useful in certain circumstances 
