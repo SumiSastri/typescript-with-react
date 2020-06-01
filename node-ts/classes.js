@@ -1,5 +1,4 @@
-"use strict";
-// classes are special types of functions with the class key word
+// demo that a class is actually just a function
 var Person = /** @class */ (function () {
     function Person() {
     }
@@ -36,3 +35,19 @@ console.log(g1.greetTeacher === Greet.prototype.greetTeacher);
 // Greet.call()
 // Greet.bind()
 // Greet.apply()
+// class declaration
+var StudentsPeformance = /** @class */ (function () {
+    // constructor calling on the object
+    function StudentsPeformance(studentName, subject, studentMarks) {
+        this.studentName = studentName;
+        this.subject = subject;
+        this.studentMarks = studentMarks;
+    }
+    // methods in classes
+    StudentsPeformance.prototype.getNameAndMarks = function () {
+        return "In " + this.subject + ", " + this.studentName + "  achieved " + this.studentMarks + " out of a total of 500 points";
+    };
+    return StudentsPeformance;
+}());
+var sP1 = new StudentsPeformance("Rohini", "History-Economics-Psychology-Sociology & English", 475);
+console.log(sP1.getNameAndMarks());

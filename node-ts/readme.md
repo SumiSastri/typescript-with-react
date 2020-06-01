@@ -410,8 +410,7 @@ getNumbers(1,2,3,4)
 [https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV]
 
 #### Classes
-Classes are special types of functions created in ES6 to replace prototypal inheritance. While functions are hoisted, classes can not be called before they are declared. On complie time, an error will be thrown if the class is called before it is declared.
-```classes.ts:16:13 - error TS2448: Block-scoped variable 't1' used before its declaration.```
+Classes are special types of functions created in ES6 to replace prototypal inheritance. Classes help in writing dry code. Look at the difference between boiler plate code of the objects file vs the classes file. Classes make the code more extensible, instead of copying and pasting objects a class with a constructor can be used anywhere in the code base.
 
 The class function is declared not with the function key word but the class keyword. The block of code in the class function (or the class body) can only contain methods not properties. There are 3 types of methods.
   - the constructor method - creates and initalises an object, only one allowed in every class
@@ -420,16 +419,35 @@ The class function is declared not with the function key word but the class keyw
   - classes can be extended with a super method declared after the constructor method
   - super calls upon the constructor method of the class that it extends
   - class abstraction - it is the base class that can not be modified
+```
+// class declaration
+class StudentsPeformance {
+    studentName: string
+    subject: string
+    studentMarks: number
+// constructor method
+    constructor (studentName: string, subject: string, studentMarks: number){
+        this.studentName = studentName
+        this.subject = subject
+        this.studentMarks = studentMarks
+    }
+// prototype methods that can be modified
+    getNameAndMarks(){
+        return `In ${this.subject}, ${this.studentName}  achieved ${this.studentMarks} out of a total of 500 points`
+    }
+}
+let sP1 = new StudentsPeformance ("Rohini", "History-Economics-Psychology-Sociology & English", 475)
+console.log(sP1.getNameAndMarks())
+```  
+While functions are hoisted, classes can not be called before they are declared. At compile time, an error will be thrown if the class is called before it is declared.
 
-Classes help in writing dry code 
-    - look at the difference between boiler plate code of the objects file vs the classes file
-    - classes make the code more extensible, instead of copying and pasting objects a class with a constructor can be used anywhere in the code base
+```classes.ts:16:13 - error TS2448: Block-scoped variable 't1' used before its declaration.```
 
 #### Constructor method
 - Only one constructor method is allowed in every class as it is creating/ constructs the blueprint and there can only be one blueprint
 - The constructor method creates an empty object with all the properties and methods of the class function - creates the blueprint that is stored in the browser memory
 - This blue print is stored in the global object/ the window/ the browser memory
-- The class points to the blueprint in the browser window - with node it points to the global object in node.js
+- The class points to the blueprint in the browser window - with node it points to the global object in ```node.js```
 - The class with its constructor method is intantiated when you assign the blueprint to a variable with the new key word 
 - The new key word does three things
     - creates a new replica of the blue print
@@ -439,7 +457,7 @@ Classes help in writing dry code
 
 #### Class extension and the super method
 Classes can be extended. Once extended the new extended class must be instatiated. 
-In the new instance of the class all the props and methods of the parent class. To execute the constructor method, the super method is declared after the constructor method. Super calls upon the constructor method of the class that it extends
+In the new instance of the class all the props and methods of the parent class. To execute the constructor method, the super method is declared after the constructor method. Super calls upon the constructor method of the class that it extends.
 
 ```
 class Teacher {
@@ -478,7 +496,7 @@ Accidental bugs can be called when the ```this``` key word points to the global 
 
 ##### Types & Classes 
 
-* Interfaces - Duck Typing, Structural SubTyping
+* Interface Types - Duck Typing, Structural SubTyping
 Interfaces are custom types that describe types in a class. They enforce the type of each item in an object that can be used later. Interfaces describe the contract between the code in the class and its use in other parts of the code base. They are not converted to JavaScript and have zero runtime impact.
 
 Note: There can only be one base class but there can be several interface types for that class and extensions of that interface inherit the type of the base class.
@@ -513,7 +531,6 @@ let personTeacher = (id:number, firstName: string, lastName:string) => {
 }
 personTeacher (5, "Ruth", "Kinsella")
 
-
 <!-- interface declaration -->
 interface IPersonTeacher {
     id: number
@@ -524,6 +541,8 @@ interface IPersonTeacher {
 let juniorSchoolTeacher: IPersonTeacher = {id:1, firstName:"Joan", lastName:"Hicks"}
 console.log(juniorSchoolTeacher)
 ```
+* Generic Types
+Generic Types allow you to work with multiple types, these are bespoke types written to suit your app's use cases
 
 * Type Guards 
 
@@ -588,7 +607,8 @@ Some popular module loaders
 * Webpack
 * RequireJS
  
-Exports of variables, classes, functions are all possible in this modular structure. Multiple classes and variables can be exported with the asterix symbol used to import these exports  ```import * as nameOfexport from '/filepath'``` the export file exports the code blocks, like so: ```export{codeblock1, codeblock2, codeblock3 as nameOfexport }```
+Exports of variables, classes, functions are all possible in this modular structure. 
+Multiple classes and variables can be exported with the asterix symbol used to import these exports  ```import * as nameOfexport from '/filepath'``` the export file exports the code blocks, like so: ```export{codeblock1, codeblock2, codeblock3 as nameOfexport }```
 
 * A note on namespaces 
 
