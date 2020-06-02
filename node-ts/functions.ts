@@ -60,3 +60,7 @@ console.log(returnNumber())
 // returning void
 let returnVoid = (): void => 
 console.log(`logs nothing`)
+
+
+
+

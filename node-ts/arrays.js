@@ -2,13 +2,18 @@
 exports.__esModule = true;
 // Arrays  2 ways of declaring the type
 var listNumbers = [3, 4, 5];
+listNumbers.push(7);
 console.log("listNumbers: number[]", listNumbers);
+console.log("logs push method, " + listNumbers.push());
 var list = [1, 2, 3];
 console.log("LOGS: list: Array <number>", list);
 var listNames = ['Ravi', 'Ravinder', 'Ravindernath'];
 console.log('LOGS: listNames: string[]', listNames);
+console.log("logs reverse method, " + listNames.reverse());
 var listNames2 = ['Bhavana', 'Bhavya', 'Bhavani'];
 console.log('LOGS; listNames2:Array<string>', listNames2);
+console.log("logs sort method, " + listNames2.sort());
+console.log('LOGS: listNames: string[]', listNames);
 var checkBig = [true, false, true];
 console.log('LOGS: checkBig: boolean[]', checkBig);
 // mixed types
@@ -17,7 +22,7 @@ console.log(listMixedTypes);
 var listMixedTypes2 = ["Mixed-Up-Array:", false, 2,];
 console.log(listMixedTypes2);
 // Karthik Udemy - Array of Objects, using enums in arrays
-// // enum declaration
+//enum declaration
 var LanguagesKnown;
 (function (LanguagesKnown) {
     LanguagesKnown[LanguagesKnown["English"] = 0] = "English";
@@ -47,7 +52,7 @@ console.log("LOGS: Array of objects:", studentsInfo);
 function getStudentInfo(students) {
     // let students = [] do not need to declare the variable as it is in the param
     students.forEach(function (student) {
-        console.log("Hi I'm " + student.Name + ", I speak " + student.Languages + " phone me on: " + student.Phone);
+        console.log("Hi I am " + student.Name + ", I speak " + student.Languages + " phone me on: " + student.Phone);
     });
 }
 getStudentInfo(studentsInfo);

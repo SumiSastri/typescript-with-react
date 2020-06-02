@@ -1,86 +1,90 @@
 # Typescript fundamentals
+
 This section covers the fundamentals of Typescript using node as a compiler 
 
 ##### Scaffolding & File Structure 
-Global installs
-node 
-npm install - g 
-[rm -rf node_modules && npm install] recursively remove node and reinstall in case you make a mistake
-npm install -g typescript
 
-Mkdir for project this is my directory (node-ts)
-Cd into directory (node-ts)
-Create a .ts file
+node  ```npm install - g``` 
+[rm -rf node_modules && npm install] recursively remove node and reinstall in case you make a mistake
+typescript ```npm install -g typescript```
+
+Mkdir for project the directory for this project is ```/node-ts```
+Cd into directory ```cd node-ts```
+Create a ```.ts``` file
 Touch <name-of-file.ts>
+
+Each concept has its own ```.ts``` file with examples followed from both the official documentation and tutorials.
+
+If you want to see this on the front end, create a html file and import the script from the ```app.js``` file not the ```app.ts``` file - Basic boiler plate below.
+
+```
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript with Node</title>
+    <script type='text/javascript', src='app.js'></script>
+</head>
+<body>
+  <h1>TypeScript with Node</h1>  
+</body>
+</html>
+```
 
 ##### Compiling:
 
-Create a variable in the .ts file <primitive-types.ts>
+Create a variable in the ```.ts``` file ```app.ts```
 
 ```
 let message="hello world"
 console.log(message);
 ```
-
-##### Terminal commands: 
-* tsc filename - this runs the tsc (typescript compiler) on the .ts file and compiles it to javascript
-* node filename - The terminal console should print your message as the node environment is set up
-
-As this is a typescript-node-javascript project, you will get an error on the .ts file
-The .ts file is a script file and shares global scope and throws the error
-Node modules have their own scope and need common.js exports to export the module which is an empty function ```{}```
-
-* tsc primitive-types you will see the node environment in work - the export is imported into the .js file
+In terminal run the command ```tsc app && node app``` for the ```app.ts``` file
+As this is a typescript-node-javascript project, you will get an error on the ```.ts``` file as the ```.ts``` file is a script file and shares global scope 
+Node modules have their own scope and need ```common.js``` exports to export the module which is an empty function ```{}```
+Update the ```app.ts``` file with
 
 ```
-"use strict";
-exports.__esModule = true;
-var message = "hellow";
+export {}
+// Test configuration
+let message="hello world"
 console.log(message);
 ```
+In terminal re-run the command ```tsc app && node app``` for the ```app.ts``` file you should get the message in the terminal console.
 
 Now that you have set up the files to compile correctly you can watch changes live in the node environment
-* tsc filename --watch - This updates in console all the changes in the .ts files as each is updated
+ ```tsc app``` transpiles the file into a ```.js``` file. Go into the ```app.js``` file and you will see the compiler has changed the TypeScript file into a JavaScript file.
+
+ ```
+ "use strict";
+exports.__esModule = true;
+// Test configuration
+var message = "hello world";
+console.log(message);
+```
+##### Terminal commands: 
+* tsc filename - this runs the tsc (typescript compiler) on the ```.ts``` file and compiles it to JavaScript
+* node filename - The terminal console should print your message as the node environment is set up
+* you can run both scripts with tsc filename && node filename eg. ```tsc app && node app``` for the ```app.ts``` file
+* tsc filename --watch Updates in console all the changes in the ```.ts``` files in real-time, for advanced types it is better to update the tsc files in watch mode
 * command k clears the terminal in the same directory
-* you can run both scripts with tsc filename && node filename
-
-For advanced types it is better to update the tsc files in watch mode
-
-#### Tutorials followed for node-ts files
-YouTube:
-Vishwas from CodeEvolution You Tube Tutorials
-ES6 [https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV] 
-Typescript [https://www.youtube.com/watch?v=WBPrJSw7yQA]
-
-Savjee Simply Explained 
-TypeScript [https://www.youtube.com/playlist?list=PLzvRQMJ9HDiQyjtcrtvDkeQMJIrv5ABbm]
-
-Edureka: Good for absolute basics
-[https://www.youtube.com/watch?v=82XE1X0Xblo]
-
-More reading on the ```this``` keyword [http://unschooled.org/2012/03/understanding-javascript-this/]
-
-Moshe - excellent well explained with good examples
-OOP [https://www.youtube.com/watch?v=PFmuCDHHpwk]
-
-Udemy - Free
-Daniel Stern - Intro to Typescript not very good code examples (1-hour with completion certificate )
-Awais Jamil - The connection between ES6 and TypeScript useful - valuable addition to learning
-
-The best TypeScript Tutorial
-[https://www.tutorialspoint.com/typescript/]
-
 
 ##  Section 1: Basic Concepts & Types
-
 Documentation: [https://www.typescriptlang.org/docs/handbook/basic-types.html]
 
-* Type annotation
--  declare a variable, gve the variable name a type identifier and assign it a value - ```let/const name: type identifier = 'value' ```
+Primitive types are passed by value. In this section we go through the basic concepts of TypeScript compilation into 
+JavaScript with the primitive types. 
+ - Strings
+ - Numbers
+ - Booleans
+ - The difference between Null, Undefined, Uknown, Void & Never
 
 #### A note on variables
 
-Variables are a namespace allocated in browser memory. With TypeScript you name the variable and add the type before you provide the value.
+Variables are a namespace allocated in browser memory. With TypeScript you name the variable and add the type before you provide the value, examples in ```variables.ts```
+
+* Type annotation
+-  declare a variable, gve the variable name a type identifier and assign it a value - ```let/const name: type identifier = 'value' ```
 
 Variable declaration - ES6 ```let``` and ```const``` key words can be used they will be transpiled back into ```var``` by the typescript compiler. 
 
@@ -94,7 +98,17 @@ For example ```var a = 10``` infers the type as a number. You can reassign the v
 
 Closures and immediately invoked functions (iffy's) should use the ```let``` or ```const``` key words.
 
+#### A note on operators
+Typescript has the same operators and operands as JavaScript
+- Assignment operators: Simple assignment (=) assigns from right to left, all the other operators perform the arithmetic operation from right to left and assign the new value to the value on the right {plus equals (+=), minus equals(-=), multiply equals (*=) divide equals (/=)}
+- Arithmetic: addition, subtraction, multiplication, division, modulus(returns quotient), increment and decrement
+- Relational: Comparing values as greater than, less than, greater than & equal to, less than & equal to, equal (==), strictly equal (===), not equal(!=)
+- Logical: And, Or, not (&& (true only if both sides true) (||(truthy returns true if one or other true)) !(inverse of the logic's result))
+- Bitwise: Performs boolean opeation as well as and/or/not integer operations on each bit of the integer arguments they are represented by single symbol types And(&), or (|) not (~) this actually reverses the bits
+
 #### Primitive types
+
+Examples are in the file ```primitive-types.ts```
 
 - String ```let name: string = 'Jhanavi' ```
 - Number ```let age: number = 5```
@@ -110,7 +124,7 @@ let sentence: string = `Hello, my name is ${ fullName }. I'll be ${ age + 1 } ye
 
 ```
 function rollDice(): 1 | 2 | 3 | 4 | 5 | 6 {
-    // ...
+    // ... do something
 }
 ```
 #### The differences between Any, Null, Undefined, Never, Void, Unknown
@@ -143,14 +157,17 @@ function warnUser(): void {
 * Unknown: Will be returned when the type is not known
 
 ## Section 2 : Advanced Types/ Reference types passed by reference
-Other than primitive types that are passed by value, everything else in JavaScript is an object. In this section we see how JavaScript and TypeScript work together lookin at
+Documentation: [https://www.typescriptlang.org/docs/handbook/advanced-types.html] 
 
- - Objects and object oriented programming
- - Functions
- - Arrays, Tuples & Enums
+Other than primitive types that are passed by value, everything else in JavaScript is an object and are called reference types as their value is passed by reference. 
+
+In this section we see TypeScript working as a superscript of JavaScript with
+
+ - Objects, taking a deeper dive into object oriented programming (OOP) files ```objects.ts & oop.ts```
+ - Functions, the basic building blocks of JavaScript programming files ```functions.ts```
+ - Arrays, Tuples & Enums - basic data types used in TypeScript and JavaScript files ```arrays.ts, tuples.ts & enums.ts``` 
 
 In the advanced types compilation of ts files into js it is useful to see what is going on under the hood in the js files
-[https://www.typescriptlang.org/docs/handbook/advanced-types.html] 
 
 #### A note about passing by value and reference
 ```
@@ -185,11 +202,12 @@ The logs return the object and the reference to the instance of the object a tha
 This demonstration of how objects work, makes it easier to understand classes, constructors, class extension and inheritance as well as how the key word ```this``` works in object oriented programming.
 
 #### Objects 
-Objects are unordered lists with properties and methods. Properties hold static values, while methods hold dynamic logic of the code block to be executed. Three key features of objects are they are 1. Stateful of have data that describes the attributes of the object 2. They have behavior (methods) that describes how they will act 3. They are unique
+Objects are unordered lists with properties and methods. Properties hold static values, while methods hold dynamic logic of the code block to be executed. Three key features of objects, they are:-
+1. Stateful of have data that describes the attributes of the object 
+2. They have behavior (methods) that describes how they will act 
+3. They are unique
 
 With TypeScript each property has both a type and a value. Unless notated with a question mark, properties are by default mandatory and will be inherited by future iterations of the object. 
-
-In TypeScript each method 
 
 There are 2 ways of declaring object literals
 
@@ -243,12 +261,11 @@ let calculatePrice = {
 - Polymorphism - many forms of the object helps refactor code and make it simpler. For example you can eliminates long if/else and switch conditional statements to render different elements of the HTML DOM eg. ```element.render``` can be written as a method to render different HTML elements by creating a class with a render method - this concept is used in React and MVC (model, view, control) libraries whilst DOM manipulation is based on factory functions
 
 #### Functions
-Functions are objects with a block of logic. All functions are therefore methods. Functions are core building blocks of both JavaScript and TypeScript. They perform the key role of telling the code how to do things or what needs to be executed.
+Documentation [https://www.typescriptlang.org/docs/handbook/functions.html]
 
-Documentation for functions in typescript
-[https://www.typescriptlang.org/docs/handbook/functions.html]
-
-* Parameter type inference - params have an inferred type by use, but also can be explicitly defined
+JavaScript is a functional programming language.
+Functions are nothing but objects with a block of logic. All functions are therefore methods of the class Object. Functions are core building blocks of both JavaScript and TypeScript. They perform the key role of telling the code how to do things or what needs to be executed.
+* Inferred param types - params have an inferred type by use, but also can be explicitly defined
 * Default params - a default param can be added as a fall-back value
 * Rest param - these are placeholders for a list of params of the same type
 * Mandatory params - all params in the function are mandatory unless explicity notated as optional
@@ -277,7 +294,7 @@ let getTeacherTimeTable = function (subject:string, classNumber: number) {
 console.log (getTeacherTimeTable('Maths', 7))
 ```
 
-* Lamdas are Anonymous (Arrow) Functions -  the function is assigned to a variable, the fat arrow is an implict return amd binds lexical ```this``` to the object it points to, in this case the function. The function key word is also remoeved.
+* Lamdas or Anonymous (Arrow) Functions -  the function is assigned to a variable, the fat arrow is an implict return amd binds lexical ```this``` to the object it points to, in this case the function. The function key word is also remoeved.
 
 ```
 let getTeacherNames = (firstName:string, lastName: string) => {
@@ -285,6 +302,22 @@ let getTeacherNames = (firstName:string, lastName: string) => {
 }
 console.log ((getTeacherNames('Arthur', 'Chamraj'))
 ```
+##### Looped functions or iterations
+Loops or iterations are functions that iterate over elements in the condition expression checking if they are true or false executing the condition expressions that are true and exiting as soon as they find a false statement. File ```iterations.ts```
+Definite Loops:
+for-loop: ```for(condition expression -initialiser, conditon expression -logic, condition expression -increment or decrement){}```
+Indefinite Loops:
+while-loop: ```while(condition expression){}```
+do-while loop: ```do{}while(condition expression)```
+
+Iterations can also be performed over the keys of an object or an array.
+
+##### Loop & Break functions or Conditional Statements
+If statement:
+If Else statement:
+Switch statement:
+While-If-Break:
+
 #### Arrays, Tuples & Enums
 - Arrays are ordered and 0-based indexed lists. They provide an index number to the element they refer to in the array and the start of the index is always 0.
 
@@ -486,7 +519,6 @@ let person1 = new Highschoolteacher("Mrs. Rebello")
 console.log(person1)
 console.log(person1.greet())
 ```
-
 #### Lexical this
 It is important to remember that the ```this``` key word can be extended from the global object created by classes and their constructor method and therefore point to the class it extends. This in the extended class points to the new extended object/ blueprint/ class.
 
@@ -494,8 +526,9 @@ As the values of the object are passed by reference, ```this``` passes the value
 
 Accidental bugs can be called when the ```this``` key word points to the global object instead of the class that it extends and it is referring to. Therefore this needs to be bound to the object by the ```this.bind()``` method or the fat arrow. The global object has the bind method -  window.bind() and any other object that is stored in the window object uses lexical ```this.bind()``` to bind it to the specific object it is referring to. 
 
-##### Types & Classes 
+More reading on the ```this``` keyword [http://unschooled.org/2012/03/understanding-javascript-this/]
 
+##### Types & Classes 
 * Interface Types - Duck Typing, Structural SubTyping
 Interfaces are custom types that describe types in a class. They enforce the type of each item in an object that can be used later. Interfaces describe the contract between the code in the class and its use in other parts of the code base. They are not converted to JavaScript and have zero runtime impact.
 
@@ -598,7 +631,7 @@ interface IStudent extends IPerson{
 <!-- Aliases the interface to a more readable type when it is used in code base -->
 export {IPerson, IPersonJuniorSchool as TeacherJrSchool, IStudent}
 ```
-##  Section 4: Modules, index.d.ts
+##  Section 4: Modules & Namespaces what's the difference
 
 Modules are executed in their own scope. To share code from one module to another, a module loader is required. Files are then exported from one module and can be used any any module that imports the exported module. 
 
@@ -640,3 +673,39 @@ let feesPayed = studentPayments.calculateFees(4, 2000)
 ```
 
 * A note on the ts.config file - defines the complier being used - in this file you can see common.js is the compiler 
+
+##  Section 5: Libraries and Type Definitions
+
+Type definitions are used when there are JavaScript libraries or a host APIs. Each library has it's own type definitions and to get these definitions, they are in ```.d.ts``` files.
+
+You need to add this to the scaffolding - ```npm install tsd -g``` (globally in the project) plus the library required. For React we will run through the detail in the ```/react-ts``` folder.
+
+```tsd``` is deprecated, typings.json has replaced it
+
+Libraries and type definitions [https://www.npmjs.com/~types]
+eg. ```@types/react``` for react or the Microsoft search [https://microsoft.github.io/TypeSearch/]
+
+## APPENDIX 
+Tutorials were good to run through and work with as well as go back to and revise. Each of these tutorials have something to offer and it is worth going through them if the documentation does not make sense. The content of this readme relies on all of these tutorials as reference material. Here are some of my thoughts on the tutorials which I have viewed at least 2 times each.
+
+Moshe's tutorial was the best with a project at the end from YouTube and Karthik's Udemy tutorial was a good short 2.5 hour watch with good examples to follow. Scaffolding was best explained by Vishwas in YouTube. Vishwas and Awais Jamil's Udemy tutorials cover much of the same ground and demonstrate the connectivity between ES6 and Typescript. Awais Jamil's is very long and detailled and worth revisiting 2 or 3 times to embed knowledge once the basics have been grasped. Edureka's general overview provides a good theoretical framework to look at TypeScript under the hood and is for absolute beginners with rudimentary knowledge of JavaScript. Savjee was a good reminder and review, some excellent examples to follow and code along.
+
+#### Tutorials followed for node-ts files
+
+The best TypeScript Tutorial
+[https://www.tutorialspoint.com/typescript/]
+
+* Udemy - Free with certification of attendance
+- Karthik K - TypeScript Fundamentals, good quick overview with good examples (2.5-hours with completion certificate)
+- Daniel Stern - Intro to Typescript not very good code examples, skip through as revision (1-hour with completion certificate )
+- Awais Jamil - Very detailled, the connection between ES6 and TypeScript useful - valuable addition to learning 
+
+* YouTube: Videos followed for revision and better understanding of TS
+- Edureka: TypeScript Tutorial for Beginners (1-hour) [https://www.youtube.com/watch?v=82XE1X0Xblo]
+- CodeEvolution: Vishwas
+    Typescript (50 mins - this is the tute focused on Typescript) [https://www.youtube.com/watch?v=WBPrJSw7yQA]
+    ES6 (this is a little confusing for pure Typescript, you need to interpolate and create the types yourself a good practice video after you learn the basics) [https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV] 
+- Moshe - excellent well explained with good examples
+    OOP [https://www.youtube.com/watch?v=PFmuCDHHpwk]
+- Savjee Simply Explained 
+    TypeScript [https://www.youtube.com/playlist?list=PLzvRQMJ9HDiQyjtcrtvDkeQMJIrv5ABbm]

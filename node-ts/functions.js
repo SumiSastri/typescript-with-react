@@ -49,3 +49,8 @@ console.log(returnNumber());
 var returnVoid = function () {
     return console.log("logs nothing");
 };
+{
+    return a + b;
+}
+console.log(add2("Ramayan", "Epic"));
+console.log(add2(2, 2));

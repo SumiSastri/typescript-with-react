@@ -13,8 +13,8 @@ Typescript, is an open-source library created by Anders Hejlsberg for Microsoft.
 Problems that TypeScript solves - as it is statically typed it reduces errors (bugs) as types are checked automatically preventing the accidental assignment of invalid values. It is easier to maintain in the long-term as it handles.
 
 - Corrects type coercian of disparite types in compile time
-- Bugs caught early in compile type not when it is too late (in runtime)
-- Dynamic typing changed to static typing 
+- JavaScript's dynamic typing changed to static typing, check errors in run time
+- Bugs caught early in compile type not when it is too late (in runtime) 
 - Scope clarity of variables in functions/ methods
 - Support for more types - enums, tuples
 - Better structure of code base

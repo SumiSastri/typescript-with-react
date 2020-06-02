@@ -17,6 +17,12 @@ interface IStudent extends IPerson{
     Email: string,
     Languages: string
 }
-
-export {IPerson, IPersonJuniorSchool as TeacherJrSchool, IStudent}
+// Edureka tutorial @50:00
+interface IEmployee extends IPerson{
+    grade: number
+    currency: string
+    salary: number
+    getSalary: (grade: number, currency: string, salary:number,)=> string| number
+}
+export {IPerson, IPersonJuniorSchool as TeacherJrSchool, IStudent, IEmployee}
 
