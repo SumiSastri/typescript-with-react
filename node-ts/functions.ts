@@ -61,6 +61,18 @@ console.log(returnNumber())
 let returnVoid = (): void => 
 console.log(`logs nothing`)
 
-
-
-
+// type guard functions
+function addTwoNumbers(num1:string|number, num2: string|number): string|number {
+    if (typeof num1 === "string"){
+        console.log("The first function parameter is a string ")
+        return num1 + num2
+    }
+    if (typeof num1 === "number" && typeof num2 === "number"){
+        console.log("Both parameters of the function are numbers")
+        return num1 + num2
+    }
+     return num1.toString() + num2.toString()
+ }
+ console.log(addTwoNumbers(5,4))
+ console.log(addTwoNumbers("four", "four"))
+ 

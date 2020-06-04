@@ -1,3 +1,5 @@
+import {LanguagesKnown} from "../node-ts/enums"
+
 // for loop 3 params or condition expressions - initial value, condition, increment or decrement(Edureka tutorial)
 for (let i: number = 0; i < 3; i++) {
     console.log (`logs for-loop iterations on ${i}`)
@@ -18,7 +20,7 @@ do {
 // break and continue the loop
 
 // forEach loops over each element (Karthik Tutorial)
-enum LanguagesKnown {English, French, Italian, Spanish}
+// imported the enum to refactor
 let student = {
     Name: "Anil",
     Age: 5,
@@ -63,4 +65,3 @@ console.log(keys, `logs props & methods as an array with Object.keys() method`)
 if ('radius' in circle) {
     console.log('finds props only or methods only with the in operator')
 }
-

@@ -10,6 +10,6 @@
  console.log(eggs3)
 
 // Udemy Karthik - defines a named numeric constant as an object - it is zero indexed
-enum LanguagesKnown {English, French, Italian, Spanish}
+export enum LanguagesKnown {English, French, Italian, Spanish}
 console.log("Logs the enum", LanguagesKnown)
 console.log("Logs 3 in the enum:", LanguagesKnown[3])

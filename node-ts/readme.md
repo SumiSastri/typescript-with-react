@@ -7,6 +7,7 @@ This section covers the fundamentals of Typescript using node as a compiler
 node  ```npm install - g``` 
 [rm -rf node_modules && npm install] recursively remove node and reinstall in case you make a mistake
 typescript ```npm install -g typescript```
+Uninstalling packages documentation[https://docs.npmjs.com/cli/uninstall]
 
 Mkdir for project the directory for this project is ```/node-ts```
 Cd into directory ```cd node-ts```
@@ -63,11 +64,11 @@ var message = "hello world";
 console.log(message);
 ```
 ##### Terminal commands: 
-* tsc filename - this runs the tsc (typescript compiler) on the ```.ts``` file and compiles it to JavaScript
+* tsc filename - this runs the tsc (TypeScript compiler) on the ```.ts``` file and compiles it to JavaScript
 * node filename - The terminal console should print your message as the node environment is set up
 * you can run both scripts with tsc filename && node filename eg. ```tsc app && node app``` for the ```app.ts``` file
 * tsc filename --watch Updates in console all the changes in the ```.ts``` files in real-time, for advanced types it is better to update the tsc files in watch mode
-* command k clears the terminal in the same directory
+* command k clears the terminal in the same directory and all history, command c clears terminal (MacOS)
 
 ##  Section 1: Basic Concepts & Types
 Documentation: [https://www.typescriptlang.org/docs/handbook/basic-types.html]
@@ -83,12 +84,14 @@ JavaScript with the primitive types.
 
 Variables are a namespace allocated in browser memory. With TypeScript you name the variable and add the type before you provide the value, examples in ```variables.ts```
 
+* Type inference - types are inferred at the time of variable initialisation but not afterwards, it is best practise not to rely on inference but to explicity define types
+
 * Type annotation
 -  declare a variable, gve the variable name a type identifier and assign it a value - ```let/const name: type identifier = 'value' ```
 
-Variable declaration - ES6 ```let``` and ```const``` key words can be used they will be transpiled back into ```var``` by the typescript compiler. 
+Variable declaration - ES6 ```let``` and ```const``` key words can be used they will be transpiled back into ```var``` by the TypeScript compiler. 
 
-In Typescript you can use the key words of ES6 ```let``` and ```const``` that need to be declared at the top of a function block as they do not get hoisted, you will note that they are changed to the ```var``` key word in the typescript transpiler. 
+In TypeScript you can use the key words of ES6 ```let``` and ```const``` that need to be declared at the top of a function block as they do not get hoisted, you will note that they are changed to the ```var``` key word in the TypeScript transpiler. 
 
 The ```var``` key word is hoisted no matter where it is placed in the function scope. ```let``` and ```const``` only have block scope - defined in a code block between curly braces. ```let``` values when transpiled are reassigned to a new variable - see the .js file where ```let b``` is reassigned to ```let b_1``` in the transpiled code.
 
@@ -99,7 +102,7 @@ For example ```var a = 10``` infers the type as a number. You can reassign the v
 Closures and immediately invoked functions (iffy's) should use the ```let``` or ```const``` key words.
 
 #### A note on operators
-Typescript has the same operators and operands as JavaScript
+TypeScript has the same operators and operands as JavaScript
 - Assignment operators: Simple assignment (=) assigns from right to left, all the other operators perform the arithmetic operation from right to left and assign the new value to the value on the right {plus equals (+=), minus equals(-=), multiply equals (*=) divide equals (/=)}
 - Arithmetic: addition, subtraction, multiplication, division, modulus(returns quotient), increment and decrement
 - Relational: Comparing values as greater than, less than, greater than & equal to, less than & equal to, equal (==), strictly equal (===), not equal(!=)
@@ -128,33 +131,50 @@ function rollDice(): 1 | 2 | 3 | 4 | 5 | 6 {
 }
 ```
 #### The differences between Any, Null, Undefined, Never, Void, Unknown
+More reading with good examples [https://wanago.io/2020/01/27/understanding-any-and-unknown-in-typescript-difference-between-never-and-void/]
 
-* Any: Allows dynamic typing and is not strictly typed to any of the defined TypeScript types, allows JavaScript engines to decide what the implicit type is, it allows you to opt out of using TypeScript, runs normal compile time JS checks
+Examples in this folder is in ```primitive-types.ts```
+* Any: Allows dynamic typing and is not strictly typed to any of the defined TypeScript types, allows JavaScript engines to decide what the implicit type is, it allows you to opt out of using TypeScript, runs normal compile time JS checks. It should be avoided at all costs as it defeats the purpose of type-checking.
 
 ```
 let notSure: any = "not sure of the result, so it could be anything"
 
 ```
+* Null: Describes a type with no value therefore a variable can be assigned to the type null. The type number with a value of 0 is still a number type with a zero rather than null value, an empty string is an empty space held by a string type. Null is a type of its own describing neither type nor value. Using ```strictNullChecks``` avoids the challenge of conflating nullable types - strings and numbers.
 
-* Null:  Null describes a variable that has no value as compared with a value of zero, zero is a value. Therefore null describes the absence of a value.
+* Undefined: A variable that has been declared but not assigned a value. Logging the variable will return undefined. Often used as union types to provide variations of the possible answers ```string| null | undefined``` 
 
-* Undefined: Allows the possibility for no definition of the type. Often used as union types to provide variations of the possible answers ```string| null | undefined``` 
+The difference between null and undefined [https://levelup.gitconnected.com/javascript-null-vs-undefined-2acda986f79f]
 
-* Never: Is used to indicate an error message, if you want something to never happen you use this type definition
+* Unknown: Will be returned when the type is not known, it is more like any in compile time, it is considered a top type. It is different from any as during compile time any allows any type to be passed, whereas unknown will indicate no known type has been passed. This is a subtle difference that can be useful for debugging. 
+
+The difference between unknown & never [https://blog.logrocket.com/when-to-use-never-and-unknown-in-typescript-5e4d6c5799ad/]
+
+* Never: Indicates something that never should happen you, it is a nullable type or an empty set. It is considered a bottom type. To use any or null loses out on the benefits of static typing and type checking.
+
+Null can be a null type of string - an empty string, or as a number represented as 0. However, technically bitwise an empty string is not null and neither is 0. Never factors out in compile time and there is therefore a subtle difference. Is is often used to indicate an error message in promises and callback functions. It is also used to prune unwanted conditions in a conditional statement, loop or iteration.
 
 ```
 function error(message: string): never {
     throw new Error(message);
 }
+<!-- with a reject promise call back -->
+function timeout(ms: number): Promise<never> {
+  return new Promise((_, reject) =>
+    setTimeout(() => reject(new Error("Timeout elapsed")), ms)
+  )
+}
 ```
-* Void: Can also be used as an error message - commonly used for functions that do not return any value
+
+* Void: Used for functions that do not return any value, different from never which does not return any value void returns an empty value.
 
 ```
 function warnUser(): void {
     console.log("This is my warning message");
 }
 ```
-* Unknown: Will be returned when the type is not known
+
+This section is well explained by CodeEvolution from @25:00 mins in the YouTube tutorial [https://www.youtube.com/watch?v=WBPrJSw7yQA]
 
 ## Section 2 : Advanced Types/ Reference types passed by reference
 Documentation: [https://www.typescriptlang.org/docs/handbook/advanced-types.html] 
@@ -252,25 +272,25 @@ let calculatePrice = {
     }
 }
 ```
-- Encapsulation - encapsulating all the variables and the methods in an object, reduces complexity and increases extensibility of code
+- Encapsulation - encapsulating all the variables and the methods in an object, reduces complexity and increases extensibility of code. See examples in ```objects.ts```
 
-- Inheritance - the properties and methods of objects can be reassigned to new objects, they will inherit the same types and values as the parent object. They eliminate redundant code
+- Inheritance - the properties and methods of objects can be reassigned to new objects, they will inherit the same types and values as the parent object. They eliminate redundant code. Methods of constructor and super are called in the extended classes. See examples in ```inheritance.ts```
 
-- Abstraction - by default properties are public and available to all objects based on the objects prototypal inheritance. However some properties and methods can be contained privately within the object, or abstracted within the object. This makes the interface of this object with the rest of the code simpler. It also reduces the impact of change, private methods change the object without leaking to the code outside and causing side effects
+- Abstraction - by default properties are public and available to all objects based on the objects prototypal inheritance. However some properties and methods can be contained privately within the object, or abstracted within the object. This makes the interface of this object with the rest of the code simpler. It also reduces the impact of change, private methods change the object without leaking to the code outside and causing side effects. See examples in ```abstraction.ts```
 
 - Polymorphism - many forms of the object helps refactor code and make it simpler. For example you can eliminates long if/else and switch conditional statements to render different elements of the HTML DOM eg. ```element.render``` can be written as a method to render different HTML elements by creating a class with a render method - this concept is used in React and MVC (model, view, control) libraries whilst DOM manipulation is based on factory functions
 
 #### Functions
 Documentation [https://www.typescriptlang.org/docs/handbook/functions.html]
 
-JavaScript is a functional programming language.
+JavaScript is a functional programming language. Examples in ```functions.ts```
 Functions are nothing but objects with a block of logic. All functions are therefore methods of the class Object. Functions are core building blocks of both JavaScript and TypeScript. They perform the key role of telling the code how to do things or what needs to be executed.
 * Inferred param types - params have an inferred type by use, but also can be explicitly defined
 * Default params - a default param can be added as a fall-back value
 * Rest param - these are placeholders for a list of params of the same type
 * Mandatory params - all params in the function are mandatory unless explicity notated as optional
 * Optional params - notated with question mark 
-* Union type params - notated with the pipe symbol - allows the last name to be a string, undefined, or null
+* Union type params - allows multiple types for the same value - notated with the pipe symbol - allows the last name to be a string, undefined, or null - used because with API's or libraries, or user input it is not known what the exact type will be, it limits the number of options rather than using any which becomes difficult to debug.
  
 * Function declaration - function name declared with the function keyword.  
  ```
@@ -302,6 +322,35 @@ let getTeacherNames = (firstName:string, lastName: string) => {
 }
 console.log ((getTeacherNames('Arthur', 'Chamraj'))
 ```
+
+* Functions written as Type Guards 
+
+Checks types within the scope of the function argument. It is TypeScript checking itself for unknown types and guarding against the use of mixed types. for example in this function, it is not clear whether the return should be a number or a string even if you add TypeScript types. The type guards makes sure you are not mixing types and creating errors in compile time. Take this function without TypeScript it can return any type - string or number and type coercian can take place in compile time in JavaScript and a runtime error can occur.
+
+```
+ function addTwoNumbers(num1, num2){
+     return num1 + num2
+ }
+ ```
+ Keywords - typeof(for objects)/ instanceof (for constructors)/ in (for objects and constructors) are used in type checking.  The parameters of this function can be assigned a union type of either string or number so you need to also assign the return to a type and use the ```.toString()``` method so that the numbers are always returned as a string. You also need to create the function return as a conditional statement so that it is clear what the function control flow is checking and the default is treating both arguments in the function as a string to prevent errors.
+
+ In the first log the numbers are added as the plus operator is used as an arithmetic operator, in the second log the plus operator is used to concat 2 strings.
+
+ ```
+function addTwoNumbers(num1:string|number, num2: string|number): string|number {
+    if (typeof num1 === "string"){
+        console.log("The first function parameter is a string ")
+        return num1 + num2
+    }
+    if (typeof num1 === "number" && typeof num2 === "number"){
+        console.log("Both parameters of the function are numbers")
+        return num1 + num2
+    }
+     return num1.toString() + num2.toString()
+ }
+ console.log(addTwoNumbers(5,4))
+ console.log(addTwoNumbers("four", "four"))
+``` 
 ##### Looped functions or iterations
 Loops or iterations are functions that iterate over elements in the condition expression checking if they are true or false executing the condition expressions that are true and exiting as soon as they find a false statement. File ```iterations.ts```
 Definite Loops:
@@ -313,10 +362,13 @@ do-while loop: ```do{}while(condition expression)```
 Iterations can also be performed over the keys of an object or an array.
 
 ##### Loop & Break functions or Conditional Statements
-If statement:
-If Else statement:
-Switch statement:
-While-If-Break:
+Loops and conditional statements are code blocks for steps that have to be repeated over elements of the code block following certain conditions.
+
+Typescript helps to strictly define each element in the code block by its type, examples of the loops and conditions outlined below in ```iterations.ts```
+Loops - for-loop, while-loop, do-while-loop 
+Conditions - if, if-else are condition expressions in a code block
+Combination of loops and conditions - for-if
+Higher order functions - forEach are performed on arrays and objects
 
 #### Arrays, Tuples & Enums
 - Arrays are ordered and 0-based indexed lists. They provide an index number to the element they refer to in the array and the start of the index is always 0.
@@ -362,12 +414,12 @@ function getStudentInfo(students: any[]){
 getStudentInfo(studentsInfo)
 <!-- Logs with the index will give you the name of the language, logs with the name of the language gives you the number of the index in the enum -->
 ```
-- Tuples are defined number of elements in an array - this is strictly fixed in terms of the number of elements, TypeScript allows you also to sctrictly define the type of the elements in the tuple. An array only allows for one type in the whole array, while a tuple allows mixed types.
+- Tuples are defined number of elements in an array - this is strictly fixed in terms of the number, types, order and elements.  Tuples allow you to outline a FIXED number of elements in an array of mixed types - you can not change the order of the types in the elements in a tuple. Tuples do not exist in JavaScript, they are transpiled back into an array. However by fixing the type you are strictly defining the elements by order and type using TypeScript. See ```tuples.js```
 
-```let list: number[] = [1, 2, 3];``` in Typescript - which strictly types the JavaScript array ```let list = [1,2,3]``` You can also write this in Typescript as ```let list: Array<number> = [1, 2, 3];```
-
-Tuples allow you to outline a FIXED number of elements in an array of mixed types ```let list =[ 1, 'milk']``` in TypeScript it is ```let list: [number, string]```
-
+```
+let shoppingList: [number,string] =[ 1, 'milk']
+console.log(shoppingList)
+```
 - Enums add a numeric value to an object  ``` enum List {Milk, Bread, Eggs}``` the values are zero indexed by default, so milk is 0, bread is 1 and eggs 2. 
 
 These values can be changed manually ```enum List {Milk = 1, Bread = 2, Eggs = 4}``` or the start of the index can be changed ```enum List {Milk = 1, Bread, Eggs}```, then bread becomes 2 and eggs 3. You can look up the index value in an enum to check what its value is.
@@ -577,33 +629,8 @@ console.log(juniorSchoolTeacher)
 * Generic Types
 Generic Types allow you to work with multiple types, these are bespoke types written to suit your app's use cases
 
-* Type Guards 
-
-Checks types within the scope of the function argument. It is Typescript checking typescript for example in this function, it is not clear whether the return should be a number or a string even if you add TypeScript types. The type guards makes sure you are not mixing types and creating errors in compile time.
-Keywords - typeof(for objects)/ instanceof (for constructors)/ in (for objects and constructors)
-
-```
- function addTwoNumbers(num1, num2){
-     return num1 + num2
- }
- ```
- The parameters of this function can be assigned a union type of either string or number so you need to also assign the return to a type and use the toString method so that the numbers are always returned as a string. You also need to create the function return as a conditional statement so that it is clear what the function control flow is checking and the default is treating both arguments in the function as a string to prevent errors.
-
- ```
-function addTwoNumbers(num1:string|number, num2: string|number): string|number {
-    if (typeof num1 === "string"){
-        console.log("The first function parameter is a string ")
-        return num1 + num2
-    }
-    if (typeof num1 === "number" && typeofarg2 === "number"){
-        console.log("Both parameters of the function are numbers")
-        return num1 + num2
-    }
-     return num1.toString() + num2.toString()
- }
-``` 
 * Intersection Types
-Two or more types with the amperestand 
+Two or more types permitted for use denoted by the single amperestand 
 
 * Type Aliases
 A convenient naming convention that allows you export a type of class by another name
@@ -686,26 +713,29 @@ Libraries and type definitions [https://www.npmjs.com/~types]
 eg. ```@types/react``` for react or the Microsoft search [https://microsoft.github.io/TypeSearch/]
 
 ## APPENDIX 
-Tutorials were good to run through and work with as well as go back to and revise. Each of these tutorials have something to offer and it is worth going through them if the documentation does not make sense. The content of this readme relies on all of these tutorials as reference material. Here are some of my thoughts on the tutorials which I have viewed at least 2 times each.
+ 
+The content of this readme relies on all the tutorials listed in this section. The best TypeScript Tutorial
+[https://www.tutorialspoint.com/typescript/]. Highlights from the rest are:-
 
-Moshe's tutorial was the best with a project at the end from YouTube and Karthik's Udemy tutorial was a good short 2.5 hour watch with good examples to follow. Scaffolding was best explained by Vishwas in YouTube. Vishwas and Awais Jamil's Udemy tutorials cover much of the same ground and demonstrate the connectivity between ES6 and Typescript. Awais Jamil's is very long and detailled and worth revisiting 2 or 3 times to embed knowledge once the basics have been grasped. Edureka's general overview provides a good theoretical framework to look at TypeScript under the hood and is for absolute beginners with rudimentary knowledge of JavaScript. Savjee was a good reminder and review, some excellent examples to follow and code along.
+- Scaffolding was best explained by CodeEvolution's Vishwas.
+- Edureka had a good theoretical framework for the basics and a quick overview.
+- Karthik's Udemy tutorial (2.5 hours) was best for Typescript good examples to follow - this formed the core part of the work in this folder.
+- Moshe's OOP tutorial is excellent to get a better understanding of objects, classes and inheritance.
+- Savjee was a good reminder and review, some excellent examples to follow and code along.
+- Awais Jamil's is a slog with 5.5 hours to watch - but it is good to watch chunks of it where you get stuck andembed knowledge once the basics have been grasped.
 
-#### Tutorials followed for node-ts files
-
-The best TypeScript Tutorial
-[https://www.tutorialspoint.com/typescript/]
-
+##### Tutorial List and links 
 * Udemy - Free with certification of attendance
 - Karthik K - TypeScript Fundamentals, good quick overview with good examples (2.5-hours with completion certificate)
-- Daniel Stern - Intro to Typescript not very good code examples, skip through as revision (1-hour with completion certificate )
-- Awais Jamil - Very detailled, the connection between ES6 and TypeScript useful - valuable addition to learning 
+- Awais Jamil-Mirza - (5.5 hours, paid course is 7++ hours) A long slog but useful to go back to it, there is a shorter YouTube version
+- Daniel Stern - Intro to Typescript only section 3 useful videos 8-11, code examples not very good(1-hour with completion certificate)
 
 * YouTube: Videos followed for revision and better understanding of TS
 - Edureka: TypeScript Tutorial for Beginners (1-hour) [https://www.youtube.com/watch?v=82XE1X0Xblo]
-- CodeEvolution: Vishwas
-    Typescript (50 mins - this is the tute focused on Typescript) [https://www.youtube.com/watch?v=WBPrJSw7yQA]
+- CodeEvolution: (Vishwas)
+    Learn TypeScript in 50 mins (Good examples and scaffolding of typescript with node) [https://www.youtube.com/watch?v=WBPrJSw7yQA]
     ES6 (this is a little confusing for pure Typescript, you need to interpolate and create the types yourself a good practice video after you learn the basics) [https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV] 
-- Moshe - excellent well explained with good examples
-    OOP [https://www.youtube.com/watch?v=PFmuCDHHpwk]
-- Savjee Simply Explained 
+- OOP - Moshe - excellent well explained with good examples [https://www.youtube.com/watch?v=PFmuCDHHpwk]
+- Simply Explained: (Savjee)
     TypeScript [https://www.youtube.com/playlist?list=PLzvRQMJ9HDiQyjtcrtvDkeQMJIrv5ABbm]
+- Awais Jamil-Mirza (2.5 hours edited version of the Udemy Free Course) [https://www.youtube.com/watch?v=I-dml1IDyBc]    

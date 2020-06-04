@@ -1,10 +1,15 @@
 import { red } from "color-name";
 
-// Primitive types are strings, numbers, booleans
+// strings
     let name: string = "Rehana";
+// numbers
+    let num1: number = 10
+    let num2: number = 20
+    let result: number = 0
+// booleans
     let student: boolean = false;
     let teacher: boolean = true;
-
+// template literal
     let templateStringSentence: string = ` My name is ${name}. Am I am a student or a teacher? Student? ${student} Teacher?${teacher}`;
     console.log(templateStringSentence);
     let fullName: string = `Jhanavi Basappa`;
@@ -14,11 +19,60 @@ import { red } from "color-name";
     console.log(`logs string length, ${sentence.length}`)
     console.log(`logs string concat, ${templateStringSentence} & ${sentence}`)
 
-let num1: number = 10
-let num2: number = 20
-let result: number = 0
+// javascript primitives
+let n: null = null
+let u: undefined = undefined
 
-// assignment operators
+// new typescript primitives
+let a: any = "hi"
+console.log (`logs a as string ${a}`)
+console.log(a.toUpperCase())
+a = 10
+console.log (`logs a as number ${a}`)
+a = null
+console.log (`logs a as null ${a}`)
+a = undefined
+console.log (`logs a as undefined ${a}`)
+a = true
+console.log (`logs a as boolean ${a}`)
+
+//cant call or construct the variable with unknown - this is the subtle difference
+let unk: unknown = "I do not know if this is a string or a number"
+console.log (`logs unk as string ${unk}`)
+unk = 10
+console.log (`logs unk as number ${unk}`)
+unk = null
+console.log (`logs unk as null ${unk}`)
+unk = undefined
+console.log (`logs unk as undefined ${unk}`)
+unk = false
+console.log (`logs unk as boolean ${unk}`)
+unk = "back to string"
+console.log (`logs unk as reassigned to string from boolean ${unk}`)
+// the type assertion is required to change unk to a string - uncomment to see error
+// type assertion is the same as type casting in other languages and libraries - react uses casting
+// console.log(unk.toUpperCase())
+console.log((unk as string).toUpperCase())
+
+// USER DEFINED TYPE GUARDS CodeEvolution @25:00
+// function checks if the variable obj returns the variable/param obj as a string
+
+function hasName(obj:any): obj is {name: string}{
+    return !!obj &&
+    typeof obj === "object" && 
+    "name" in obj
+}
+if (hasName(unk)){
+    console.log(`logs unk.name type guard function ${unk.name}`)
+}
+
+// never & void can not be assigned a value uncomment to see error
+// let nev1: never = "should not happen"
+let nev: never
+// let v1: void = " "
+let v: void 
+
+// assignment operators Edureka
 result = num1
 console.log(`logs simple assignment`,result)
 result = num1 += num2

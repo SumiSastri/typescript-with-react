@@ -1,4 +1,4 @@
-// interfaces - do not show up in the compiled javascript
+// TO DO organise this file
 
 interface RectangleOptions{
     width: number;

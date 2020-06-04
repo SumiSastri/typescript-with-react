@@ -1,4 +1,5 @@
 
+// TO DO organise this file
 import {IStudent} from './interfaces'
 import getStudentInfo from './modules'
 
@@ -30,8 +31,6 @@ function getGenericStudentInfo(students:Array<IStudent> ){
     });
 }
 getGenericStudentInfo(genericStudentsInfo)
-
-
 
 
 // function identity<T>(arg:T):T {

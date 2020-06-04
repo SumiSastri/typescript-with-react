@@ -1,3 +1,4 @@
+// Code Evolution @43:00
 class Teacher {
     name: string
     constructor(name: string){
@@ -20,9 +21,9 @@ class Highschoolteacher extends Teacher {
     }
 }
 // instantiate or create a new instance of the extended class
-let person1 = new Highschoolteacher("Mrs. Rebello")
-console.log(person1)
-console.log(person1.greet())
+let hst = new Highschoolteacher("Mrs. Rebello")
+console.log(hst)
+console.log(hst.greet())
 // the function CAN be overwritten as in the extended class
 // note how the super calls the method from the Teacher class
 
@@ -40,3 +41,5 @@ class Student {
 }
 
 let s1 = new Student("Kisha", "Moorthy")
+
+export {Teacher}

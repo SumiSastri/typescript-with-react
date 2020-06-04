@@ -62,7 +62,7 @@ function greetSoldier(name: string){
         greetPerson("Josephine")
         greetPerson("Joanna")
     
-    // block scope variable greet not hoisted, code executes with errors
+    // block scope variable greet not hoisted, code executes with errors - Code Evolution (Vishwas)
     // function greetTeacher(name: string){
     //         if (name === "Guru"){
     //             let greet = "Good Morning Guruji";
@@ -113,5 +113,3 @@ function greetSoldier(name: string){
             return number1 * 5
         }
         console.log(multiplyNewNumber(2),`logs new function but variable value of 2 not updated as out of scope`)
-
-        

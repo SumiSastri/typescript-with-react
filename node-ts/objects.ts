@@ -13,15 +13,24 @@ console.log(teacher["first name"], `LOG teacher["first name]`)
 console.log(teacher[fN], `LOG teacher[fN] `)
 console.log(teacher[lN], `LOG teacher [lN]`)
 
-//  Object literal to create a new object you have to create a new object person1
+//  Object literal to create a new object you have to create a new object person1 as objects are unique
+
+// object with values - encapsulation
+let person = {
+    firstName: "Danny",
+    lastName: "Green"
+}
+// object with typescript encapsulation
 let firstName: string ="Janet"
 let lastName: string = "Pink"
-let person = {
+let person1 = {
     firstName: firstName,
     lastName: lastName
 }
-console.log(person.firstName, `LOG: person.firstName returns prop`)
+console.log(person1.firstName, `LOG: person.firstName returns prop`)
+console.log(person1, `LOG: person1 as object literal`)
 console.log(person, `LOG: person as object literal`)
+
 
 // if the type name and the property name are the same, the prop type does not need to be re-declared 
 function createCircle(radius: number){
@@ -36,7 +45,7 @@ let circle0 = createCircle(45)
 console.log(circle0, `logs radius set to 45 in new vairable circle0 for factory function createCircle`)
 console.log(circle0.calcCircumference(), `logs method to calc circumference of circle0`)
 
-// Nested objects, draw is a method that contains logic not a value it is not technically a prop 
+// Nested objects, draw is a method that contains logic not a static value it is therefore a method not a prop
 const circle = {
     radius: 1.344,
     location: {
@@ -73,6 +82,7 @@ console.log(student2.studentfName, `logs inherited first name property`)
 console.log(student2.studentlName, `logs inherited last name property`)
 console.log(student2.studentFullName, `logs inherited method creating full name`)
 console.log(student2.isInHighSchool(), `logs inherited method checking if student is in high school`)
+
 
 // deleting props or methods
 

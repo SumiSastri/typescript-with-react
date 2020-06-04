@@ -1,4 +1,5 @@
 "use strict";
+exports.__esModule = true;
 // Enums add numeric values to an object
 var List1;
 (function (List1) {
@@ -32,6 +33,6 @@ var LanguagesKnown;
     LanguagesKnown[LanguagesKnown["French"] = 1] = "French";
     LanguagesKnown[LanguagesKnown["Italian"] = 2] = "Italian";
     LanguagesKnown[LanguagesKnown["Spanish"] = 3] = "Spanish";
-})(LanguagesKnown || (LanguagesKnown = {}));
+})(LanguagesKnown = exports.LanguagesKnown || (exports.LanguagesKnown = {}));
 console.log("Logs the enum", LanguagesKnown);
 console.log("Logs 3 in the enum:", LanguagesKnown[3]);

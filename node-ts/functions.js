@@ -49,8 +49,17 @@ console.log(returnNumber());
 var returnVoid = function () {
     return console.log("logs nothing");
 };
-{
-    return a + b;
+// type guard functions
+function addTwoNumbers(num1, num2) {
+    if (typeof num1 === "string") {
+        console.log("The first function parameter is a string ");
+        return num1 + num2;
+    }
+    if (typeof num1 === "number" && typeof num2 === "number") {
+        console.log("Both parameters of the function are numbers");
+        return num1 + num2;
+    }
+    return num1.toString() + num2.toString();
 }
-console.log(add2("Ramayan", "Epic"));
-console.log(add2(2, 2));
+console.log(addTwoNumbers(5, 4));
+console.log(addTwoNumbers("four", "four"));

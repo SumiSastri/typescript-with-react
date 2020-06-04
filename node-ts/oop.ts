@@ -16,4 +16,3 @@ let calculatePrice = {
 }
 console.log(calculatePrice, `logs object literal`)
 console.log(calculatePrice.printReceipt(), `logs print receipt as oop method`)
-

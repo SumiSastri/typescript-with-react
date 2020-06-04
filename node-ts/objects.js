@@ -1,4 +1,3 @@
-"use strict";
 // Each object has static properties with a type and value
 var _a;
 // ES2015 - bracket notation - more verbose, useful in certain circumstances 
@@ -14,14 +13,21 @@ console.log(teacher, "LOG: teacher as object literal");
 console.log(teacher["first name"], "LOG teacher[\"first name]");
 console.log(teacher[fN], "LOG teacher[fN] ");
 console.log(teacher[lN], "LOG teacher [lN]");
-//  Object literal to create a new object you have to create a new object person1
+//  Object literal to create a new object you have to create a new object person1 as objects are unique
+// object with values
+var person = {
+    firstName: "Danny",
+    lastName: "Green"
+};
+// object with typescript
 var firstName = "Janet";
 var lastName = "Pink";
-var person = {
+var person1 = {
     firstName: firstName,
     lastName: lastName
 };
-console.log(person.firstName, "LOG: person.firstName returns prop");
+console.log(person1.firstName, "LOG: person.firstName returns prop");
+console.log(person1, "LOG: person1 as object literal");
 console.log(person, "LOG: person as object literal");
 // if the type name and the property name are the same, the prop type does not need to be re-declared 
 function createCircle(radius) {

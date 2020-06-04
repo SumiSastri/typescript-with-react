@@ -12,6 +12,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+exports.__esModule = true;
 var Teacher = /** @class */ (function () {
     function Teacher(name) {
         this.name = name;
@@ -21,6 +22,7 @@ var Teacher = /** @class */ (function () {
     };
     return Teacher;
 }());
+exports.Teacher = Teacher;
 var person = new Teacher('Mrs. Petrus');
 console.log(person);
 console.log(person.greet());

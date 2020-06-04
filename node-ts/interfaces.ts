@@ -11,13 +11,13 @@ interface IPersonJuniorSchool extends IPerson {
     timeTable: Array<number>
 }
 interface IStudent extends IPerson{
-    Age: number,
-    Sex: string,
-    Phone: number,
-    Email: string,
-    Languages: string
+    age: number,
+    sex: string,
+    phone: number,
+    email: string,
+    languages: string
 }
-// Edureka tutorial @50:00
+// Edureka tutorial @43:00 Interfaces and classes
 interface IEmployee extends IPerson{
     grade: number
     currency: string
