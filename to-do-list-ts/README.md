@@ -169,3 +169,21 @@ Refactoring the declaration of the event type can make the ```handleSubmit``` fu
  To check that the ```onSubmit``` event handler has fired, you should get your first input in the console.
 
  ![OnSubmit firing](/to-do-list-ts/src/assets/on-submit-working.png)
+
+ We now want to map through the ToDos array, match the index to the element - here the element is each to-do which is an object with the text and boolean in the key-value pairs. We only want to render the text which we access from the element with dot-notation as the element is an object.
+ 
+ ```
+  <section>
+     {array.map((index, element) =>(<h6 key=index>{element}</h6>))}
+        </section>
+   ```
+The arguments that the map function takes are the array and the index or keys of the array. Since we have added TypeScript, we need to set the type of the params in the arguments.
+
+The to-dos are an array, whose type we have outlined in the interface declaration of ```ITo_Dos```, the index keys are primitive numbers. What we want to return is a jsx h6 element within the section.
+
+```<section>
+          {toDos.map((toDo: ITo_do, index: number) => (<h6 key={index}>{toDo.text}</h6>))}
+        </section>
+```
+
+![Render List Working](/to-do-list-ts/src/assets/on-submit-working.png)
