@@ -186,4 +186,4 @@ The to-dos are an array, whose type we have outlined in the interface declaratio
         </section>
 ```
 
-![Render List Working](/to-do-list-ts/src/assets/on-submit-working.png)
+![Render List Working](/to-do-list-ts/src/assets/map-and-render-list.png)
