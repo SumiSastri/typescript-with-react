@@ -26,6 +26,13 @@ var List3;
 })(List3 || (List3 = {}));
 var eggs3 = List3.Eggs;
 console.log(eggs3);
+var Results;
+(function (Results) {
+    Results[Results["Win"] = 0] = "Win";
+    Results[Results["Lose"] = 1] = "Lose";
+    Results[Results["Draw"] = 2] = "Draw";
+})(Results || (Results = {}));
+console.log("Logs results", Results);
 // Udemy Karthik - defines a named numeric constant as an object - it is zero indexed
 var LanguagesKnown;
 (function (LanguagesKnown) {

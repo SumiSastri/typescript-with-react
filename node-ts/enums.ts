@@ -8,6 +8,9 @@
  enum List3 {Milk = 1, Bread, Eggs}
  let eggs3 : List3 = List3.Eggs
  console.log(eggs3)
+ 
+ enum Results {Win, Lose, Draw}
+ console.log("Logs results", Results)
 
 // Udemy Karthik - defines a named numeric constant as an object - it is zero indexed
 export enum LanguagesKnown {English, French, Italian, Spanish}

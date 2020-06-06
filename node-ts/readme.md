@@ -1,6 +1,7 @@
 # Typescript fundamentals
 
-This section covers the fundamentals of Typescript using node as a compiler 
+This section covers the fundamentals of Typescript using node as a compiler.
+Level intermediatory, requires fundamental knowledge of JavaScript & Node. 
 
 ##### Scaffolding & File Structure 
 
