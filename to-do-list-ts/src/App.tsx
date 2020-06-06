@@ -17,18 +17,30 @@ function App() {
     setValue("");
   };
 
-  const addsNewTodo = (text: string) => {
+  const addsNewTodo = (text: string): void => {
     const addNewTodo: ITo_do[] = [...toDos, { text: text, complete: false }];
     setTodos(addNewTodo);
   };
-  console.log(toDos);
+
+  const toggleCompleteIncomplete = (index: number): void => {
+    const completedToDo: ITo_do[] = [...toDos];
+    completedToDo[index].complete = !completedToDo[index].complete;
+    setTodos(completedToDo);
+  };
+
+  const permanentlyDeleteToDo = (index: number): void => {
+    const removedToDo: ITo_do[] = [...toDos];
+    removedToDo.splice(index, 1);
+    setTodos(removedToDo);
+  };
 
   return (
     <div className="App">
       <h1>TypeScript & React using React Hooks</h1>
-      <Fragment>
+      <>
         <form onSubmit={handleSubmit}>
           <input
+            name="to-do-item"
             type="text"
             value={value}
             onChange={(e) => setValue(e.target.value)}
@@ -37,9 +49,34 @@ function App() {
           <button type="submit">Submit new to-do</button>
         </form>
         <section>
-          {toDos.map((toDo: ITo_do, index: number) => (<h6 key={index}>{toDo.text}</h6>))}
+          {toDos.map((toDo: ITo_do, index: number) => (
+            <Fragment key={index}>
+              <h6>
+                {toDo.text}
+                <button
+                  style={{ color: toDo.complete ? "Red" : "Black" }}
+                  type="button"
+                  onClick={() => toggleCompleteIncomplete(index)}
+                >
+                  {toDo.complete
+                    ? "Task completed - delete permanenently?"
+                    : "Click here when task completed"}
+                </button>
+                <button
+                  style={{
+                    backgroundColor: "Red",
+                    color: "white",
+                    outline: "black",
+                  }}
+                  onClick={() => permanentlyDeleteToDo(index)}
+                >
+                  Delete Permanently
+                </button>
+              </h6>
+            </Fragment>
+          ))}
         </section>
-      </Fragment>
+      </>
     </div>
   );
 }
