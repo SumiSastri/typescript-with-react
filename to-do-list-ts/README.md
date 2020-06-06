@@ -218,7 +218,7 @@ Toggle Tasks Completed compared to those not completed and rendering them condit
             </Fragment>
           ))}
         </section>
-     ```
+  ```
   The Fragments which have no attributes can be represented by ```<>``` and closing ```</>``` and the elements with conditional rendering can now be mapped and rendered within the fragment that has the attribute of key with the index.
 
   We have 2 conditional rendering examples here in the button. When the to do is rendered the default boolean of false is given the text - not completed, while the true part of the ternery operator is assigned with done representing the boolean in its true state.
@@ -267,20 +267,21 @@ const permanentlyDeleteToDo = (index: number): void =>{
     removedToDo.splice(index, 1)
     setTodos(removedToDo)
   }
-  ```
+```
   render this
-  ```
+```
   <button
     style = {{backgroundColor: "Red", color: "white", outline: "black"}}
      onClick={() => permanentlyDeleteToDo(index)}
   >
   Delete Permanently
   </button>
-  ```
+```
 
   At the conclusion of this project the code can also be split into separate components and imported and exported. The main app code at this stage for reference is like so:
+![app screen shot](/to-do-list-ts/src/assets/app-screenshot.png)  
 
-  ```
+```
 import React, { Fragment, useState } from "react";
 
 import "./App.css";
