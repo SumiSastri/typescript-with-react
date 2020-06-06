@@ -40,4 +40,5 @@ function App() {
 export default App;
 ```
 
-The console check should show state as a function !('to-do-list-ts/src/assets/debugger-stateHook.png')
+
+![The console check should show state as a function](to-do-list-ts/src/assets/debugger-stateHook.png?raw=true "use-state logged")
