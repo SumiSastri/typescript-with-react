@@ -1,8 +1,9 @@
 import React from "react"
 
-export const Store = React.createContext()
-
 const initialState  = {}
+export const Store = React.createContext(initialState)
+
+
 
 function reducer(){}
 
