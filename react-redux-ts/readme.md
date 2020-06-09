@@ -5,15 +5,13 @@ Level-intermediatory. Requires prior fundamentalsof JavaScript, TypeScript, Node
 
 ##### Scaffolding & File Structure - building from scratch with webpack and babel
 
-mkdir - new directory for the project ```react-redux-ts```
-initialise with node package manager - ```npm init - y``` (the -y flags skips answering the default set up)
+* mkdir - new directory for the project ```react-redux-ts```
+* initialise with node package manager - ```npm init - y``` (the -y flags skips answering the default set up)
 check your package json file has been set up
-cd into the directory
-touch - create root file & config files for transpiling files into js  ```index.html webpack.config.js .babelrc```
-mkdir - ```src``` - base file that is used to render apps
-touch - ```index.tsx``` - the root file of the app that needs to be transpiled by webpack, webpack will get the data from this file and react will also use this file for rendering the app into the html root file
-
-Set up root file with HTML boiler-plate and create a root-element add the scripts that compile project files into vanilla JavaScript.
+* cd into the directory / touch - create root file & config files for transpiling files into js  ```index.html webpack.config.js .babelrc```
+* mkdir - ```src``` - base file that is used to render apps cd into directory and create file 
+* touch - ```index.tsx``` - the root file of the app that needs to be transpiled by webpack, webpack will get the data from this file and react will also use this file for rendering the app into the html root file
+* set up root file with HTML boiler-plate and create a root-element add the scripts that compile project files into vanilla JavaScript.
 
 ```
 <!DOCTYPE html>
@@ -31,14 +29,14 @@ Set up root file with HTML boiler-plate and create a root-element add the script
 </html>
 ```
 
-Set up config files - babel & webpack. In the .babelrc file create the json presets
-``
+* set up config files - babel & webpack. In the .babelrc file create the json presets
+```
 {
     <!-- defines the babel plug-ins required for this app -->
     "presets": ["@babel/env", "@babel/react", "@babel/typescript"]
 }
 ```
-In the webpack file set up file path (by importing file paths with require.js syntax), rules and module exports configuration - mode can be development, production, test depending on what you want to do. Target can be web or mobile, resolve allows you to import and export node modules without the file extensions. 
+* In the webpack file set up file path (by importing file paths with require.js syntax), rules and module exports configuration - mode can be development, production, test depending on what you want to do. Target can be web or mobile, resolve allows you to import and export node modules without the file extensions. 
 
 ```
 const path = require('path')
@@ -70,7 +68,7 @@ module.exports = {
 } 
 ```
 
-Update package json files - scripts to run the app
+* Update package json files - scripts to run the app
 
 ```
 {
@@ -88,14 +86,14 @@ Update package json files - scripts to run the app
 }
 ```
 
-We are now ready to import the libraries and plugins required for the react-app
+* We are now ready to import the libraries and plugins required for the react-app
 
 babel - ```npm i @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript```
 webpack - ```npm i webpack webpack-dev-server webpack-cli babel-loader```
 react - ```npm i react react-dom @types/react @types/react-dom```
 
 
-We are now ready to test whether the configuration has worked and renders a React component. In the ```index.tsx``` file create the React boiler place using ```rcf``` and tab to create a functional component, import the ReactDOM to render the root files as HTML. Write a jsx 'hello world'Let's test the Typescript works by calling giving the function the JSX.Element type. Write a function and render it, 
+* Test whether the configuration has worked and renders a React component. In the ```index.tsx``` file create the React boiler place using ```rcf``` and tab to create a functional component, import the ReactDOM to render the root files as HTML. Write a jsx 'hello world'in a h1 element. Let's test the Typescript works by calling giving the function the ```JSX.Element``` type. Write a function with typescript and render it in a h2 element. 
 
 ```
 import React from 'react'
@@ -117,5 +115,4 @@ const root = document.getElementById('app-root')
 <!-- ReactDOM render method takes 2 args the jsx element to render & the root html file to render to -->
 ReactDOM.render(<App />, root)
 ```
-
-Run scripts to check if app works with ```npm run start``` the h1 & h2 jsx tags should render correctly.
+* Run scripts to check if app works with ```npm run start``` the h1 & h2 jsx tags should render correctly on port 5000.
