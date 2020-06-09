@@ -1,18 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React, { Fragment } from "react";
+import ReactDOM from "react-dom";
 
 export default function App(): JSX.Element {
-    function getSentence (firstPart: string, lastPart: string): string {
-        return `This is a ${firstPart} ${lastPart} compiled with webpack & babel`
-    }
-    return (
-        <div>
-            <h1>Hello World</h1>
-    <h2>{getSentence("React-Redux app", "with TypeScript")}</h2>
-        </div>
-    )
+  return (
+    <div>
+      <Fragment>      
+        <h1>Rick & Morty episode picker</h1>
+        <p>Pick your fave show</p>
+      </Fragment>
+    </div>
+  );
 }
 
-const root = document.getElementById('app-root')
+const root = document.getElementById("app-root");
 
-ReactDOM.render(<App />, root)
+ReactDOM.render(<App />, root);

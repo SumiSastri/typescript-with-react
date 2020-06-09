@@ -88,9 +88,9 @@ module.exports = {
 
 * We are now ready to import the libraries and plugins required for the react-app
 
-babel - ```npm i @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript```
-webpack - ```npm i webpack webpack-dev-server webpack-cli babel-loader```
-react - ```npm i react react-dom @types/react @types/react-dom```
+- babel - ```npm i @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript```
+- webpack - ```npm i webpack webpack-dev-server webpack-cli babel-loader```
+- react - ```npm i react react-dom @types/react @types/react-dom```
 
 
 * Test whether the configuration has worked and renders a React component. In the ```index.tsx``` file create the React boiler place using ```rcf``` and tab to create a functional component, import the ReactDOM to render the root files as HTML. Write a jsx 'hello world'in a h1 element. Let's test the Typescript works by calling giving the function the ```JSX.Element``` type. Write a function with typescript and render it in a h2 element. 
@@ -116,3 +116,5 @@ const root = document.getElementById('app-root')
 ReactDOM.render(<App />, root)
 ```
 * Run scripts to check if app works with ```npm run start``` the h1 & h2 jsx tags should render correctly on port 5000.
+
+##### Rick & Morty episode picker project
