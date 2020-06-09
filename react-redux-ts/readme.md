@@ -51,10 +51,12 @@ Babel documentation[https://babeljs.io/docs/en/v7-migration]
 }
 ```
 * In the webpack file set up file path (by importing file paths with require.js syntax), rules and module exports configuration - mode can be development, production, test depending on what you want to do. Target can be web or mobile, resolve allows you to import and export node modules without the file extensions.
+
 Webpack documentation[https://webpack.js.org/concepts/#browser-compatibility] 
 
 ```
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 const path = require('path')
 
 module.exports = {

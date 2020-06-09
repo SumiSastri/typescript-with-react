@@ -3,10 +3,11 @@ import { Store } from "./store";
 
 export default function App(): JSX.Element {
   const { state, dispatch } = useContext(Store);
-  console.log(state);
 
   useEffect(() => {
     state.episodes.length === 0 && fetchDataAction();
+    // uncomment log - checks whether data is flowing from the API to the front end
+    // console.log(state)
   });
 
   const fetchDataAction = async () => {
@@ -19,7 +20,7 @@ export default function App(): JSX.Element {
       payload: dataJSON._embedded.episodes
     });
   };
-  console.log(state);
+
   return (
     <div>
       <Fragment>
