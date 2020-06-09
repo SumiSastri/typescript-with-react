@@ -1,0 +1,20 @@
+{
+  "name": "Typescript-with-React",
+  "version": "1.0.0",
+  "description": "- Brenden Eich creates LiveScript for Netscape 1995 - Microsoft adopts it as JS-Script later renamed to JavaScript - Browser wars begin - each browser developer wants their version of JavaScript - Fragmentation of JavaScript as a result - VS8 (Chrome) Chakra(Microsoft) SpiderMonkey(Safari) - ECMA takes over standardisation of JavaScript  - ES6 (2015-2016) some major changes - introduces classes and the lamda arrow function - 2016-2020 continuous updates small incremental changes each year",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SumiSastri/Typescript-with-React.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SumiSastri/Typescript-with-React/issues"
+  },
+  "homepage": "https://github.com/SumiSastri/Typescript-with-React#readme"
+}

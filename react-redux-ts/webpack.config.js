@@ -1,23 +1,43 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 const path = require('path')
-const rules = [
-    {
-    test: /\.tsx?/,
-    exclude: /node_modules/,
-    loader: 'babel-loader'
-}
-]
+
 module.exports = {
     target: 'web',
     mode: 'development',
-    entry: './src/index.tsx',
-    output:{
-        path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js'
+    entry: './src/index.tsx', 
+    output: {
+        filename: 'bundle.js', // the name of the bundled file
+        // path of the bundled file
+        path: path.resolve(__dirname, 'build')
     },
-    module: {rules: rules},
     resolve: {extensions: ['.ts', '.tsx', '.js']},
     devServer: {
         contentBase: './',
         port: 5000
-    }
-}   
+    },
+    module: { 
+        rules: [
+            {
+            test: /\.tsx?/,
+            exclude: /node_modules/,
+            loader: "babel-loader",
+            options: {
+                presets: [
+                    '@babel/preset-env',
+                    '@babel/preset-react'
+                ],
+                plugins: [
+                    '@babel/transform-runtime'
+                ]
+            }            
+        }
+        ]                 
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+           title: 'Async Await With React',
+           template: 'index.html',
+        })
+    ]
+}

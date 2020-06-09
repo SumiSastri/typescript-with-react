@@ -1,8 +1,8 @@
 {
   "name": "react-redux-ts",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This section is a project using React-Redux & TypeScript Level-intermediatory. Requires prior fundamentalsof JavaScript, TypeScript, Node, React & Redux.",
+  "main": "webpack.config.js",
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "webpack"
@@ -11,6 +11,27 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.10.1"
-  }
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "@babel/preset-typescript": "^7.10.1",
+    "@babel/runtime": "^7.10.2",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^4.3.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  },
+  "optionalDependencies": {}
 }

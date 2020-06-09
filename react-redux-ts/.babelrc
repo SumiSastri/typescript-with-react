@@ -1,11 +1,10 @@
 {
-    "presets": ["@babel/env", "@babel/react", "@babel/typescript"],
-    "plugins": [
-        "@babel/plugin-transform-runtime"
-      ]
-}
-
-
-
-   
-
+    "presets": [
+      ["@babel/preset-env", {
+        "targets": { "browsers": ["last 2 chrome versions"] },
+        "useBuiltIns": "usage"
+      }],
+      "@babel/preset-react",
+      "@babel/preset-typescript"
+    ]
+  }
