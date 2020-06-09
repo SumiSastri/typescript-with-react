@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import ReactDOM from "react-dom";
 
 export default function App(): JSX.Element {
   return (
@@ -11,7 +10,3 @@ export default function App(): JSX.Element {
     </div>
   );
 }
-
-const root = document.getElementById("app-root");
-
-ReactDOM.render(<App />, root);
