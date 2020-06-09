@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useReducer } from "react"
 
 interface IState{
     episodes: [],
@@ -13,7 +13,7 @@ const initialState: IState  = {
     episodes:[],
     favourites: []
 }
-export const Store = React.createContext<IState>(initialState)
+export const Store = React.createContext<IState | any>(initialState)
 
 function reducer(state: IState, action: IAction){
     switch(action.type) {
@@ -25,5 +25,6 @@ function reducer(state: IState, action: IAction){
 }
 
 export function StoreProvider(props: any): JSX.Element{
-    return <Store.Provider value={initialState}>{props.children}</Store.Provider>
+    const [state, dispatch] = useReducer(reducer, initialState)
+    return <Store.Provider value={{state, dispatch}}>{props.children}</Store.Provider>
 }

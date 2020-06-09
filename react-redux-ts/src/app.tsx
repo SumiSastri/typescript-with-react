@@ -2,8 +2,8 @@ import React, { Fragment, useContext } from "react";
 import {Store} from './store'
 
 export default function App(): JSX.Element {
-    const store = useContext(Store)
-    console.log(store)
+    const {state,dispatch} = useContext(Store)
+    console.log(state)
   return (
     <div>
       <Fragment>
