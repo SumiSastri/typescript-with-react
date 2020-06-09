@@ -1,7 +1,13 @@
 import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
-import App from './app'
+import App from "./app";
+import { StoreProvider } from "./store";
 
 const root = document.getElementById("app-root");
 
-ReactDOM.render(<App />, root);
+ReactDOM.render(
+  <StoreProvider>
+    <App />
+  </StoreProvider>,
+  root
+);
