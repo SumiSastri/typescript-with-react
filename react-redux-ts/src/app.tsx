@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect, useContext, lazy, Suspense } from "react";
+import {Link} from '@reach/router'
 
 import { Store } from "./store";
 import { IEpisode, IAction, IEpisodeProps } from "./interfaces";
-
 
 const EpisodeList = lazy<any>(() =>
   import('./EpisodeList').then(module => ({ default: module.EpisodeList }))
@@ -51,11 +51,15 @@ export default function App(): JSX.Element {
   }
   return (
     <Fragment>
-      <header  style={{display: "flex", justifyContent: "space-between", backgroundColor: "white", borderBottom: "dashed 3px black", backgroundColor: "blanchedAlmond" }} >
+      <header  style={{display: "flex", justifyContent: "space-between", borderBottom: "dashed 3px black", backgroundColor: "blanchedAlmond", fontFamily: 'Caveat'}} >
       <h1>Rick & Morty episode picker</h1>
       <h4>Pick your fave show</h4>
       </header>
-      <section style={{ margin: '5px', padding: '5px',display: "flex",backgroundColor: "pink" }}
+      <div style= {{display: "flex", justifyContent: "space-between", margin: '5px', padding: '5px', backgroundColor: "blanchedAlmond", fontFamily: 'Caveat'}}>
+        <Link to="/">Home</Link>
+        <Link to="/my-favourites">My Favourites</Link>
+      </div>
+      <section style={{ margin: '5px', padding: '5px',display: "flex", backgroundColor: "blanchedAlmond" }}
       >
       <Suspense fallback ={<div>Please wait while the images load, thank you</div>}>
         <section>
