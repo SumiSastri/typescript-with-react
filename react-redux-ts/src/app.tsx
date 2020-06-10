@@ -1,20 +1,7 @@
 import React, { Fragment, useEffect, useContext } from "react";
+
 import { Store } from "./store";
-
-interface IEpisode {
-  airdate:string
-  airstamp: string
-  airtime:string
-  id: number
-  name: string
-  image:{medium:string, original: string}
-  number: number
-  runtime: number
-  season: number
-  summary: string
-  url: string
-
-}
+import { IEpisode } from "./interfaces"
 
 export default function App(): JSX.Element {
   const { state, dispatch } = useContext(Store);
@@ -41,7 +28,7 @@ export default function App(): JSX.Element {
   return (
       <Fragment>
         <h1>Rick & Morty episode picker</h1>
-        <p>Pick your fave show</p>
+        <h4>Pick your fave show</h4>
       <section>
         {state.episodes.map((episode: IEpisode) => {
          {console.log(state.episodes)}
