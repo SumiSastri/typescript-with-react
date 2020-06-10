@@ -217,7 +217,11 @@ const EpisodeList = lazy<any>(() =>
   import('./EpisodeList').then(module => ({ default: module.EpisodeList }))
 );
 ```
+More reading about ``` React.lazy()``` [https://blog.bitsrc.io/lazy-loading-react-components-with-react-lazy-and-suspense-f05c4cfde10c]
+No real type for the method see [https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30129]
+Documentation also does not provide a type definition [https://reactjs.org/docs/code-splitting.html]
 
 - Add Routing
+
 - Create component for favourites
 - Refactor

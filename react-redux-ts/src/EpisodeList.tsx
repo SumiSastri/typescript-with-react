@@ -12,7 +12,7 @@ export function EpisodeList(props: any): Array<JSX.Element> {
         key={episode.id}>
           <img src={episode.image.medium} />
           <h5 style={{color: "white", fontSize: '18px' }}>{episode.name}</h5>
-          <button style={{backgroundColor: "iceBlue", height: "25px", width: "30vh" }} 
+          <button style={{backgroundColor: "iceBlue", height: "40px", width: "30vh", margin: '5px' }} 
           type="button" onClick={() => toggleFave(episode)}>
             {favourites.find(
               (favourite: IEpisode) => favourite.id === episode.id
