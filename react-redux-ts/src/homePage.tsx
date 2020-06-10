@@ -44,6 +44,7 @@ export default function homePage() {
   };
   const props: IEpisodeProps = {
     episodes: state.episodes,
+    store: {state, dispatch},
     toggleFave,
     favourites: state.favourites,
   };

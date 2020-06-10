@@ -3,7 +3,9 @@ import React, { Component } from "react";
 import IEpisode from "./interfaces";
 
 export function EpisodeList(props: any): Array<JSX.Element> {
-  const { episodes, toggleFave, favourites } = props;
+  const { episodes, toggleFave, favourites, store } = props;
+  const{state, dispatch} = store
+  
   return episodes.map((episode: IEpisode) => {
     return (
       <section style={{margin: '5px', padding: '5px', backgroundColor: "salmon" }} >

@@ -223,6 +223,7 @@ Documentation also does not provide a type definition [https://reactjs.org/docs/
 
 - Add Routing to HomePage & MyFavourites Page
 * Move files from ```app.tsx``` to HomePage and reimport back the component
-*
-- Create component for favourites
+* Create component for favourites
+* Set up router and paths in index.tsx, app.tsx
+
 - Refactor

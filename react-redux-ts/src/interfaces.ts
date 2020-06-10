@@ -16,6 +16,6 @@ export default interface IState{
 }
 export default interface IEpisodeProps{
   episodes: Array<IEpisode>
-  toggleFave: (episode: IEpisode) => {IAction}
+  toggleFave: (state: IState, dispatch: any, episode: IEpisode) => {IAction}
   favourites: Array<IEpisode>
 }
