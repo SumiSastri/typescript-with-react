@@ -55,7 +55,7 @@ export default function App(): JSX.Element {
               <img src={episode.image.medium} />
               <h5>{episode.name}</h5>
               <button type="button" onClick={() => toggleFave(episode)}>
-            Click to pick
+         {(state.favourites.find(favourite => favourite.id === episode.id))? "Click to Unfave": "Click to make Fave"}
           </button> 
               <h6>
                 Season{episode.season} Episode{episode.number}
