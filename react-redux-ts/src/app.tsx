@@ -31,7 +31,7 @@ export default function App(): JSX.Element {
       type: "ADD_FAVE",
       payload: episode,
     });
-
+console.log(state)
   return (
     <Fragment>
       <h1>Rick & Morty episode picker</h1>

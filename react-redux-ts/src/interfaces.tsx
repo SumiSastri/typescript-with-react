@@ -18,6 +18,6 @@ export default interface IEpisode {
 }
 
 export default interface IState{
-    episodes: [],
+    episodes: IEpisode,
     favourites: []
 }
