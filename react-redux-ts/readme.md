@@ -16,6 +16,7 @@ check your package json file has been set up
 * mkdir - ```src``` - base file that is used to render apps cd into directory and create file 
 * touch - ```index.tsx``` - the root file of the app that needs to be transpiled by webpack, webpack will get the data from this file and react will also use this file for rendering the app into the html root file
 * set up root file with HTML boiler-plate and create a root-element add the scripts that compile project files into vanilla JavaScript.
+* touch - ```styles.css``` - adds css to the project
 
 ```
 <!DOCTYPE html>
@@ -52,7 +53,10 @@ Babel documentation[https://babeljs.io/docs/en/v7-migration]
 ```
 * In the webpack file set up file path (by importing file paths with require.js syntax), rules and module exports configuration - mode can be development, production, test depending on what you want to do. Target can be web or mobile, resolve allows you to import and export node modules without the file extensions.
 
-Webpack documentation[https://webpack.js.org/concepts/#browser-compatibility] 
+Webpack documentation[https://webpack.js.org/concepts/#browser-compatibility]
+Adding css to webpack config [https://dev.to/iamismile/how-to-setup-webpack-and-babel-for-react-59ph]
+[https://www.jackfranklin.co.uk/blog/css-modules-webpack-react/]
+[https://medium.com/@philoskepsi/how-to-build-a-react-app-with-webpack-4-and-babel-7-e69314efc5db]
 
 ```
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -93,7 +97,12 @@ module.exports = {
                     '@babel/transform-runtime'
                 ]
             }            
-        }
+        },
+             <!-- css rules -->
+            {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
         ]                 
     },
     plugins: [
@@ -126,11 +135,11 @@ module.exports = {
 * We are now ready to import the libraries and plugins required for the react-app
 - to uninstall [https://docs.npmjs.com/cli/uninstall]
 
-
 - webpack - ```npm i webpack webpack-dev-server webpack-cli html-webpack-plugin```
 - babel - ```npm i @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript babel-loader```
 - react - ```npm i react react-dom @types/react @types/react-dom```
 - to use async-await ```npm install @babel/plugin-transform-runtime @babel/runtime```
+- adding css - ```npm install css-loader style-loader --save-dev```
 
 I used Andrew Flowers' solution [https://andrew-flower.com/blog/Async-Await-with-React]
 

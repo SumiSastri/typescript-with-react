@@ -31,7 +31,9 @@
     "webpack-dev-server": "^3.11.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0"
+    "babel-cli": "^6.26.0",
+    "css-loader": "^3.5.3",
+    "style-loader": "^1.2.1"
   },
   "optionalDependencies": {}
 }
