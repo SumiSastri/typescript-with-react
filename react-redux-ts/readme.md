@@ -221,7 +221,8 @@ More reading about ``` React.lazy()``` [https://blog.bitsrc.io/lazy-loading-reac
 No real type for the method see [https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30129]
 Documentation also does not provide a type definition [https://reactjs.org/docs/code-splitting.html]
 
-- Add Routing
-
+- Add Routing to HomePage & MyFavourites Page
+* Move files from ```app.tsx``` to HomePage and reimport back the component
+*
 - Create component for favourites
 - Refactor
