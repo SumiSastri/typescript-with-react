@@ -1,24 +1,25 @@
-import React, { Fragment, useEffect, useContext } from "react";
+import React, { Fragment, useEffect, useContext, lazy, Suspense } from "react";
 
 import { Store } from "./store";
 import { IEpisode, IAction } from "./interfaces";
+
+
+const EpisodeList = lazy(() =>
+  import('./EpisodeList').then(module => ({ default: module.EpisodeList }))
+);
 
 export default function App(): JSX.Element {
   const { state, dispatch } = useContext(Store);
 
   useEffect(() => {
     state.episodes.length === 0 && fetchDataAction();
-    // uncomment log - checks whether data is flowing from the API to the front end
-    // console.log(state)
   });
 
   const fetchDataAction = async () => {
     const URL =
       "https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes";
     const data = await fetch(URL);
-    console.log(data);
     const dataJSON = await data.json();
-    console.log(dataJSON);
     return dispatch({
       type: "FETCH_DATA",
       payload: dataJSON._embedded.episodes,
@@ -42,31 +43,21 @@ export default function App(): JSX.Element {
     }
     return dispatch(dispatchObj);
   };
-  console.log(state);
+
+  const props ={
+    episodes: state.episodes,
+    toggleFave,
+    favourites: state.favourites
+  }
   return (
     <Fragment>
       <h1>Rick & Morty episode picker</h1>
       <h4>Pick your fave show</h4>
-      <section>
-        {state.episodes.map((episode: IEpisode) => {
-          return (
-            <div key={episode.id}>
-              <img src={episode.image.medium} />
-              <h5>{episode.name}</h5>
-              <button type="button" onClick={() => toggleFave(episode)}>
-                {state.favourites.find(
-                  (favourite) => favourite.id === episode.id
-                )
-                  ? "Click to Unfave"
-                  : "Click to make Fave"}
-              </button>
-              <h6>
-                Season{episode.season} Episode{episode.number}
-              </h6>
-            </div>
-          );
-        })}
+      <Suspense fallback ={<div>Please wait while the images load, thank you</div>}>
+        <section>
+      <EpisodeList {...props}/>
       </section>
+      </Suspense>
     </Fragment>
   );
 }

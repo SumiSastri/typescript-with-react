@@ -176,3 +176,36 @@ ReactDOM.render(<App />, root)
 * Run scripts to check if app works with ```npm run start``` the h1 & h2 jsx tags should render correctly on port 5000.
 
 ##### Rick & Morty episode picker project
+
+Steps: 
+- App.tsx - Create hello-world test - ```use Fragment``` and ```useContext``` hooks
+- Set up store with reducers - ```useReducer``` hook import into App check functionality
+- Fetch data using async await - ```useEffect``` hook - check data flows
+
+```
+useEffect(() => {
+    state.episodes.length === 0 && fetchDataAction();
+    // uncomment log - checks whether data is flowing from the API to the front end
+    // console.log(state)
+  });
+
+  const fetchDataAction = async () => {
+    const URL =
+      "https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes";
+    const data = await fetch(URL);
+    // uncomment log - checks whether data fetched from api call
+    // console.log(data);
+    const dataJSON = await data.json();
+     // uncomment log - checks json version of object
+    // console.log(dataJSON);
+    return dispatch({
+      type: "FETCH_DATA",
+      payload: dataJSON._embedded.episodes,
+    });
+  };
+```
+- Render data using ```array.map``` method
+- Refactor interface types and export them to relevant components
+- Add/ remove favourite episode with onClick event using ```array.filter``` and```array.find``` methods
+- Refactor 
+- Add lazy loading using ```suspense``` hook
