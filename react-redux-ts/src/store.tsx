@@ -28,3 +28,5 @@ export function StoreProvider(props: any): JSX.Element{
     const [state, dispatch] = useReducer(reducer, initialState)
     return <Store.Provider value={{state, dispatch}}>{props.children}</Store.Provider>
 }
+
+
