@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useContext, lazy, Suspense } from "react";
 
 import { Store } from "./store";
-import { IEpisode, IAction } from "./interfaces";
+import { IEpisode, IAction, IEpisodeProps } from "./interfaces";
 
 
 const EpisodeList = lazy<any>(() =>
@@ -44,7 +44,7 @@ export default function App(): JSX.Element {
     return dispatch(dispatchObj);
   };
 
-  const props ={
+  const props: IEpisodeProps ={
     episodes: state.episodes,
     toggleFave,
     favourites: state.favourites

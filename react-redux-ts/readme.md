@@ -1,7 +1,8 @@
 # React-Redux-TypeScript
 
-This section is a project using React-Redux & TypeScript.
-Level-intermediatory. Requires prior fundamentalsof JavaScript, TypeScript, Node, React & Redux.
+This section is a project using React, React-Redux, React-Hooks & TypeScript,  builds react project with webpack and babel. Uses in-line CSS.
+
+Level-intermediatory. Requires prior fundamentals of JavaScript, TypeScript, Node, React & Redux.
 
 ##### Scaffolding & File Structure - building from scratch with webpack and babel
 Babel documentation: [https://babeljs.io/docs/en]
@@ -10,13 +11,12 @@ Babel documentation: [https://babeljs.io/docs/en]
 * initialise with node package manager - ```npm init - y``` (the -y flags skips answering the default set up)
 - check you have the latest version of node [https://appdividend.com/2019/12/06/how-to-update-node-version-in-mac/]
 ```npm install -g n``` and ```sudo n latest``` in admin mode
-
-check your package json file has been set up
+* check your package json file has been set up
 * cd into the directory / touch - create root file & config files for transpiling files into js  ```index.html webpack.config.js .babelrc```
 * mkdir - ```src``` - base file that is used to render apps cd into directory and create file 
 * touch - ```index.tsx``` - the root file of the app that needs to be transpiled by webpack, webpack will get the data from this file and react will also use this file for rendering the app into the html root file
 * set up root file with HTML boiler-plate and create a root-element add the scripts that compile project files into vanilla JavaScript.
-* touch - ```styles.css``` - adds css to the project
+* mkdir - for CSS and cd into folder - touch - ```styles.css``` - adds css to the project (this did not work and I have used in-line styling)
 
 ```
 <!DOCTYPE html>
@@ -24,6 +24,7 @@ check your package json file has been set up
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- use link ref if you want to connect CSS -->
     <title>React-Redux-TypeScript</title>
 </head>
 <body>
@@ -33,9 +34,8 @@ check your package json file has been set up
 </body>
 </html>
 ```
-
 * set up config files - babel & webpack. In the .babelrc file create the json presets
-Babel documentation[https://babeljs.io/docs/en/v7-migration]
+Babel documentation[https://babeljs.io/docs/en/v7-migration] - this is important to set-up to run the ```async-await``` method.
 ```
 {
     <!-- defines the babel plug-ins required for this app, updates compatibility of node latest version with babel@7, allows you to use async & promises-->
@@ -114,7 +114,7 @@ module.exports = {
 }
 ```
 
-* Update package json files - scripts to run the app
+* Update ```package.json``` files - scripts to run the app
 
 ```
 {
@@ -133,16 +133,17 @@ module.exports = {
 ```
 
 * We are now ready to import the libraries and plugins required for the react-app
-- to uninstall [https://docs.npmjs.com/cli/uninstall]
+- to uninstall documenttion - [https://docs.npmjs.com/cli/uninstall]in case you need to update Babel@6 to @7 or install the files in the wrong directory.
 
 - webpack - ```npm i webpack webpack-dev-server webpack-cli html-webpack-plugin```
 - babel - ```npm i @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript babel-loader```
 - react - ```npm i react react-dom @types/react @types/react-dom```
 - to use async-await ```npm install @babel/plugin-transform-runtime @babel/runtime```
 - adding css - ```npm install css-loader style-loader --save-dev```
+- adding routing - ```npm install @reach/router @types/reach__router```
 
-I used Andrew Flowers' solution [https://andrew-flower.com/blog/Async-Await-with-React]
-
+I found Andrew Flowers' solution the simplest for how to use async-await
+[https://andrew-flower.com/blog/Async-Await-with-React]
 Read more about incompability issues of async-await with node/ babel older versions and the solutions
 [https://github.com/babel/babel/issues/8829]
 [https://blog.cloudboost.io/using-async-await-with-react-b807f9d7b64a]
@@ -151,7 +152,7 @@ Read more about incompability issues of async-await with node/ babel older versi
 [https://gist.github.com/thejmazz/067295d9fb8b22c77be0]
 [https://www.smashingmagazine.com/2020/05/typescript-modern-react-projects-webpack-babel/]
 
-* Test whether the configuration has worked and renders a React component. In the ```index.tsx``` file create the React boiler place using ```rcf``` and tab to create a functional component, import the ReactDOM to render the root files as HTML. Write a jsx 'hello world'in a h1 element. Let's test the Typescript works by calling giving the function the ```JSX.Element``` type. Write a function with typescript and render it in a h2 element. 
+* Test whether the configuration has worked and renders a React component. In the ```index.tsx``` file create the React boiler place using ```rcf``` and tab to create a functional component, import the ReactDOM to render the root files as HTML. Write a jsx 'hello world'in a h1 element. Let's test the Typescript works by calling giving the function the ```JSX.Element``` type. Write a function with typescript and render it in a h2 element. See if the CSS works - it did not for me so I aborted and used in-line CSS as the objective of this project is to use TypeScript with React & learn how React Hooks, React-Redux work with TypeScript.
 
 ```
 import React from 'react'
@@ -207,5 +208,16 @@ useEffect(() => {
 - Render data using ```array.map``` method
 - Refactor interface types and export them to relevant components
 - Add/ remove favourite episode with onClick event using ```array.filter``` and```array.find``` methods
-- Refactor 
+- Refactor move all episodes to its own functional component
 - Add lazy loading using ```suspense``` hook - read work around to fix bugs [https://github.com/facebook/react/issues/14603]
+This is the solution I used that worked:-
+
+```
+const EpisodeList = lazy<any>(() =>
+  import('./EpisodeList').then(module => ({ default: module.EpisodeList }))
+);
+```
+
+- Add Routing
+- Create component for favourites
+- Refactor
