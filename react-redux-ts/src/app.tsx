@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useContext } from "react";
 
 import { Store } from "./store";
-import { IEpisode, IAction } from "./interfaces";
+import {IEpisode, IAction} from "./interfaces";
 
 
 export default function App(): JSX.Element {
@@ -26,12 +26,22 @@ export default function App(): JSX.Element {
     });
   };
 
-  const toggleFave = (episode: IEpisode): IAction =>
-    dispatch({
-      type: "ADD_FAVE",
-      payload: episode,
-    });
-console.log(state)
+  const toggleFave = (episode: IEpisode): IAction => {
+    const faveEpisode = state.favourites.includes(episode)
+    let dispatchObj = {
+      type:"ADD_FAVE",
+      payload: episode
+    }
+  if(faveEpisode){
+    const unFaveEpisode = state.favourites.filter((favourite: IEpisode) => favourite.id !== episode.id)
+    dispatchObj= {
+      type: "UNDO_FAVE",
+      payload: unFaveEpisode
+    }
+  }
+  return dispatch(dispatchObj)
+}
+  console.log(state)
   return (
     <Fragment>
       <h1>Rick & Morty episode picker</h1>
@@ -39,7 +49,7 @@ console.log(state)
         Pick your fave show
       </h4>
       <section>
-        {state.episodes.map((episode: IEpisode): IEpisode => {
+        {state.episodes.map((episode: IEpisode) => {
           return (
             <div key={episode.id}>
               <img src={episode.image.medium} />
