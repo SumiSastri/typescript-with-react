@@ -1,4 +1,4 @@
-import { IEpisode, IAction, IEpisodeProps } from "./interfaces";
+import { IEpisode, IAction, IState } from "./interfaces";
 
 export const fetchDataAction = async (dispatch: any) => {
     const URL =
@@ -11,7 +11,7 @@ export const fetchDataAction = async (dispatch: any) => {
     });
   };
 
-  export const toggleFave = (episode: IEpisode): IAction => {
+  export const toggleFave = (state:IState, dispatch:any, episode: IEpisode | any): IAction => {
     const faveEpisode = state.favourites.includes(episode);
     let dispatchObj = {
       type: "ADD_FAVE",
