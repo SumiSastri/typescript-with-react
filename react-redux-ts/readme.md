@@ -208,4 +208,4 @@ useEffect(() => {
 - Refactor interface types and export them to relevant components
 - Add/ remove favourite episode with onClick event using ```array.filter``` and```array.find``` methods
 - Refactor 
-- Add lazy loading using ```suspense``` hook
+- Add lazy loading using ```suspense``` hook - read work around to fix bugs [https://github.com/facebook/react/issues/14603]
