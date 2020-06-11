@@ -31,7 +31,7 @@ export default function App(props:any): JSX.Element {
         }}
       >
         <Link to="/">Home</Link>
-        {/* <Link to="/my-favourites">My-Favourites{state.favourites.length}</Link> */}
+        <Link to="my-favourites">My-Favourites</Link>    
       </div>
       {props.children}
     </Fragment>

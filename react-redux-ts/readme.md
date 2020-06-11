@@ -225,5 +225,9 @@ Documentation also does not provide a type definition [https://reactjs.org/docs/
 * Move files from ```app.tsx``` to HomePage and reimport back the component
 * Create component for favourites
 * Set up router and paths in index.tsx, app.tsx
+Documentation for reachrouter [https://reach.tech/router]
+GitHub pages [https://github.com/reach/router]
+Tutorial by Ryan Florence [https://github.com/reach/router/tree/master/website/src/markdown/tutorial]
 
 - Refactor
+

@@ -1,9 +1,36 @@
-import React from 'react'
+import React, {useContext, Suspense, lazy} from 'react'
 
-export default function MyFavourites() {
-    return (
-        <div>
-           <h1>Place holder for my favourite episodes</h1> 
-        </div>
-    )
+import {Store} from './store'
+import {toggleFave} from './Actions'
+import {IEpisodeProps} from './interfaces'
+
+const EpisodeList = lazy<any>(() =>
+  import("./EpisodeList").then((module) => ({ default: module.EpisodeList }))
+);
+export default function MyFavourites(): JSX.Element {
+    const {state, dispatch} = useContext(Store)
+   const props: IEpisodeProps ={
+       episodes: state.favourites,
+       store: {state, dispatch},
+       toggleFave,
+       favourites: state.favourites
+   } 
+   return (
+    <section
+      style={{
+        margin: "5px",
+        padding: "5px",
+        display: "flex",
+        backgroundColor: "blanchedAlmond",
+      }}
+    >
+      <Suspense
+        fallback={<div>Please wait while the images load, thank you</div>}
+      >
+        <section>
+          <EpisodeList {...props} />
+        </section>
+      </Suspense>
+    </section>
+  );
 }
