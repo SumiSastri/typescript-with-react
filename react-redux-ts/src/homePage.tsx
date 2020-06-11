@@ -1,50 +1,22 @@
-import React, { Fragment, useEffect, useContext, lazy, Suspense } from "react";
+import React, * as react from "react";
 
 import { Store } from "./store";
-import { IEpisode, IAction, IEpisodeProps } from "./interfaces";
+import { IEpisodeProps } from "./interfaces";
+import { fetchDataAction, toggleFave } from "./Actions";
 
-
-const EpisodeList = lazy<any>(() =>
+const EpisodeList = react.lazy<any>(() =>
   import("./EpisodeList").then((module) => ({ default: module.EpisodeList }))
 );
-export default function homePage() {
-  const { state, dispatch } = useContext(Store);
+export default function HomePage() {
+  const { state, dispatch } = react.useContext(Store);
 
-  useEffect(() => {
-    state.episodes.length === 0 && fetchDataAction();
+  react.useEffect(() => {
+    state.episodes.length === 0 && fetchDataAction(dispatch);
   });
 
-  const fetchDataAction = async () => {
-    const URL =
-      "https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes";
-    const data = await fetch(URL);
-    const dataJSON = await data.json();
-    return dispatch({
-      type: "FETCH_DATA",
-      payload: dataJSON._embedded.episodes,
-    });
-  };
-
-  const toggleFave = (episode: IEpisode): IAction => {
-    const faveEpisode = state.favourites.includes(episode);
-    let dispatchObj = {
-      type: "ADD_FAVE",
-      payload: episode,
-    };
-    if (faveEpisode) {
-      const unFaveEpisode = state.favourites.filter(
-        (favourite: IEpisode) => favourite.id !== episode.id
-      );
-      dispatchObj = {
-        type: "UNDO_FAVE",
-        payload: unFaveEpisode,
-      };
-    }
-    return dispatch(dispatchObj);
-  };
   const props: IEpisodeProps = {
     episodes: state.episodes,
-    store: {state, dispatch},
+    store: { state, dispatch },
     toggleFave,
     favourites: state.favourites,
   };
@@ -58,13 +30,11 @@ export default function homePage() {
         backgroundColor: "blanchedAlmond",
       }}
     >
-      <Suspense
-        fallback={<div>Please wait while the images load, thank you</div>}
-      >
+      <react.Suspense fallback={<div>IMAGES LOADING...</div>}>
         <section>
           <EpisodeList {...props} />
         </section>
-      </Suspense>
+      </react.Suspense>
     </section>
   );
 }

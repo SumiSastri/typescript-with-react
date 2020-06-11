@@ -1,10 +1,10 @@
-import React, { Fragment, useEffect, useContext, lazy, Suspense } from "react";
+import React, { Fragment, useContext } from "react";
 import { Link } from "@reach/router";
 
 import { Store } from "./store";
 
-export default function App(props:any): JSX.Element {
-  const { state} = useContext(Store);
+export default function App(props: any): JSX.Element {
+  const { state } = useContext(Store);
 
   return (
     <Fragment>
@@ -31,7 +31,9 @@ export default function App(props:any): JSX.Element {
         }}
       >
         <Link to="/">Home</Link>
-        <Link to="my-favourites">My-Favourites</Link>    
+        <Link to="/my-favourites">
+          My Favourites Currently at {state.favourites.length}
+        </Link>
       </nav>
       {props.children}
     </Fragment>

@@ -178,7 +178,7 @@ ReactDOM.render(<App />, root)
 
 ##### Rick & Morty episode picker project
 
-Steps: 
+**Initial Set-Up of app functionality**
 - App.tsx - Create hello-world test - ```use Fragment``` and ```useContext``` hooks
 - Set up store with reducers - ```useReducer``` hook import into App check functionality
 - Fetch data using async await - ```useEffect``` hook - check data flows
@@ -206,7 +206,7 @@ useEffect(() => {
   };
 ```
 - Render data using ```array.map``` method
-- Refactor interface types and export them to relevant components
+- Refactor interface types create an interface component and export them to relevant components
 - Add/ remove favourite episode with onClick event using ```array.filter``` and```array.find``` methods
 - Refactor move all episodes to its own functional component
 - Add lazy loading using ```suspense``` hook - read work around to fix bugs [https://github.com/facebook/react/issues/14603]
@@ -221,21 +221,245 @@ More reading about ``` React.lazy()``` [https://blog.bitsrc.io/lazy-loading-reac
 No real type for the method see [https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30129]
 Documentation also does not provide a type definition [https://reactjs.org/docs/code-splitting.html]
 
-- Add Routing to HomePage & MyFavourites Page
-* Move files from ```app.tsx``` to HomePage and reimport back the component
-* Create component for favourites
-* Set up router and paths to bug fix the tutorial by Ryan Florence is really useful
+**Refactoring and adding new Components**
 
-More reading: - Documentation for reachrouter [https://reach.tech/router]
-              - GitHub pages [https://github.com/reach/router]
-              - Tutorial by Ryan Florence [https://github.com/reach/router/tree/master/website/src/markdown/tutorial]
-
-Your ```index.tsx``` file should look like this - add the types for the router or else the app will break/ not compile as the root file is a TypeScript root file.
+1. Refactor -  EpisodeList Component - deconstruct the props to add store as below, I have added in-line styling at this stage - CSS can be done earlier with webpack/ create-react-app/ other CSS libraries. This project was focused on TypeScript and its use with React & React Hooks, therefore I did not spend much time trying to style this - it may be something to do once the app is working as a final refactor and clean up.
 
 ```
-import React, { Fragment } from "react";
+import React, { Component } from "react";
+import IEpisode from "./interfaces";
+
+export function EpisodeList(props: any): Array<JSX.Element> {
+  const { episodes, toggleFave, favourites, store } = props;
+  const{state, dispatch} = store
+  
+  return episodes.map((episode: IEpisode) => {
+    return (
+      <section style={{margin: '5px', padding: '5px', backgroundColor: "salmon" }} >
+        <div
+        style={{display: "flex", flexWrap:"wrap", justifyContent: "space-between", margin: '5px', padding: '5px', backgroundColor: "grey" }} 
+        key={episode.id}>
+          <img src={episode.image.medium} style={{borderRadius: '2%', height:"35vh" }}/>
+          <h5 style={{color: "white", fontSize: '20px', fontFamily: 'Caveat' }}>{episode.name}</h5>
+          <button style={{backgroundColor: "iceBlue", color: "navyBlue", fontSize: '16px', height: "40px", fontFamily: 'Caveat', width: "30vh", margin: '5px' }} 
+          type="button" onClick={() => toggleFave(state, dispatch,episode)}>
+            {favourites.find(
+              (favourite: IEpisode) => favourite.id === episode.id
+            )
+              ? "Fave - Click to Unfave"
+              : "Unfaved - Click to make Fave"}
+          </button>
+          <h6 style= {{color: "white", fontSize: '15px', fontFamily: 'Caveat' }}>
+            Season{episode.season} Episode{episode.number}
+            <hr></hr>
+            {episode.summary}
+          </h6>     
+        </div>
+      </section>
+    );
+  });
+}
+
+```
+
+2. Refactor - Create Actions Component exporting the actions payloads - It will be needed by both HomePage and MyFavourites pages by moving the actions' functions out of ```app.tsx``` into its own component
+
+```
+import { IEpisode, IAction, IState } from "./interfaces";
+
+export const fetchDataAction = async (dispatch: any) => {
+    const URL =
+      "https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes";
+    const data = await fetch(URL);
+    const dataJSON = await data.json();
+    return dispatch({
+      type: "FETCH_DATA",
+      payload: dataJSON._embedded.episodes,
+    });
+  };
+
+  export const toggleFave = (state:IState, dispatch:any, episode: IEpisode | any): IAction => {
+    const faveEpisode = state.favourites.includes(episode);
+    let dispatchObj = {
+      type: "ADD_FAVE",
+      payload: episode,
+    };
+    if (faveEpisode) {
+      const unFaveEpisode = state.favourites.filter(
+        (favourite: IEpisode) => favourite.id !== episode.id
+      );
+      dispatchObj = {
+        type: "UNDO_FAVE",
+        payload: unFaveEpisode,
+      };
+    }
+    return dispatch(dispatchObj);
+  };
+```
+
+3. Refactor - create HomePage functional Component - move files from ```app.tsx``` to HomePage and import the actions from the ```Actions.tsx``` component
+
+```
+import React, {useEffect, useContext, lazy, Suspense } from "react";
+
+import { Store } from "./store";
+import {IEpisodeProps } from "./interfaces";
+import {fetchDataAction, toggleFave} from './Actions'
+
+
+const EpisodeList = lazy<any>(() =>
+  import("./EpisodeList").then((module) => ({ default: module.EpisodeList }))
+);
+export default function HomePage() {
+  const { state, dispatch } = useContext(Store);
+
+  useEffect(() => {
+    state.episodes.length === 0 && fetchDataAction(dispatch);
+  });
+
+  const props: IEpisodeProps = {
+    episodes: state.episodes,
+    <!-- once the favourites page has been created this prop needs to be added to the home page and the interface type -->
+    store: {state, dispatch},
+    toggleFave,
+    favourites: state.favourites,
+  };
+
+  return (
+    <section
+      style={{
+        margin: "5px",
+        padding: "5px",
+        display: "flex",
+        backgroundColor: "blanchedAlmond",
+      }}
+    >
+      <Suspense
+        fallback={<div>IMAGES LOADING...</div>}
+      >
+        <section>
+          <EpisodeList {...props} />
+        </section>
+      </Suspense>
+    </section>
+  );
+}
+```
+
+3. Refactor - Create MyFavourites functional Component - the props for this component are slightly different and the interfaces will need to be modified
+
+```
+import React, {useContext, Suspense, lazy} from 'react'
+
+import {Store} from './store'
+import {toggleFave} from './Actions'
+import {IEpisodeProps} from './interfaces'
+
+const EpisodeList = lazy<any>(() =>
+  import("./EpisodeList").then((module) => ({ default: module.EpisodeList }))
+);
+export default function MyFavourites(): JSX.Element {
+    const {state, dispatch} = useContext(Store)
+   const props: IEpisodeProps ={
+       episodes: state.favourites,
+       <!-- this prop has to be added to the home page component for the faves to be added to this page -->
+       store: {state, dispatch},
+       toggleFave,
+       favourites: state.favourites
+   } 
+   return (
+    <section
+      style={{
+        margin: "5px",
+        padding: "5px",
+        display: "flex",
+        backgroundColor: "blanchedAlmond",
+      }}
+    >
+      <Suspense
+        fallback={<div>IMAGES LOADING...</div>}
+      >
+        <section>
+          <EpisodeList {...props} />
+        </section>
+      </Suspense>
+    </section>
+  );
+}
+```
+
+4. Refactor - Interfaces Component - there should be only exports not export defaults, remove any unwanted key-value pairs from IEpisode, add optionals if required, standardise types of episodes and favourites as array types.
+
+```
+export interface IEpisode {
+    id: number
+    name: string
+    image:{medium:string, original: string}
+    number: number
+    season: number
+    summary?: string
+  }
+  export interface IAction {
+    type: string
+    payload: any
+}
+export interface IState{
+    episodes: Array<IEpisode>
+    favourites: Array<IEpisode>
+}
+export interface IEpisodeProps{
+  episodes: Array<IEpisode>
+  <!-- this will have to be changed as it is a duplication of name-space-->
+  <!-- state: {state:IState, dispatch: any} -->
+  store: {state:IState, dispatch: any}
+  toggleFave: (state: IState, dispatch: any, episode: IEpisode| any ) => {IAction}
+  favourites: Array<IEpisode>
+}
+```
+5. Refactor - Store Component - clean up types - note the change in types added for the export of the ```StoreProvider``` method
+
+```
+import React, { useReducer, createContext } from "react";
+
+import { IAction, IState } from "./interfaces";
+
+const initialState: IState = {
+  episodes: [],
+  favourites: [],
+};
+export const Store = createContext<IState | any>(initialState);
+
+function reducer(state: IState, action: IAction) {
+  switch (action.type) {
+    case "FETCH_DATA":
+      return { ...state, episodes: action.payload };
+    case "ADD_FAVE":
+      return { ...state, favourites: [...state.favourites, action.payload] };
+    case "UNDO_FAVE":
+      return { ...state, favourites: action.payload };
+    default:
+      return state;
+  }
+}
+
+export function StoreProvider({
+  children,
+}: JSX.ElementChildrenAttribute): JSX.Element {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>
+  );
+}
+```
+**Adding Routing, Page-Links**
+
+* Set up router and paths: Your ```index.tsx``` file should look like this - add the types for the router or else the app will break/ not compile as the root file is a TypeScript root file.
+
+```
+import React from "react";
 import ReactDOM from "react-dom";
 import { StoreProvider } from "./store";
+<!-- Reach RouteComponentProps helps to render props of components -->
 import {Router, RouteComponentProps} from '@reach/router'
 
 import App from "./app";
@@ -243,29 +467,32 @@ import HomePage from './homePage'
 import MyFavourites from './myFavourites'
 
 const root = document.getElementById("app-root");
-const RouterPage = (props: {pageComponent:JSX.Element} & RouteComponentProps) => props.pageComponent
+<!-- A variable to render the props as this feature is not supported yet by React - props in this case are the paths of the components App, HomePage and MyFavourites Page -->
+const RouterPage = (props: {pageComponent:JSX.Element} & RouteComponentProps) => props
+pageComponent
 ReactDOM.render(
   <StoreProvider>
     <Router>
     <App path='/'>
-      <RouterPage pageComponent={<HomePage/>}path='/'></RouterPage>
-      <RouterPage pageComponent={<MyFavourites/>}path='/my-favourites'></RouterPage>   
+    <!-- here we use the variable we have created which stores our anonymous lamda function with the param of a pageComponent which takes a jsx element and the routing they are self closing tags-->
+        <RouterPage pageComponent={<HomePage />} path="/" />
+        <RouterPage pageComponent={<MyFavourites />} path="/my-favourites" />  
     </App>
     </Router>
   </StoreProvider>,
   root
 );
 ```
-The header and the nav bar in ```app.tsx``` should import the Link component from the router and render the children of the component - RouteComponentProps.
+* Create a nav bar for the links in ```app.tsx```, import the Link Component from the router and render the children of the component - RouteComponentProps.
 
 ```
-import React, { Fragment, useEffect, useContext, lazy, Suspense } from "react";
+import React, { Fragment, useContext } from "react";
 import { Link } from "@reach/router";
 
 import { Store } from "./store";
 
-export default function App(props:any): JSX.Element {
-  const { state} = useContext(Store);
+export default function App(props: any): JSX.Element {
+  const { state } = useContext(Store);
 
   return (
     <Fragment>
@@ -291,14 +518,20 @@ export default function App(props:any): JSX.Element {
           fontFamily: "Caveat",
         }}
       >
-        <Link to="/">Home</Link>
-        <Link to="my-favourites">My-Favourites</Link>    
+       <Link to="/">Home</Link>
+        <Link to="/my-favourites">My Favourites Currently at {state.favourites.length}</Link>
       </nav>
       {props.children}
     </Fragment>
   );
 }
+
 ```
 
-- Refactor
+To bug fix routing the tutorial by Ryan Florence is really useful. More reading for routing Documentation for reachrouter [https://reach.tech/router]
+              - GitHub pages [https://github.com/reach/router]
+              - Tutorial by Ryan Florence [https://github.com/reach/router/tree/master/website/src/markdown/tutorial]
 
+The app now should work with favourites added to the MyFavourites Page and navigation back from the MyFavourites page to the home page.
+
+**Final Clean up and Refactoring**
