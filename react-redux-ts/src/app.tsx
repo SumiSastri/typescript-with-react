@@ -20,7 +20,7 @@ export default function App(props:any): JSX.Element {
         <h1>Rick & Morty episode picker</h1>
         <h4>Pick your fave show</h4>
       </header>
-      <div
+      <nav
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -32,7 +32,7 @@ export default function App(props:any): JSX.Element {
       >
         <Link to="/">Home</Link>
         <Link to="my-favourites">My-Favourites</Link>    
-      </div>
+      </nav>
       {props.children}
     </Fragment>
   );

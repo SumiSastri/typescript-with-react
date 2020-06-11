@@ -224,10 +224,81 @@ Documentation also does not provide a type definition [https://reactjs.org/docs/
 - Add Routing to HomePage & MyFavourites Page
 * Move files from ```app.tsx``` to HomePage and reimport back the component
 * Create component for favourites
-* Set up router and paths in index.tsx, app.tsx
-Documentation for reachrouter [https://reach.tech/router]
-GitHub pages [https://github.com/reach/router]
-Tutorial by Ryan Florence [https://github.com/reach/router/tree/master/website/src/markdown/tutorial]
+* Set up router and paths to bug fix the tutorial by Ryan Florence is really useful
+
+More reading: - Documentation for reachrouter [https://reach.tech/router]
+              - GitHub pages [https://github.com/reach/router]
+              - Tutorial by Ryan Florence [https://github.com/reach/router/tree/master/website/src/markdown/tutorial]
+
+Your ```index.tsx``` file should look like this - add the types for the router or else the app will break/ not compile as the root file is a TypeScript root file.
+
+```
+import React, { Fragment } from "react";
+import ReactDOM from "react-dom";
+import { StoreProvider } from "./store";
+import {Router, RouteComponentProps} from '@reach/router'
+
+import App from "./app";
+import HomePage from './homePage'
+import MyFavourites from './myFavourites'
+
+const root = document.getElementById("app-root");
+const RouterPage = (props: {pageComponent:JSX.Element} & RouteComponentProps) => props.pageComponent
+ReactDOM.render(
+  <StoreProvider>
+    <Router>
+    <App path='/'>
+      <RouterPage pageComponent={<HomePage/>}path='/'></RouterPage>
+      <RouterPage pageComponent={<MyFavourites/>}path='/my-favourites'></RouterPage>   
+    </App>
+    </Router>
+  </StoreProvider>,
+  root
+);
+```
+The header and the nav bar in ```app.tsx``` should import the Link component from the router and render the children of the component - RouteComponentProps.
+
+```
+import React, { Fragment, useEffect, useContext, lazy, Suspense } from "react";
+import { Link } from "@reach/router";
+
+import { Store } from "./store";
+
+export default function App(props:any): JSX.Element {
+  const { state} = useContext(Store);
+
+  return (
+    <Fragment>
+      <header
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          borderBottom: "dashed 3px black",
+          backgroundColor: "blanchedAlmond",
+          fontFamily: "Caveat",
+        }}
+      >
+        <h1>Rick & Morty episode picker</h1>
+        <h4>Pick your fave show</h4>
+      </header>
+      <nav
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          margin: "5px",
+          padding: "5px",
+          backgroundColor: "blanchedAlmond",
+          fontFamily: "Caveat",
+        }}
+      >
+        <Link to="/">Home</Link>
+        <Link to="my-favourites">My-Favourites</Link>    
+      </nav>
+      {props.children}
+    </Fragment>
+  );
+}
+```
 
 - Refactor
 
