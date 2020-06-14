@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from "react";
 import { Link } from "@reach/router";
 
-import { Store } from "./store";
+import { Store } from "../src/store/store";
 
 export default function App(props: any): JSX.Element {
   const { state } = useContext(Store);

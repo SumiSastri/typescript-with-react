@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import { Router, RouteComponentProps } from "@reach/router";
 
 import App from "./app";
-import { StoreProvider } from "./store";
-import HomePage from "./homePage";
-import MyFavourites from "./myFavourites";
+import { StoreProvider } from "../src/store/store";
+import HomePage from "../src/components/homePage";
+import MyFavourites from "../src/components/myFavourites";
 
 const root = document.getElementById("app-root");
 const RouterPage = (
