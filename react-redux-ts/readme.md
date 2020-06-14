@@ -558,10 +558,10 @@ Changing folder structure and cleaning up imports due to changed structure
 
 --src (for root files `app.tsx` and `index.tsx`)
 
---actions-and-reducers (for `actions.tsx` and ` reducers.tsx``)
+--actions-and-reducers (for `actions.tsx` and `reducers.tsx`)
 
 --components (for app pages `episodeList.tsx`,`homePage`,`myFavourites`)
 
 --interfaces(for custom interface types`interfaces.tsx`)
 
---store (separates out reducers from store and imports them back into`store.tsx```)
+--store (separates out reducers from store and imports them back into`store.tsx`)
