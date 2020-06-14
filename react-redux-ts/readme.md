@@ -1,8 +1,9 @@
 # React-Redux-TypeScript
 
 ![Ricky and Morty app](/react-redux-ts/src/assets/app-screenshot.png)
+**A free Udemy tutorial by Richard Oliver Bray**
 
-This section is a project using React, React-Redux, React-Hooks & TypeScript, builds react project with webpack and babel. Uses in-line CSS.
+This section is a project using React, React-Redux, React-Hooks & TypeScript, builds react project with webpack and babel. Uses in-line CSS and follows Richard Oliver Bray's tutorial.
 
 Level-intermediatory. Requires prior fundamentals of JavaScript, TypeScript, Node, React & Redux.
 
