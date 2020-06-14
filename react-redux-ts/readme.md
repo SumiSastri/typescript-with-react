@@ -1,6 +1,6 @@
 # React-Redux-TypeScript
 
-![Ricky and Morty app]('react-redux-ts/src/assets/app-screenshot.png')
+![Ricky and Morty app]('/react-redux-ts/src/assets/app-screenshot.png')
 
 This section is a project using React, React-Redux, React-Hooks & TypeScript, builds react project with webpack and babel. Uses in-line CSS.
 
