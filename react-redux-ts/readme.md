@@ -3,9 +3,13 @@
 ![Ricky and Morty app](/react-redux-ts/src/assets/app-screenshot.png)
 **A free Udemy tutorial by Richard Oliver Bray**
 
-This section is a project using React, React-Redux, React-Hooks & TypeScript, builds react project with webpack and babel. Uses in-line CSS and follows Richard Oliver Bray's tutorial.
+The learning objective in this section is to add one more level of complexity to a project adding React-Redux and an external API. I also wanted to revise how to scaffold the project with webpack and babel as I have been using the create-react-app for several side projects.
 
-Level-intermediatory. Requires prior fundamentals of JavaScript, TypeScript, Node, React & Redux.
+Challenges - I was unable to configure CSS with webpack and babel so used in-line CSS and followed Richard Oliver Bray's tutorial to embedd the knowledge from TypeScript documentation.
+
+While I followed the tutorial to some extent, I found the folder structure and some of the code could be refactored so I have changed some of the code and the file structure. The tutorial also uses an older version of Babel (updated project from Babel@6 to @7 ), so I had to update packages and modify some of the code as it was not backwards compatible.
+
+I have mainly outlined how to add TypeScript to code rather than how React-Redux works, there is a brief overview to put the project into context at the end of the project refactoring section.
 
 ##### Scaffolding & File Structure - building from scratch with webpack and babel
 
@@ -185,6 +189,22 @@ ReactDOM.render(<App />, root)
 
 ##### Rick & Morty episode picker project
 
+React Hooks was introduced in React version 16.8 and upwards and allows you to use state and other React features without writing a class. You will now find running `create-react-app` compiles and has no stateful components in the main `app.js`. It is backwards compatible with previous versions with no breaking changes.
+
+Documentation [https://reactjs.org/docs/hooks-intro.html] There is a 1 hour video that may not be worth watching at this stage. A lot of the video is summarized in the documentation. Worth watching it a few times after you have used Hooks in a project.
+
+Hooks is an API to props, state, context, refs and lifecycle hooks. It makes the app faster. You can use hooks selectively experimenting with a few components at a time, there is no need to rewrite legacy code.
+
+Challenges with React that Hooks solve:
+
+- Inability to use state in another component, hooks allows for a better primitive sharing of state between compoinents
+- Life-cycle methods difficult to maintain between components, hooks allows you to break down lifecycle methods into smaller funcitons and reuse them
+- Class-based components rely on prototype inheritance, this can be difficult to learn and use due to call, bind methods of lexical `this` in state and props. Hooks simplifies the use case of class based components.
+
+Using State as a hook sets state to an array. `const [value, setValue] = useState ('')` where state is defined as an empty string.
+
+This is a deconstruction of the array where a value is set, `setValue` as you will see in the debugger is a function.
+
 **Initial Set-Up of app functionality**
 
 - App.tsx - Create hello-world test - `use Fragment` and `useContext` hooks
@@ -220,6 +240,8 @@ useEffect(() => {
 - Refactor move all episodes to its own functional component
 - Add lazy loading using `suspense` hook - read work around to fix bugs [https://github.com/facebook/react/issues/14603]
   This is the solution I used that worked:-
+
+![Ricky and Morty app](/react-redux-ts/src/assets/data-in-favourites-console.png)
 
 ```
 const EpisodeList = lazy<any>(() =>
@@ -565,3 +587,125 @@ Changing folder structure and cleaning up imports due to changed structure
 --interfaces(for custom interface types`interfaces.tsx`)
 
 --store (separates out reducers from store and imports them back into`store.tsx`)
+
+### Putting Redux into context and why I refactored the folder structure.
+
+##### What is Redux
+
+Redux is a way to control data-flow in an app, it was created by Dan Abramov and Andrew Clark 2015 and is influenced by ELM & React-flux.
+
+More in this article https://medium.com/@jtbennett/standard-actions-in-redux-c6a415c8aea4
+
+Data flows are uni-direction from a React component to the Redux store via an action (or payload) the action is dispatched to the store.
+
+The store holds the initial state which is sent to the reducer as a state tree. The reducer duplicates the state tree and updates the state tree with the changes specified by the actions dispatched. The duplicate and updated state-tree incorporating the actions from the actions object is sent back to the React component. The original state tree remains pristine and is never changed.
+
+The React component subscribes to the changes from the Store with listeners. The updated state tree is decoded and the Component re-renders.
+
+##### Benefits of Redux
+
+Redux is a load package manager that saves a lot of boiler plate code
+There is only one store for data (state) of the form in the redux store
+Data flows are predictable and stable as they are unidirectional (from parent to child)
+They follow the same lifecycle method in a predictable pattern
+It solves the problem in React where data can only flow from the parent to the child, therefore can not flow from the child to parent, grandparent or sibling components
+Redux scales an app when there is a need to change state in multiple places.
+Redux is the next step in the app data-management complexity curve Browser-based data in DOM / react-js (data in state in components/ virtual DOM) / react-redux (only one set of state in store, no data in components)
+Data Flows in Redux
+Data flows from components via actions to store (with Redux-forms through higher order components (HOC’s) From store via dispatch actions back to the React component Component subscribes and unsubscribes to changes (higher order components have specialised methods to handle API payloads) Component renders
+
+##### 5 Steps to Set Up
+
+##### Step 1: Set-Up Store
+
+Store is an object
+It holds state, which is immutable in one place, preventing “ghost” instances of data (state) in the app
+It is the one source of truth (stable data and eliminates ‘lurking’ copies of state in the app)
+It has a base dispatching function that synchronously sends the action object, along with the state tree to the reducer function
+Components send information to the store via actions
+Redux forms need additional set up to work with store through some specialised methods and higher order components (HOC’s). The reduxform() method takes the form configuration object and returns a new function that wraps the changes coming in specifically from form actions
+There are three states in the store:-
+Pristine (default state)
+Touched
+Error - returns rejected props based on custom functions and the conditions written into those functions
+Map functions are used to transport data as they create a duplicate copy of the information without transforming the original information
+
+##### Step 2: Set-Up Action Payloads
+
+Actions are objects that represent the intention to change state
+Actions are the only way to get data from components into the store
+Actions always have a type - it is recommended that it type is a string constant as strings can be serialised
+With forms (and their higher order components) the form type is the <Field> type
+Action payloads represent the data related to the action
+Actions represent the value parameter passed into the reducer method, store is the accumulator
+Actions are the values passed to the reducer method via the store, along with the the state-object which is the state-tree in the store
+Step 3: Set-Up Reducers
+Reducers or the reducing function reduce the collection of values of the actions to one action
+It is a use case for the higher order function ` reduce(fold)/ array.reduce()`` method where multiple values are passed with the view to getting a single new value without changing the state of the original data passed in Several reducers can be combined into a single root reducer with the combineReducers() method Under the hood, the reducer mthod has an accumulator and a value and a call back function `reducer(accumulator, values){}`` the accumulator is the state tree, values are the actions
+With forms the formReducer() method is used, it is the specialised reducer that gets its information from actions related to higher order components that send the form payloads to the store.
+The combineReducers(){} method for the root reducer, calls all child reducers and gathers their result into one function, keys of the action correspond to the keys of the passed reducer function
+State is changed by reducers (pure functions with no side-effects) takes (current) state (also known as modified or touched, pristine state is the original state tree that never gets modified, only duplicated)
+Once the pristine state has been duplicated, it is duplicated or "touched" and modified by a series of switch statements to execute the actions payloads sent to the store. The switch statemnt makes sure that both the type and the arguments on either side of the conditional operator are absolutely true (both in type and in from) and then returns the new state tree to the component requesting (subscribing for) the update
+Some general rules for reducer functions: -
+
+##### Reducer changes state via pure functions
+
+The functions written in a reducer determines the changes needed or how state can be mutated - usually done with conditionals (switch)
+If no change is needed the previous state is returned to the component and no updates are made
+Root reducer combines all the changes required from multiple reducer functions
+Pure functions means no api-calls, routing transitions returned in the reducers
+Functions with dependencies like Math/ date functions (math.random/date.now) can not be passed
+Step 4: Set-Up Subscribe/ Unsubscribe
+The components that need to be aware of state subscribe to the store
+
+components are set up with listeners to subscribe to these payload changes via the subscribe(listener) method
+they unsubscribe by switching the listener off
+Components listen for changes and switch from subscribe (listening to changes and performing the render function according to these changes) and unsubscribing when the changes have been executed
+
+With forms, higher order components (HOCs) connect the form components to the store object. Form components have several event listeners, the Redux form method looks at all of these event listeners and ensures that the higher order components are set up to register listeners of events and unregisters these listeners in the Store.
+
+This is specifically important for the handleSubmit (onSubmit) event handler. On keyboard, mouse and other changes are also important to track form engagement via user experience events.
+
+This higher order component, is exported at the bottom of the form - export default reduxForm({})
+
+A little more about the special case of the event handler onSubmit
+Submitting all a forms information (data) has a chaining method to handle the submission of the information, spotting errors in the submission and catching these errors. Submission is with the values described by the user. OnSubmit(values) are passed as a JSON object. They need custom functions to handle both state (the values or data submitted) and validation (that the values and data submitted are correct). The error code block is a custom block that returns rejected props based on certain conditions and on
+
+- .then()
+- .throw new Submission Error({})
+- .catch()
+  Step 5 : Set-Up Dispatch
+  The dispatch function is the only way to trigger a change in state. The function when run - either sends the action and state tree data to the reducer to be transformed.
+
+The dispatch method can also call the reducer function
+
+When it calls the reducer function, it
+
+notifies component listeners to the “next” change in the state tree
+rejects the props with errors and dispatches error messages
+maps the “next” change in the state tree to the component
+When it dispatches actions and state to the reducer, there are custom functions that are written in Middleware (like Thunk) and passed to the base-dispatch function. Custom dispatch function accepts sync or async actions via middleware. Middleware wraps the base dispatch function and can transform, delay, ignore, the payload, and pass the information down the middleware queue of data. Middleware will eventually dispatch a plain object actions using the dispatch method.
+
+The base dispatch function always synchronously sends actions to the stores reducers along with the state tree to calculate the new state, actions are plain objects ready to be consumed by the reducer
+
+Once the store receives the information from actions and converts these actions that update state the new state needs to be dispatched back to the components via the dispatch method.
+
+The dispatch method therefore takes the information from the reducer and dispatches it back to components.
+
+The store receives the map methods and via the dispatch(action) method converts the action payload to the dispatch payload
+
+Set up Dispatch changes to the components that have subscribed to the changes store.dispatch(action) function, the ``mapDispatchToProps(dispatch)` sends user data like admin fields, how toggles change, error handling to the component.
+
+##### How does Redux-React render components and pages?
+
+These dispatch functions are connected via the {connect} higher order component import to the counter component and exported back to the store and the Provider component. Provider wraps the Redux HOC into the Redux library framework.
+
+Writing the render functions wrapped in the Provider tag
+
+Displays data from stateful components via props to stateless components
+
+The stateless components are routed to Index.js, which registers the ReactDOM.render() method which registers the react virtual DOM
+
+Redux is a wrapper in the React library via the Provider HOC, so it is passed as a prop of the react main.js (or app.js) component
+
+If any change is required to the stateless component, actions need to be created to send them back to the stateful component and the whole cycle starts again

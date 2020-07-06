@@ -4,10 +4,10 @@ This project is one in a series of tutorials where I explore the documentation o
 
 The learning objective in this project is to understand how to use TypeScript in projects using vanilla JavaScript, the front-end library React.js and modern React with Hooks.
 
-There are 3 folders in this project
+There are 3 folders in this project - each section adds a level of complexity to the learning process.
 [TypeScript and vanilla Js](/Users/ssbt/Documents/GitHub/Typescript-with-React/node-ts)
 [TypeScript and React-ReactHooks](/Users/ssbt/Documents/GitHub/Typescript-with-React/react-redux-ts)
-[TypeScript and vanilla Js](/Users/ssbt/Documents/GitHub/Typescript-with-React/to-do-list-ts)
+[TypeScript & React-ReactHooks](/Users/ssbt/Documents/GitHub/Typescript-with-React/to-do-list-ts)
 
 Each folder has its own readme to document what I have learnt and to serve as a place to go back to and review code snippets for future use. It is my simplification of the documentation I have read, research from blogs and following some tutorials for specific areas that I found difficult to understand.
 
@@ -48,12 +48,14 @@ It is useful to go through the documentation first and then the tutorials
 
 TypeScript Playground is to TypeScript what JFiddle is to JavaScript [https://www.typescriptlang.org/play/]
 
-#### Project access
+## Project access
 
-# Install dependencies
+#### Install dependencies
 
 npm install
 
-# Run app
+#### Run app
 
 npm run start
+
+TypeScript Certifications
