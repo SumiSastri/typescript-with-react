@@ -639,7 +639,9 @@ With forms (and their higher order components) the form type is the <Field> type
 Action payloads represent the data related to the action
 Actions represent the value parameter passed into the reducer method, store is the accumulator
 Actions are the values passed to the reducer method via the store, along with the the state-object which is the state-tree in the store
-Step 3: Set-Up Reducers
+
+##### Step 3: Set-Up Reducers
+
 Reducers or the reducing function reduce the collection of values of the actions to one action
 It is a use case for the higher order function ` reduce(fold)/ array.reduce()`` method where multiple values are passed with the view to getting a single new value without changing the state of the original data passed in Several reducers can be combined into a single root reducer with the combineReducers() method Under the hood, the reducer mthod has an accumulator and a value and a call back function `reducer(accumulator, values){}`` the accumulator is the state tree, values are the actions
 With forms the formReducer() method is used, it is the specialised reducer that gets its information from actions related to higher order components that send the form payloads to the store.
@@ -655,7 +657,9 @@ If no change is needed the previous state is returned to the component and no up
 Root reducer combines all the changes required from multiple reducer functions
 Pure functions means no api-calls, routing transitions returned in the reducers
 Functions with dependencies like Math/ date functions (math.random/date.now) can not be passed
-Step 4: Set-Up Subscribe/ Unsubscribe
+
+##### Step 4: Set-Up Subscribe/ Unsubscribe
+
 The components that need to be aware of state subscribe to the store
 
 components are set up with listeners to subscribe to these payload changes via the subscribe(listener) method
@@ -674,7 +678,7 @@ Submitting all a forms information (data) has a chaining method to handle the su
 - .then()
 - .throw new Submission Error({})
 - .catch()
-  Step 5 : Set-Up Dispatch
+  ##### Step 5 : Set-Up Dispatch
   The dispatch function is the only way to trigger a change in state. The function when run - either sends the action and state tree data to the reducer to be transformed.
 
 The dispatch method can also call the reducer function
