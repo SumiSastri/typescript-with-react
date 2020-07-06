@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import IEpisode from "../interfaces/interfaces";
+import { IEpisode } from "../interfaces/interfaces";
 
 export function EpisodeList(props: any): Array<JSX.Element> {
   const { episodes, toggleFave, favourites, store } = props;
