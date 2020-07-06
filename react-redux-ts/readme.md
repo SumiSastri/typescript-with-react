@@ -643,7 +643,7 @@ Actions are the values passed to the reducer method via the store, along with th
 ##### Step 3: Set-Up Reducers
 
 Reducers or the reducing function reduce the collection of values of the actions to one action
-It is a use case for the higher order function ` reduce(fold)/ array.reduce()`` method where multiple values are passed with the view to getting a single new value without changing the state of the original data passed in Several reducers can be combined into a single root reducer with the combineReducers() method Under the hood, the reducer mthod has an accumulator and a value and a call back function `reducer(accumulator, values){}`` the accumulator is the state tree, values are the actions
+It is a use case for the higher order function `reduce(fold)/ array.reduce()` method where multiple values are passed with the view to getting a single new value without changing the state of the original data passed in Several reducers can be combined into a single root reducer with the combineReducers() method Under the hood, the reducer mthod has an accumulator and a value and a call back function `reducer(accumulator, values){}`` the accumulator is the state tree, values are the actions
 With forms the formReducer() method is used, it is the specialised reducer that gets its information from actions related to higher order components that send the form payloads to the store.
 The combineReducers(){} method for the root reducer, calls all child reducers and gathers their result into one function, keys of the action correspond to the keys of the passed reducer function
 State is changed by reducers (pure functions with no side-effects) takes (current) state (also known as modified or touched, pristine state is the original state tree that never gets modified, only duplicated)
@@ -678,7 +678,9 @@ Submitting all a forms information (data) has a chaining method to handle the su
 - .then()
 - .throw new Submission Error({})
 - .catch()
+
   ##### Step 5 : Set-Up Dispatch
+
   The dispatch function is the only way to trigger a change in state. The function when run - either sends the action and state tree data to the reducer to be transformed.
 
 The dispatch method can also call the reducer function
@@ -698,7 +700,7 @@ The dispatch method therefore takes the information from the reducer and dispatc
 
 The store receives the map methods and via the dispatch(action) method converts the action payload to the dispatch payload
 
-Set up Dispatch changes to the components that have subscribed to the changes store.dispatch(action) function, the ``mapDispatchToProps(dispatch)` sends user data like admin fields, how toggles change, error handling to the component.
+Set up Dispatch changes to the components that have subscribed to the changes store.dispatch(action) function, the `mapDispatchToProps(dispatch)` sends user data like admin fields, how toggles change, error handling to the component.
 
 ##### How does Redux-React render components and pages?
 
