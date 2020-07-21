@@ -1,16 +1,18 @@
 # React-Redux-TypeScript
 
-This is the last section which adds another layer of complexity with React, React-Hooks & Redux with an external API. I also wanted to revise how to scaffold the project with webpack and babel as I have been using the create-react-app for several side projects.
+This is the last section which adds another layer of complexity to my understanding of TypeScript. In addition to using React and React-Hooks, I have added Redux and an external API-call to see how all the moving parts work with TypeScript. I also wanted to revise how to scaffold the project with webpack and babel as I have been using the create-react-app for several side projects.
 
 #### Table of Contents
 
-![Ricky and Morty app](/react-redux-ts/src/assets/data-in-favourites-console.png =100x100)
+<img src="/react-redux-ts/src/assets/data-in-favourites-console.png" alt="Rick & Morty App" width="100" height="100"/>
 
 1. [Scaffolding](#Scaffolding-with-babel-and-webpack)
-2. [Brief Intro to React Hooks and initial set up](#Brief-introduction-to-React-Hooks)
-3. [Refactoring to add Redux](#REFACTORING-FOR-REDUX)
+2. [Brief Intro to React Hooks](#Brief-intro-to-React-Hooks)
+3. [Refactoring to add Redux](#Refactoring-to-add-Redux)
+4. [React Reach Router](#React-Reach-Router)
+5. [Final Refactor folder structure and files based on Redux flows](Putting-Redux-into context-and-why-I-refactored-the-folder-structure.)
 
-##### Scaffolding with babel and webpack
+## Scaffolding with babel and webpack
 
 Babel documentation: [https://babeljs.io/docs/en]
 
@@ -194,7 +196,7 @@ ReactDOM.render(<App />, root)
 
 - Run scripts to check if app works with `npm run start` the h1 & h2 jsx tags should render correctly on port 5000.
 
-##### Brief introduction to React Hooks
+## Brief intro to React Hooks
 
 React Hooks was introduced in React version 16.8 and upwards and allows you to use state and other React features without writing a class. You will now find running `create-react-app` compiles and has no stateful components in the main `app.js`. It is backwards compatible with previous versions with no breaking changes.
 
@@ -212,7 +214,7 @@ Using State as a hook sets state to an array. `const [value, setValue] = useStat
 
 This is a deconstruction of the array where a value is set, `setValue` as you will see in the debugger is a function.
 
-## HOOKS AND API CALLS - INITIAL SET UP
+## USE EFFECT HOOK WITH API CALL
 
 - App.tsx - Create hello-world test - `use Fragment` and `useContext` hooks
 - Set up store with reducers - `useReducer` hook import into App check functionality
@@ -258,7 +260,7 @@ More reading about `React.lazy()` [https://blog.bitsrc.io/lazy-loading-react-com
 No real type for the method see [https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30129]
 Documentation also does not provide a type definition [https://reactjs.org/docs/code-splitting.html]
 
-## REFACTORING FOR REDUX
+## Refactoring to add Redux
 
 1. Refactor - EpisodeList Component - deconstruct the props to add store as below, I have added in-line styling at this stage - CSS can be done earlier with webpack/ create-react-app/ other CSS libraries. This project was focused on TypeScript and its use with React & React Hooks, therefore I did not spend much time trying to style this - it may be something to do once the app is working as a final refactor and clean up.
 
@@ -497,7 +499,7 @@ export function reducer(state: IState, action: IAction) {
 }
 ```
 
-**Adding Routing, Page-Links**
+## React Reach Router
 
 - Set up router and paths: Your `index.tsx` file should look like this - add the types for the router or else the app will break/ not compile as the root file is a TypeScript root file.
 
