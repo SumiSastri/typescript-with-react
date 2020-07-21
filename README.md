@@ -9,9 +9,7 @@
 
 #### Project goals
 
-This project is one in a series of tutorials where I explore the documentation of TypeScript with JavaScript.
-
-The learning objective of this project is to understand how to use TypeScript in projects using vanilla JavaScript, the front-end library React.js and modern React with Hooks.
+This project is one in a series of tutorials following documentation. In this project, I explore the documentation of TypeScript with JavaScript, React & React-Redux.
 
 #### Folder structure
 
@@ -22,7 +20,7 @@ There are 3 folders in this project - each section adds a level of complexity to
 
 2. [TypeScript & React](https://github.com/SumiSastri/Typescript-with-React/tree/master/to-do-list-ts)
 
-3.[TypeScript & React-ReactRedux](https://github.com/SumiSastri/Typescript-with-React/tree/master/react-redux-ts)
+3. [TypeScript & React-ReactRedux](https://github.com/SumiSastri/Typescript-with-React/tree/master/react-redux-ts)
 
 Each folder has its own readme to document what I have learnt and to serve as a place to go back to and review code snippets for future use. It is my simplification of the documentation I have read, research from blogs and following some tutorials for specific areas that I found difficult to understand.
 

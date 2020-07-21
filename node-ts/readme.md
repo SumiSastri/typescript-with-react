@@ -1,18 +1,62 @@
-# Typescript fundamentals
+# TypeScript Fundamentals - Table of Contents
 
-This section covers the fundamentals of TypeScript using node as a compiler and working through the documentation with examples of how to use TypeScript with vanilla JavaScript.
+This section covers the fundamentals of TypeScript using node as a compiler and working through the TypeScript documentation with examples of how to use TypeScript with vanilla JavaScript.
+
+1. [Scaffolding and file structure](#Scaffolding-and-file-structure)
+2. [Compiling TypeScript to JavaScript](#Compiling-TS-to-JS)
+3. [Node terminal commands for TypeScript & JavaScript](#Node-terrminal-commands-for-TS-&-JS)
+
+I [SECTION 1](#Section-1:-Basic-Concepts-&-Types)
+II [SECTION 2](#Section-2:-Advanced-Types-or-Reference-Types)
+III [SECTION 3](#Section-3:-Classes-&-Constructors)
+IV [SECTION 4](#Section-4:-Modules-&-Namespaces)
+V [SECTION 5](#Section-5:-Libraries-&-Type-Definitions)
+
+[RESOURCES](#RESOURCES)
 
 ##### Scaffolding & File Structure
 
-node `npm install - g`
-[rm -rf node_modules && npm install] recursively remove node and reinstall in case you make a mistake
-typescript `npm install -g typescript`
+`npm install - g` - install node
+`npm install -g typescript` install TypeScript
+
+`rm -rf node_modules && npm install` recursively remove node and reinstall in case you make a mistake
 Uninstalling packages documentation[https://docs.npmjs.com/cli/uninstall]
 
-Mkdir for project the directory for this project is `/node-ts`
-Cd into directory `cd node-ts`
-Create a `.ts` file
-Touch <name-of-file.ts>
+##### Compiling/ Transpiling TS to JS
+
+Create a variable in the `.ts` file `app.ts`
+
+```
+let message="hello world"
+console.log(message);
+```
+
+In terminal run the command `tsc app && node app` for the `app.ts` file
+As this is a TypeScript-Node-JavaScript project, you will get an error on the `.ts` file as the `.ts` file is a script file and shares global scope.
+
+Node modules have their own scope and need `common.js` exports to export the module which is an empty function `{}`
+Update the `app.ts` file with
+
+```
+export {}
+// Test configuration
+let message="hello world"
+console.log(message);
+```
+
+In terminal re-run the command `tsc app && node app` for the `app.ts` file you should get the message in the terminal console.
+
+Now that you have set up the files to compile correctly you can watch changes live in the node environment.
+
+`tsc app` transpiles the file into a `.js` file. Go into the `app.js` file and you will see the compiler has changed the TypeScript file into a JavaScript file.
+
+```
+"use strict";
+exports.__esModule = true;
+// Test configuration
+var message = "hello world";
+console.log(message);
+```
 
 Each concept has its own `.ts` file with examples followed from both the official documentation and tutorials.
 
@@ -32,41 +76,7 @@ If you want to see this on the front end, create a html file and import the scri
 </html>
 ```
 
-##### Compiling:
-
-Create a variable in the `.ts` file `app.ts`
-
-```
-let message="hello world"
-console.log(message);
-```
-
-In terminal run the command `tsc app && node app` for the `app.ts` file
-As this is a typescript-node-javascript project, you will get an error on the `.ts` file as the `.ts` file is a script file and shares global scope
-Node modules have their own scope and need `common.js` exports to export the module which is an empty function `{}`
-Update the `app.ts` file with
-
-```
-export {}
-// Test configuration
-let message="hello world"
-console.log(message);
-```
-
-In terminal re-run the command `tsc app && node app` for the `app.ts` file you should get the message in the terminal console.
-
-Now that you have set up the files to compile correctly you can watch changes live in the node environment
-`tsc app` transpiles the file into a `.js` file. Go into the `app.js` file and you will see the compiler has changed the TypeScript file into a JavaScript file.
-
-```
-"use strict";
-exports.__esModule = true;
-// Test configuration
-var message = "hello world";
-console.log(message);
-```
-
-##### Terminal commands:
+##### Node terrminal commands for TS & JS
 
 - tsc filename - this runs the tsc (TypeScript compiler) on the `.ts` file and compiles it to JavaScript
 - node filename - The terminal console should print your message as the node environment is set up
@@ -194,7 +204,7 @@ function warnUser(): void {
 
 This section is well explained by CodeEvolution from @25:00 mins in the YouTube tutorial [https://www.youtube.com/watch?v=WBPrJSw7yQA]
 
-## Section 2 : Advanced Types/ Reference types passed by reference
+## Section-2: Advanced Types or Reference Types
 
 Documentation: [https://www.typescriptlang.org/docs/handbook/advanced-types.html]
 
@@ -542,7 +552,7 @@ function getNumbers(...nums: number[]){
 getNumbers(1,2,3,4)
 ```
 
-## Section 3: Classes & Constructors
+## Section-3: Classes & Constructors
 
 [https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV]
 
@@ -723,7 +733,7 @@ interface IStudent extends IPerson{
 export {IPerson, IPersonJuniorSchool as TeacherJrSchool, IStudent}
 ```
 
-## Section 4: Modules & Namespaces what's the difference
+## Section-4: Modules & Namespaces
 
 Modules are executed in their own scope. To share code from one module to another, a module loader is required. Files are then exported from one module and can be used any any module that imports the exported module.
 
@@ -768,7 +778,7 @@ let feesPayed = studentPayments.calculateFees(4, 2000)
 
 - A note on the ts.config file - defines the complier being used - in this file you can see common.js is the compiler
 
-## Section 5: Libraries and Type Definitions
+## Section-5: Libraries and Type Definitions
 
 Type definitions are used when there are JavaScript libraries or a host APIs. Each library has it's own type definitions and to get these definitions, they are in `.d.ts` files.
 
@@ -779,7 +789,7 @@ You need to add this to the scaffolding - `npm install tsd -g` (globally in the 
 Libraries and type definitions [https://www.npmjs.com/~types]
 eg. `@types/react` for react or the Microsoft search [https://microsoft.github.io/TypeSearch/]
 
-## APPENDIX
+## RESOURCES
 
 The content of this readme relies on all the tutorials listed in this section. The best TypeScript Tutorial
 [https://www.tutorialspoint.com/typescript/]. Highlights from the rest are:-
