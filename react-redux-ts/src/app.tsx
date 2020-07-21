@@ -22,10 +22,11 @@ export default function App(props: any): JSX.Element {
       </header>
       <nav
         style={{
-          display: "flex",
-          justifyContent: "space-between",
           margin: "5px",
           padding: "5px",
+          display: "flex",
+          justifyContent: "space-between",
+          position: "sticky",
           backgroundColor: "blanchedAlmond",
           fontFamily: "Caveat",
         }}

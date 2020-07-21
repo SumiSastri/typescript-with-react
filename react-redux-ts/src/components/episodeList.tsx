@@ -10,28 +10,31 @@ export function EpisodeList(props: any): Array<JSX.Element> {
     return (
       <section
         style={{
-          margin: "5px",
-          padding: "5px",
-          backgroundColor: "salmon",
+          backgroundColor: "darkgrey",
+          padding: "2px",
+          display: "flex",
         }}
       >
+        :
         <div
           style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
-            margin: "5px",
-            padding: "5px",
-            backgroundColor: "grey",
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 4fr)",
+            gridTemplateRows: "auto",
+            backgroundColor: "blanchedalmond",
           }}
           key={episode.id}
         >
           <img
             src={episode.image.medium}
-            style={{ borderRadius: "2%", height: "35vh" }}
+            style={{ borderRadius: "5%", height: "35vh", padding: "10px" }}
           />
           <h5
-            style={{ color: "white", fontSize: "20px", fontFamily: "Caveat" }}
+            style={{
+              color: "darkgrey",
+              fontSize: "20px",
+              fontFamily: "Caveat",
+            }}
           >
             {episode.name}
           </h5>
@@ -55,7 +58,11 @@ export function EpisodeList(props: any): Array<JSX.Element> {
               : "Unfaved - Click to make Fave"}
           </button>
           <h6
-            style={{ color: "white", fontSize: "15px", fontFamily: "Caveat" }}
+            style={{
+              color: "darkgrey",
+              fontSize: "15px",
+              fontFamily: "Caveat",
+            }}
           >
             Season{episode.season} Episode{episode.number}
             <hr></hr>

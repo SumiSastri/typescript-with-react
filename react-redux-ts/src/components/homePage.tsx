@@ -27,6 +27,8 @@ export default function HomePage() {
         margin: "5px",
         padding: "5px",
         display: "flex",
+        justifyContent: "space-between",
+        position: "sticky",
         backgroundColor: "blanchedAlmond",
       }}
     >
