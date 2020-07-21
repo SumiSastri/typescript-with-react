@@ -4,7 +4,7 @@ This is the last section which adds another layer of complexity to my understand
 
 #### Table of Contents
 
-<img src="/react-redux-ts/src/assets/app-image.png" alt="Rick & Morty App" width="350" height="350"/>
+<img src="/react-redux-ts/src/assets/app-image.png" alt="Rick & Morty App" height="350"/>
 
 1. [Scaffolding](#Scaffolding-with-babel-and-webpack)
 2. [Brief Intro to React Hooks](#Brief-intro-to-React-Hooks)
