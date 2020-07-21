@@ -210,7 +210,9 @@ This section is well explained by CodeEvolution from @25:00 mins in the YouTube 
 
 ## Section 2 Advanced Types or Reference Types
 
-Documentation: [https://www.typescriptlang.org/docs/handbook/advanced-types.html][back to table of contents] (#Table-of-Contents)
+Documentation: [https://www.typescriptlang.org/docs/handbook/advanced-types.html]
+
+- [GOTO Table of Contents](#Table-of-Contents)]
 
 Other than primitive types that are passed by value, everything else in JavaScript is an object and are called reference types as their value is passed by reference.
 
@@ -559,7 +561,9 @@ getNumbers(1,2,3,4)
 ## Section 3 Classes and Constructors
 
 Tutorial:
-[https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV][back to table of contents] (#Table-of-Contents)
+[https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV]
+
+- [GOTO Table of Contents](#Table-of-Contents)]
 
 #### Classes
 
