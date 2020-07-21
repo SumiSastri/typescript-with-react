@@ -1,6 +1,6 @@
 # TypeScript-React-ReactHooks
 
-<img src="./to-do-list-ts/src/assets/app-screenshot.png" alt="To-do App with TS & Hooks" height="350"/>
+<img src="/to-do-list-ts/src/assets/app-screenshot.png" alt="To-do App with TS & Hooks" height="350"/>
 
 This section takes the documentation of TypeScript and applies it to a JavaScript library - React and uses React Hooks. The `useState` hook is used and outlines how type-guards with TypeScript interfaces are used with React. The learning objective in this section is to apply the knowledge of TypeScript, JavaScript, to React & Hooks with a classic "To-do-list".
 
