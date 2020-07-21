@@ -2,15 +2,15 @@
 
 This section covers the fundamentals of TypeScript using node as a compiler and working through the TypeScript documentation with examples of how to use TypeScript with vanilla JavaScript.
 
-1. [Scaffolding and file structure](#Scaffolding-and-file-structure)
+1. [Scaffolding and file structure](#Scaffolding-&-File-structure)
 2. [Compiling TypeScript to JavaScript](#Compiling-TS-to-JS)
-3. [Node terminal commands for TypeScript & JavaScript](#Node-terrminal-commands-for-TS-&-JS)
+3. [Node terminal commands for TypeScript & JavaScript](#Node-terminal-commands-for-TS-&-JS)
 
-I [SECTION 1](#Section-1:-Basic-Concepts-&-Types)
-II [SECTION 2](#Section-2:-Advanced-Types-or-Reference-Types)
-III [SECTION 3](#Section-3:-Classes-&-Constructors)
-IV [SECTION 4](#Section-4:-Modules-&-Namespaces)
-V [SECTION 5](#Section-5:-Libraries-&-Type-Definitions)
+- [SECTION 1](#Section-1:-Basic-Concepts-&-Types)
+- [SECTION 2](#Section-2:-Advanced-Types-or-Reference-Types)
+- [SECTION 3](#Section-3:-Classes-&-Constructors)
+- [SECTION 4](#Section-4:-Modules-&-Namespaces)
+- [SECTION 5](#Section-5:-Libraries-&-Type-Definitions)
 
 [RESOURCES](#RESOURCES)
 
@@ -22,7 +22,7 @@ V [SECTION 5](#Section-5:-Libraries-&-Type-Definitions)
 `rm -rf node_modules && npm install` recursively remove node and reinstall in case you make a mistake
 Uninstalling packages documentation[https://docs.npmjs.com/cli/uninstall]
 
-##### Compiling/ Transpiling TS to JS
+##### Compiling TS to JS
 
 Create a variable in the `.ts` file `app.ts`
 
@@ -76,7 +76,7 @@ If you want to see this on the front end, create a html file and import the scri
 </html>
 ```
 
-##### Node terrminal commands for TS & JS
+##### Node terminal commands for TS & JS
 
 - tsc filename - this runs the tsc (TypeScript compiler) on the `.ts` file and compiles it to JavaScript
 - node filename - The terminal console should print your message as the node environment is set up
