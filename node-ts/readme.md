@@ -4,14 +4,13 @@ This section covers the fundamentals of TypeScript using node as a compiler and 
 
 1. [Scaffolding and file structure](#Scaffolding-and-File-Structure)
 2. [Compiling TypeScript to JavaScript](#Compiling-TS-to-JS)
-3. [Node terminal commands for TypeScript & JavaScript](#Node-terminal-commands-for-TS-&-JS)
+3. [Node terminal commands for TypeScript and JavaScript](#Node-terminal-commands-for-TS-&-JS)
 
 **[SECTION 1](#Section-1:-Basic-Concepts-and-Types)**
-
-- [SECTION 2](#Section-2:-Advanced-Types-or-Reference-Types)
-- [SECTION 3](#Section-3:-Classes-and-Constructors)
-- [SECTION 4](#Section-4:-Modules-and-Namespaces)
-- [SECTION 5](#Section-5:-Libraries-and-Type-Definitions)
+**[SECTION 2](#Section-2:-Advanced-Types-or-Reference-Types)**
+**[SECTION 3](#Section-3:-Classes-and-Constructors)**
+**[SECTION 4](#Section-4:-Modules-and-Namespaces)**
+**[SECTION 5](#Section-5:-Libraries-and-Type-Definitions)**
 
 [RESOURCES](#RESOURCES)
 
@@ -553,7 +552,7 @@ function getNumbers(...nums: number[]){
 getNumbers(1,2,3,4)
 ```
 
-## Section-3: Classes & Constructors
+## Section-3: Classes and Constructors
 
 [https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV]
 
@@ -734,7 +733,7 @@ interface IStudent extends IPerson{
 export {IPerson, IPersonJuniorSchool as TeacherJrSchool, IStudent}
 ```
 
-## Section-4: Modules & Namespaces
+## Section-4: Modules and Namespaces
 
 Modules are executed in their own scope. To share code from one module to another, a module loader is required. Files are then exported from one module and can be used any any module that imports the exported module.
 
