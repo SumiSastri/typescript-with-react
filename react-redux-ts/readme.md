@@ -242,8 +242,8 @@ useEffect(() => {
 - Add lazy loading using `suspense` hook - read work around to fix bugs [https://github.com/facebook/react/issues/14603]
   This is the solution I used that worked:-
 
-![Ricky and Morty app](/react-redux-ts/src/assets/data-in-favourites-console.png =100X100)
-<img src="./react-redux-ts/src/assets/data-in-favourites-console.png" alt="Rick & Morty App" width="100" height="100"/>
+![Ricky and Morty app](/react-redux-ts/src/assets/data-in-favourites-console.png)
+<img src="/react-redux-ts/src/assets/data-in-favourites-console.png" alt="Rick & Morty App" width="100" height="100"/>
 
 ```
 const EpisodeList = lazy<any>(() =>
