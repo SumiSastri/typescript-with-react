@@ -272,7 +272,7 @@ Documentation also does not provide a type definition [https://reactjs.org/docs/
 ## Refactoring to add Redux
 
 - [Back to Table of Contents](#Table-of-Contents)]
-  <img src="/react-redux-ts/src/assets/raw-data-in-store.png" alt="Rick & Morty App" height="350"/>
+  <img src="/react-redux-ts/src/assets/raw-data-in-store.png" alt="Rick & Morty App" height="250"/>
 
 1. Refactor - EpisodeList Component - deconstruct the props to add store as below, I have added in-line styling at this stage - CSS can be done earlier with webpack/ create-react-app/ other CSS libraries. This project was focused on TypeScript and its use with React & React Hooks, therefore I did not spend much time trying to style this - it may be something to do once the app is working as a final refactor and clean up.
 
@@ -614,6 +614,8 @@ Changing folder structure and cleaning up imports due to changed structure
 ### Putting Redux into context and why I refactored the folder structure
 
 - [Back to Table of Contents](#Table-of-Contents)]
+
+I refactored the app folder structure based on the key elements of redux - separating the store from the actions and reducers. I also reordered the interfaces for the TypeScript classes from the components that used these interface types.
 
 ##### What is Redux
 
