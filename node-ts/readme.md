@@ -1,4 +1,6 @@
-# TypeScript Fundamentals - Table of Contents
+# TypeScript Fundamentals
+
+#### Table of Contents
 
 This section covers the fundamentals of TypeScript using node as a compiler and working through the TypeScript documentation with examples of how to use TypeScript with vanilla JavaScript.
 
@@ -9,7 +11,7 @@ This section covers the fundamentals of TypeScript using node as a compiler and 
 - [SECTION 1](#Section-1-Basic-Concepts-and-Types)
 - [SECTION 2](#Section-2-Advanced-Types-or-Reference-Types)
 - [SECTION 3](#Section-3-Classes-and-Constructors)
-- [SECTION 4](#Section-4-Modules and Namespaces)
+- [SECTION 4](#Section-4-Modules-and-Namespaces)
 - [SECTION 5](#Section-5-Libraries-and-Type-Definitions)
 
 [RESOURCES](#RESOURCES)
@@ -91,7 +93,7 @@ I found at this stage this video tutorial very good for the set-up and scaffoldi
 
 ## Section 1 Basic Concepts and Types
 
-Documentation: [https://www.typescriptlang.org/docs/handbook/basic-types.html]
+Documentation: [https://www.typescriptlang.org/docs/handbook/basic-types.html][back to table of contents] (#Table-of-Contents)
 
 Primitive types are passed by value. In this section we go through the basic concepts of TypeScript compilation into JavaScript with the primitive types.
 
@@ -206,7 +208,7 @@ This section is well explained by CodeEvolution from @25:00 mins in the YouTube 
 
 ## Section 2 Advanced Types or Reference Types
 
-Documentation: [https://www.typescriptlang.org/docs/handbook/advanced-types.html]
+Documentation: [https://www.typescriptlang.org/docs/handbook/advanced-types.html][back to table of contents] (#Table-of-Contents)
 
 Other than primitive types that are passed by value, everything else in JavaScript is an object and are called reference types as their value is passed by reference.
 
@@ -554,7 +556,8 @@ getNumbers(1,2,3,4)
 
 ## Section 3 Classes and Constructors
 
-[https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV]
+Tutorial:
+[https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV][back to table of contents] (#Table-of-Contents)
 
 #### Classes
 
@@ -735,6 +738,8 @@ export {IPerson, IPersonJuniorSchool as TeacherJrSchool, IStudent}
 
 ## Section 4 Modules and Namespaces
 
+[Back to Table of Contents](#Table-of-Contents)
+
 Modules are executed in their own scope. To share code from one module to another, a module loader is required. Files are then exported from one module and can be used any any module that imports the exported module.
 
 Module loaders are used to load multiple dependent modules from different locations of an app. They are fast and asynchronous and hasten application loading times defining methods in one module before the methods are called in an another module. The module loader compiles code in run-time and executes the code blocks that are exported and imported within the code base. Each has their own syntax, the default is `common.js` but `require.js` is also used - checking documentation for syntax is useful if you are using different module loaders.
@@ -780,6 +785,8 @@ let feesPayed = studentPayments.calculateFees(4, 2000)
 
 ## Section 5 Libraries and Type Definitions
 
+[Back to Table of Contents](#Table-of-Contents)
+
 Type definitions are used when there are JavaScript libraries or a host APIs. Each library has it's own type definitions and to get these definitions, they are in `.d.ts` files.
 
 You need to add this to the scaffolding - `npm install tsd -g` (globally in the project) plus the library required. For React we will run through the detail in the `/react-ts` folder.
@@ -790,6 +797,8 @@ Libraries and type definitions [https://www.npmjs.com/~types]
 eg. `@types/react` for react or the Microsoft search [https://microsoft.github.io/TypeSearch/]
 
 ## RESOURCES
+
+[Back to Table of Contents](#Table-of-Contents)
 
 The content of this readme relies on all the tutorials listed in this section. The best TypeScript Tutorial
 [https://www.tutorialspoint.com/typescript/]. Highlights from the rest are:-
@@ -821,3 +830,5 @@ I found it useful to watch chunks of the tutorials where I got stuck and embed k
 * Simply Explained: (Savjee)
   TypeScript [https://www.youtube.com/playlist?list=PLzvRQMJ9HDiQyjtcrtvDkeQMJIrv5ABbm]
 * Awais Jamil-Mirza (2.5 hours edited version of the Udemy Free Course) [https://www.youtube.com/watch?v=I-dml1IDyBc]
+
+[Back to Table of Contents](#Table-of-Contents)
