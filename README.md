@@ -1,8 +1,12 @@
+# Table of Contents
+
+[Project goals](#Project-goals)
+
 #### Project goals
 
-This project is one in a series of tutorials where I explore the documentation of JavaScript and JavaScript libraries/ frameworks as an aide-de-memoire.
+This project is one in a series of tutorials where I explore the documentation of TypeScript with JavaScript.
 
-The learning objective in this project is to understand how to use TypeScript in projects using vanilla JavaScript, the front-end library React.js and modern React with Hooks.
+The learning objective of this project is to understand how to use TypeScript in projects using vanilla JavaScript, the front-end library React.js and modern React with Hooks.
 
 There are 3 folders in this project - each section adds a level of complexity to the learning process.
 [TypeScript and vanilla Js](/Users/ssbt/Documents/GitHub/Typescript-with-React/node-ts)
