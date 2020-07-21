@@ -4,9 +4,11 @@ This is the last section which adds another layer of complexity with React, Reac
 
 #### Table of Contents
 
-![Ricky and Morty app](/react-redux-ts/src/assets/app-screenshot.png =100x100)
+![Ricky and Morty app](/react-redux-ts/src/assets/data-in-favourites-console.png =100x100)
 
-1. (#Scaffolding-with-babel-and-webpack)
+1. [Scaffolding](#Scaffolding-with-babel-and-webpack)
+2. [Brief Intro to React Hooks and initial set up](#Brief-introduction-to-React-Hooks)
+3. [Refactoring to add Redux](#REFACTORING-FOR-REDUX)
 
 ##### Scaffolding with babel and webpack
 
@@ -159,9 +161,13 @@ I have mainly outlined how to add TypeScript to code rather than how React-Redux
 I found Andrew Flowers' solution the simplest for how to use async-await
 [https://andrew-flower.com/blog/Async-Await-with-React]
 Read more about incompability issues of async-await with node/ babel older versions and the solutions
-[https://github.com/babel/babel/issues/8829][https://blog.cloudboost.io/using-async-await-with-react-b807f9d7b64a]
-[https://medium.com/@binyamin/enabling-async-await-and-generator-functions-in-babel-node-and-express-71e941b183e2][https://dev.to/codeprototype/modernize-your-reactjs-application-with-asyncawait-in-2018-1l9j]
-[https://gist.github.com/thejmazz/067295d9fb8b22c77be0][https://www.smashingmagazine.com/2020/05/typescript-modern-react-projects-webpack-babel/]
+
+- https://github.com/babel/babel/issues/8829]
+- [https://blog.cloudboost.io/using-async-await-with-react-b807f9d7b64a]
+- [https://medium.com/@binyamin/enabling-async-await-and-generator-functions-in-babel-node-and-express-71e941b183e2]
+- [https://dev.to/codeprototype/modernize-your-reactjs-application-with-asyncawait-in-2018-1l9j]
+- [https://gist.github.com/thejmazz/067295d9fb8b22c77be0]
+- [https://www.smashingmagazine.com/2020/05/typescript-modern-react-projects-webpack-babel/]
 
 - Test whether the configuration has worked and renders a React component. In the `index.tsx` file create the React boiler place using `rcf` and tab to create a functional component, import the ReactDOM to render the root files as HTML. Write a jsx 'hello world'in a h1 element. Let's test the Typescript works by calling giving the function the `JSX.Element` type. Write a function with typescript and render it in a h2 element. See if the CSS works - it did not for me so I aborted and used in-line CSS as the objective of this project is to use TypeScript with React & learn how React Hooks, React-Redux work with TypeScript.
 
@@ -188,7 +194,7 @@ ReactDOM.render(<App />, root)
 
 - Run scripts to check if app works with `npm run start` the h1 & h2 jsx tags should render correctly on port 5000.
 
-##### React-Hooks
+##### Brief introduction to React Hooks
 
 React Hooks was introduced in React version 16.8 and upwards and allows you to use state and other React features without writing a class. You will now find running `create-react-app` compiles and has no stateful components in the main `app.js`. It is backwards compatible with previous versions with no breaking changes.
 
@@ -206,7 +212,7 @@ Using State as a hook sets state to an array. `const [value, setValue] = useStat
 
 This is a deconstruction of the array where a value is set, `setValue` as you will see in the debugger is a function.
 
-**Initial Set-Up of app functionality**
+## HOOKS AND API CALLS - INITIAL SET UP
 
 - App.tsx - Create hello-world test - `use Fragment` and `useContext` hooks
 - Set up store with reducers - `useReducer` hook import into App check functionality
@@ -242,8 +248,6 @@ useEffect(() => {
 - Add lazy loading using `suspense` hook - read work around to fix bugs [https://github.com/facebook/react/issues/14603]
   This is the solution I used that worked:-
 
-![Ricky and Morty app](/react-redux-ts/src/assets/data-in-favourites-console.png)
-
 ```
 const EpisodeList = lazy<any>(() =>
   import('./EpisodeList').then(module => ({ default: module.EpisodeList }))
@@ -254,7 +258,7 @@ More reading about `React.lazy()` [https://blog.bitsrc.io/lazy-loading-react-com
 No real type for the method see [https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30129]
 Documentation also does not provide a type definition [https://reactjs.org/docs/code-splitting.html]
 
-**Refactoring and adding new Components**
+## REFACTORING FOR REDUX
 
 1. Refactor - EpisodeList Component - deconstruct the props to add store as below, I have added in-line styling at this stage - CSS can be done earlier with webpack/ create-react-app/ other CSS libraries. This project was focused on TypeScript and its use with React & React Hooks, therefore I did not spend much time trying to style this - it may be something to do once the app is working as a final refactor and clean up.
 
