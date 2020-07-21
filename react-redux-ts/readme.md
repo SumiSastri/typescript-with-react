@@ -1,20 +1,23 @@
 # React-Redux-TypeScript
 
+<img src="/react-redux-ts/src/assets/app-image.png" alt="Rick & Morty App" height="350"/>
+
 This is the last section which adds another layer of complexity to my understanding of TypeScript. In addition to using React and React-Hooks, I have added Redux and an external API-call to see how all the moving parts work with TypeScript. I also wanted to revise how to scaffold the project with webpack and babel as I have been using the create-react-app for several side projects.
 
 #### Table of Contents
 
-<img src="/react-redux-ts/src/assets/app-image.png" alt="Rick & Morty App" height="350"/>
-
 1. [Scaffolding](#Scaffolding-with-babel-and-webpack)
 2. [Brief Intro to React Hooks](#Brief-intro-to-React-Hooks)
-3. [Refactoring to add Redux](#Refactoring-to-add-Redux)
-4. [React Reach Router](#React-Reach-Router)
-5. [Final Refactor folder structure and files based on Redux flows](Putting-Redux-into context-and-why-I-refactored-the-folder-structure.)
+3. [Use Effect Hook with an API Call](#Use-Effect-Hook-with-an-API-call)
+4. [Refactoring to add Redux](#Refactoring-to-add-Redux)
+5. [React Reach Router](#React-Reach-Router)
+6. [Final Refactor folder structure and files based on Redux flows](#Putting-Redux-into-context-and-why-I-refactored-the-folder-structure)
 
 ## Scaffolding with babel and webpack
 
 Babel documentation: [https://babeljs.io/docs/en]
+
+- [Back to Table of Contents](#Table-of-Contents)]
 
 - mkdir - new directory for the project `react-redux-ts`
 - initialise with node package manager - `npm init - y` (the -y flags skips answering the default set up)
@@ -198,6 +201,8 @@ ReactDOM.render(<App />, root)
 
 ## Brief intro to React Hooks
 
+- [Back to Table of Contents](#Table-of-Contents)]
+
 React Hooks was introduced in React version 16.8 and upwards and allows you to use state and other React features without writing a class. You will now find running `create-react-app` compiles and has no stateful components in the main `app.js`. It is backwards compatible with previous versions with no breaking changes.
 
 Documentation [https://reactjs.org/docs/hooks-intro.html] There is a 1 hour video that may not be worth watching at this stage. A lot of the video is summarized in the documentation. Worth watching it a few times after you have used Hooks in a project.
@@ -214,11 +219,15 @@ Using State as a hook sets state to an array. `const [value, setValue] = useStat
 
 This is a deconstruction of the array where a value is set, `setValue` as you will see in the debugger is a function.
 
-## USE EFFECT HOOK WITH API CALL
+## Use Effect Hook with an API call
+
+- [Back to Table of Contents](#Table-of-Contents)]
 
 - App.tsx - Create hello-world test - `use Fragment` and `useContext` hooks
 - Set up store with reducers - `useReducer` hook import into App check functionality
 - Fetch data using async await - `useEffect` hook - check data flows
+
+<img src="/react-redux-ts/src/assets/data-in-favourites.png" alt="Rick & Morty App" height="350"/>
 
 ```
 useEffect(() => {
@@ -262,7 +271,12 @@ Documentation also does not provide a type definition [https://reactjs.org/docs/
 
 ## Refactoring to add Redux
 
+- [Back to Table of Contents](#Table-of-Contents)]
+  <img src="/react-redux-ts/src/assets/raw-data-in-store.png" alt="Rick & Morty App" height="350"/>
+
 1. Refactor - EpisodeList Component - deconstruct the props to add store as below, I have added in-line styling at this stage - CSS can be done earlier with webpack/ create-react-app/ other CSS libraries. This project was focused on TypeScript and its use with React & React Hooks, therefore I did not spend much time trying to style this - it may be something to do once the app is working as a final refactor and clean up.
+
+react-redux-ts/src/assets/data-in-favourites-console.png
 
 ```
 import React, { Component } from "react";
@@ -501,6 +515,8 @@ export function reducer(state: IState, action: IAction) {
 
 ## React Reach Router
 
+- [Back to Table of Contents](#Table-of-Contents)]
+
 - Set up router and paths: Your `index.tsx` file should look like this - add the types for the router or else the app will break/ not compile as the root file is a TypeScript root file.
 
 ```
@@ -595,7 +611,9 @@ Changing folder structure and cleaning up imports due to changed structure
 
 --store (separates out reducers from store and imports them back into`store.tsx`)
 
-### Putting Redux into context and why I refactored the folder structure.
+### Putting Redux into context and why I refactored the folder structure
+
+- [Back to Table of Contents](#Table-of-Contents)]
 
 ##### What is Redux
 
