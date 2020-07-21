@@ -93,7 +93,9 @@ I found at this stage this video tutorial very good for the set-up and scaffoldi
 
 ## Section 1 Basic Concepts and Types
 
-Documentation: [https://www.typescriptlang.org/docs/handbook/basic-types.html][back to table of contents] (#Table-of-Contents)
+Documentation: [https://www.typescriptlang.org/docs/handbook/basic-types.html]
+
+- [GOTO Table of Contents](#Table-of-Contents)]
 
 Primitive types are passed by value. In this section we go through the basic concepts of TypeScript compilation into JavaScript with the primitive types.
 
@@ -831,4 +833,4 @@ I found it useful to watch chunks of the tutorials where I got stuck and embed k
   TypeScript [https://www.youtube.com/playlist?list=PLzvRQMJ9HDiQyjtcrtvDkeQMJIrv5ABbm]
 * Awais Jamil-Mirza (2.5 hours edited version of the Udemy Free Course) [https://www.youtube.com/watch?v=I-dml1IDyBc]
 
-[Back to Table of Contents](#Table-of-Contents)
+- [GOTO Table of Contents](#Table-of-Contents)]
