@@ -1,8 +1,11 @@
 # Table of Contents
 
-[Project goals](#Project-goals)
-[Folder structure](#Folder-structure)
-[Project-access](#Project-access)
+1. [Project goals](#Project-goals)
+2. [Folder structure](#Folder-structure)
+3. [Project access](#Project-access)
+4. [A brief history of JavaScript](#Brief-History-of-JavaScript)
+   [TypeScript Overview](#TypeScript-overview)
+   [Resources](#Resources)
 
 #### Project goals
 
@@ -15,27 +18,25 @@ The learning objective of this project is to understand how to use TypeScript in
 There are 3 folders in this project - each section adds a level of complexity to the learning process.
 
 1. Typescript & Vanilla Js
+   [TypeScript and vanilla Js](https://github.com/SumiSastri/Typescript-with-React/tree/master/node-ts)
 
-2. TypeScript & React-ReactHooks
+2. [TypeScript & React](https://github.com/SumiSastri/Typescript-with-React/tree/master/to-do-list-ts)
 
-3.TypeScript & React-ReactRedux
-[TypeScript and vanilla Js](Typescript-with-React/tree/master/node-ts)
-[TypeScript and React-ReactHooks](/Users/ssbt/Documents/GitHub/Typescript-with-React/react-redux-ts)
-[TypeScript & React-ReactHooks](/Users/ssbt/Documents/GitHub/Typescript-with-React/to-do-list-ts)
+3.[TypeScript & React-ReactRedux](https://github.com/SumiSastri/Typescript-with-React/tree/master/react-redux-ts)
 
 Each folder has its own readme to document what I have learnt and to serve as a place to go back to and review code snippets for future use. It is my simplification of the documentation I have read, research from blogs and following some tutorials for specific areas that I found difficult to understand.
 
-## Project access
+#### Project access
 
-#### Install dependencies
+**Install dependencies**
 
 npm install
 
-#### Run React apps
+**Run React apps**
 
 npm run start
 
-#### Run logs with vanilla JS
+**Run logs with vanilla JS files**
 
 node filepath/filename
 
