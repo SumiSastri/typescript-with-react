@@ -77,7 +77,7 @@ export default App;
 
 The debugger should show state as a function - drill down into the function to see how the compiler shortens the function and prototype inheritance. The documentation for hooks for this step [https://reactjs.org/docs/hooks-overview.html] More of how Hooks works in the main section of this project.
 
-![The console check should show state as a function](/to-do-list-ts/src/assets/debugger-stateHook.png?raw=true "use-state logged")
+<img src="/to-do-list-ts/src/assets/debugger-stateHook.png" alt="To-do App with TS & Hooks" height="250"/>
 
 Test this by logging the function `setValue` before and after you call the function, the app will break as the test runs infinitely but you will be able to see the function call. Clear this function after you have tested it to see how hooks works by deconstructing the array where the first variable is the value and the second is the function.
 
@@ -199,11 +199,11 @@ By logging the value we are passing `const [toDos, setTodos] = useState<ITo_do[]
 
 To check that the input field is working as we type a new letter of the alphabet the component will render with the change and you will see several empty arrays formed.
 
-<img src="./to-do-list-ts/src/assets/text-input-working.png" alt="To-do App with TS & Hooks" height="250"/>
+<img src="/to-do-list-ts/src/assets/text-input-working.png" alt="To-do App with TS & Hooks" height="250"/>
 
 To check that the `onSubmit` event handler has fired, you should get your first input in the console.
 
-<img src="./to-do-list-ts/src/assets/on-submit-working.png" alt="To-do App with TS & Hooks" height="250"/>
+<img src="/to-do-list-ts/src/assets/on-submit-working.png" alt="To-do App with TS & Hooks" height="250"/>
 
 We now want to map through the ToDos array, match the index to the element - here the element is each to-do which is an object with the text and boolean in the key-value pairs. We only want to render the text which we access from the element with dot-notation as the element is an object.
 
@@ -222,7 +222,7 @@ The to-dos are an array, whose type we have outlined in the interface declaratio
         </section>
 ```
 
-![Render List Working](./to-do-list-ts/src/assets/map-and-render-list.png =250x250)
+<img src="/to-do-list-ts/src/assets/map-and-render-list.png" alt="To-do App with TS & Hooks" height="250"/>
 
 ##### Conditional Rendering
 
