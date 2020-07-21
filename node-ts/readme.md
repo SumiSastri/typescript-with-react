@@ -2,11 +2,12 @@
 
 This section covers the fundamentals of TypeScript using node as a compiler and working through the TypeScript documentation with examples of how to use TypeScript with vanilla JavaScript.
 
-1. [Scaffolding and file structure](#Scaffolding-&-File-Structure)
+1. [Scaffolding and file structure](#Scaffolding-and-File-Structure)
 2. [Compiling TypeScript to JavaScript](#Compiling-TS-to-JS)
 3. [Node terminal commands for TypeScript & JavaScript](#Node-terminal-commands-for-TS-&-JS)
 
-- [SECTION 1](#Section-1:-Basic-Concepts-and-Types)
+**[SECTION 1](#Section-1:-Basic-Concepts-and-Types)**
+
 - [SECTION 2](#Section-2:-Advanced-Types-or-Reference-Types)
 - [SECTION 3](#Section-3:-Classes-and-Constructors)
 - [SECTION 4](#Section-4:-Modules-and-Namespaces)
