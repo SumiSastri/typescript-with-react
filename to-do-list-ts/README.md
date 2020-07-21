@@ -1,6 +1,6 @@
 # TypeScript-React-ReactHooks
 
-![To-Do-List with TypeScript & React Hooks](./to-do-list-ts/src/assets/app-screenshot.png = 250x250)
+<img src="./to-do-list-ts/src/assets/app-screenshot.png" alt="To-do App with TS & Hooks" height="350"/>
 
 This section takes the documentation of TypeScript and applies it to a JavaScript library - React and uses React Hooks. The `useState` hook is used and outlines how type-guards with TypeScript interfaces are used with React. The learning objective in this section is to apply the knowledge of TypeScript, JavaScript, to React & Hooks with a classic "To-do-list".
 
@@ -104,7 +104,7 @@ You can now pass the value of the `useState` hook to the form as a value.
 
 - [Back to Table of Contents](#Table-of-Contents)]
 
-- To handle the event submit, you can now proceed to write your `handleSubmit` function and pass it to the form jsx element to trigger the submit action.
+* To handle the event submit, you can now proceed to write your `handleSubmit` function and pass it to the form jsx element to trigger the submit action.
 
 However, because we are writing React with TypeScript, it is important to know the exact type of event this is and how it is notated in TypeScript.
 
@@ -198,11 +198,12 @@ Refactoring the declaration of the event type can make the `handleSubmit` functi
 By logging the value we are passing `const [toDos, setTodos] = useState<ITo_do[]>([]);` to the `useState` hook, we can check in the console if the function works as intended.
 
 To check that the input field is working as we type a new letter of the alphabet the component will render with the change and you will see several empty arrays formed.
-![Empty Arrays With Input Field](/to-do-list-ts/src/assets/text-input-working.png)
+
+<img src="./to-do-list-ts/src/assets/text-input-working.png" alt="To-do App with TS & Hooks" height="250"/>
 
 To check that the `onSubmit` event handler has fired, you should get your first input in the console.
 
-![OnSubmit firing](/to-do-list-ts/src/assets/on-submit-working.png)
+<img src="./to-do-list-ts/src/assets/on-submit-working.png" alt="To-do App with TS & Hooks" height="250"/>
 
 We now want to map through the ToDos array, match the index to the element - here the element is each to-do which is an object with the text and boolean in the key-value pairs. We only want to render the text which we access from the element with dot-notation as the element is an object.
 
