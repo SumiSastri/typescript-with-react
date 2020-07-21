@@ -15,12 +15,11 @@ This project is one in a series of tutorials following documentation. In this pr
 
 There are 3 folders in this project - each section adds a level of complexity to the learning process.
 
-1. Typescript & Vanilla Js
-   [TypeScript and vanilla Js](https://github.com/SumiSastri/Typescript-with-React/tree/master/node-ts)
+1. [TypeScript Fundamentals - with vanilla JS](https://github.com/SumiSastri/Typescript-with-React/tree/master/node-ts)
 
-2. [TypeScript & React](https://github.com/SumiSastri/Typescript-with-React/tree/master/to-do-list-ts)
+2. [TypeScript and React](https://github.com/SumiSastri/Typescript-with-React/tree/master/to-do-list-ts)
 
-3. [TypeScript & React-ReactRedux](https://github.com/SumiSastri/Typescript-with-React/tree/master/react-redux-ts)
+3. [TypeScript and React-ReactRedux](https://github.com/SumiSastri/Typescript-with-React/tree/master/react-redux-ts)
 
 Each folder has its own readme to document what I have learnt and to serve as a place to go back to and review code snippets for future use. It is my simplification of the documentation I have read, research from blogs and following some tutorials for specific areas that I found difficult to understand.
 

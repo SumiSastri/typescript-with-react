@@ -1,26 +1,20 @@
 # React-Redux-TypeScript
 
-![Ricky and Morty app](/react-redux-ts/src/assets/app-screenshot.png)
-**A free Udemy tutorial by Richard Oliver Bray**
+This is the last section which adds another layer of complexity with React, React-Hooks & Redux with an external API. I also wanted to revise how to scaffold the project with webpack and babel as I have been using the create-react-app for several side projects.
 
-The learning objective in this section is to add one more level of complexity to a project adding React-Redux and an external API. I also wanted to revise how to scaffold the project with webpack and babel as I have been using the create-react-app for several side projects.
+#### Table of Contents
 
-Challenges - I was unable to configure CSS with webpack and babel so used in-line CSS and followed Richard Oliver Bray's tutorial to embedd the knowledge from TypeScript documentation.
+![Ricky and Morty app](/react-redux-ts/src/assets/app-screenshot.png =100x100)
 
-While I followed the tutorial to some extent, I found the folder structure and some of the code could be refactored so I have changed some of the code and the file structure. The tutorial also uses an older version of Babel (updated project from Babel@6 to @7 ), so I had to update packages and modify some of the code as it was not backwards compatible.
+1. (#Scaffolding-with-babel-and-webpack)
 
-I have mainly outlined how to add TypeScript to code rather than how React-Redux works, there is a brief overview to put the project into context at the end of the project refactoring section.
-
-##### Scaffolding & File Structure - building from scratch with webpack and babel
+##### Scaffolding with babel and webpack
 
 Babel documentation: [https://babeljs.io/docs/en]
 
 - mkdir - new directory for the project `react-redux-ts`
 - initialise with node package manager - `npm init - y` (the -y flags skips answering the default set up)
-
-* check you have the latest version of node [https://appdividend.com/2019/12/06/how-to-update-node-version-in-mac/]
-  `npm install -g n` and `sudo n latest` in admin mode
-
+- check you have the latest version of node [https://appdividend.com/2019/12/06/how-to-update-node-version-in-mac/] then install node in the project - `npm install -g n` and `sudo n latest` in admin mode
 - check your package json file has been set up
 - cd into the directory / touch - create root file & config files for transpiling files into js `index.html webpack.config.js .babelrc`
 - mkdir - `src` - base file that is used to render apps cd into directory and create file
@@ -146,14 +140,21 @@ module.exports = {
 
 - We are now ready to import the libraries and plugins required for the react-app
 
-* to uninstall documentation - [https://docs.npmjs.com/cli/uninstall]in case you need to update Babel@6 to @7 or install the files in the wrong directory.
+- to uninstall documentation - [https://docs.npmjs.com/cli/uninstall]in case you need to update Babel@6 to @7 or install the files in the wrong directory.
 
-* webpack - `npm i webpack webpack-dev-server webpack-cli html-webpack-plugin`
-* babel - `npm i @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript babel-loader`
-* react - `npm i react react-dom @types/react @types/react-dom`
-* to use async-await `npm install @babel/plugin-transform-runtime @babel/runtime`
-* adding css - `npm install css-loader style-loader --save-dev`
-* adding routing - `npm install @reach/router @types/reach__router`
+- webpack - `npm i webpack webpack-dev-server webpack-cli html-webpack-plugin`
+- babel - `npm i @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript babel-loader`
+- react - `npm i react react-dom @types/react @types/react-dom`
+- to use async-await `npm install @babel/plugin-transform-runtime @babel/runtime`
+- adding css - `npm install css-loader style-loader --save-dev`
+- adding routing - `npm install @reach/router @types/reach__router`
+
+**Note**
+Challenges - I was unable to configure CSS with webpack and babel so used in-line CSS and followed Richard Oliver Bray's tutorial to embedd the knowledge from TypeScript documentation.
+
+While I followed the tutorial to some extent, I found the folder structure and some of the code could be refactored so I have changed some of the code and the file structure. The tutorial also uses an older version of Babel (updated project from Babel@6 to @7 ), so I had to update packages and modify some of the code as it was not backwards compatible.
+
+I have mainly outlined how to add TypeScript to code rather than how React-Redux works, there is a brief overview to put the project into context at the end of the project refactoring section.
 
 I found Andrew Flowers' solution the simplest for how to use async-await
 [https://andrew-flower.com/blog/Async-Await-with-React]
@@ -187,7 +188,7 @@ ReactDOM.render(<App />, root)
 
 - Run scripts to check if app works with `npm run start` the h1 & h2 jsx tags should render correctly on port 5000.
 
-##### Rick & Morty episode picker project
+##### React-Hooks
 
 React Hooks was introduced in React version 16.8 and upwards and allows you to use state and other React features without writing a class. You will now find running `create-react-app` compiles and has no stateful components in the main `app.js`. It is backwards compatible with previous versions with no breaking changes.
 
@@ -241,7 +242,7 @@ useEffect(() => {
 - Add lazy loading using `suspense` hook - read work around to fix bugs [https://github.com/facebook/react/issues/14603]
   This is the solution I used that worked:-
 
-![Ricky and Morty app](/react-redux-ts/src/assets/data-in-favourites-console.png)
+![Ricky and Morty app](/react-redux-ts/src/assets/data-in-favourites-console.png =100X100)
 
 ```
 const EpisodeList = lazy<any>(() =>
