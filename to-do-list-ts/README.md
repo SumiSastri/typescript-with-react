@@ -1,6 +1,6 @@
 # TypeScript-React-ReactHooks
 
-![To-Do-List with TypeScript & React Hooks](/to-do-list-ts/src/assets/app-screenshot.png = 250x250)
+![To-Do-List with TypeScript & React Hooks](./to-do-list-ts/src/assets/app-screenshot.png = 250x250)
 
 This section takes the documentation of TypeScript and applies it to a JavaScript library - React and uses React Hooks. The `useState` hook is used and outlines how type-guards with TypeScript interfaces are used with React. The learning objective in this section is to apply the knowledge of TypeScript, JavaScript, to React & Hooks with a classic "To-do-list".
 
@@ -221,7 +221,7 @@ The to-dos are an array, whose type we have outlined in the interface declaratio
         </section>
 ```
 
-![Render List Working](/to-do-list-ts/src/assets/map-and-render-list.png)
+![Render List Working](./to-do-list-ts/src/assets/map-and-render-list.png =250x250)
 
 ##### Conditional Rendering
 
