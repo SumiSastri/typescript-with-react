@@ -6,11 +6,11 @@ This section covers the fundamentals of TypeScript using node as a compiler and 
 2. [Compiling TypeScript to JavaScript](#Compiling-TS-to-JS)
 3. [Node terminal commands for TypeScript and JavaScript](#Node-terminal-commands-for-TS-and-JS)
 
-[SECTION 1](#Section-1:-Basic-Concepts-and-Types)
-[SECTION 2](#Section-2:-Advanced-Types-or-Reference-Types)
-[SECTION 3](#Section-3:-Classes-and-Constructors)
-[SECTION 4](#Section-4:-Modules-and-Namespaces)
-[SECTION 5](#Section-5:-Libraries-and-Type-Definitions)
+[SECTION 1](#Section-1-Basic-Concepts-and-Types)
+[SECTION 2](#Section-2-Advanced-Types-or-Reference-Types)
+[SECTION 3](#Section-3-Classes-and-Constructors)
+[SECTION 4](#Section IV: Modules and Namespaces)
+[SECTION 5](#Section-5-Libraries-and-Type-Definitions)
 
 [RESOURCES](#RESOURCES)
 
@@ -89,7 +89,7 @@ I found at this stage this video tutorial very good for the set-up and scaffoldi
 - CodeEvolution: (Vishwas)
   Learn TypeScript in 50 mins (Good examples and scaffolding of typescript with node) [https://www.youtube.com/watch?v=WBPrJSw7yQA]
 
-## Section 1: Basic Concepts and Types
+## Section 1 Basic Concepts and Types
 
 Documentation: [https://www.typescriptlang.org/docs/handbook/basic-types.html]
 
@@ -204,7 +204,7 @@ function warnUser(): void {
 
 This section is well explained by CodeEvolution from @25:00 mins in the YouTube tutorial [https://www.youtube.com/watch?v=WBPrJSw7yQA]
 
-## Section-2: Advanced Types or Reference Types
+## Section 2 Advanced Types or Reference Types
 
 Documentation: [https://www.typescriptlang.org/docs/handbook/advanced-types.html]
 
@@ -552,7 +552,7 @@ function getNumbers(...nums: number[]){
 getNumbers(1,2,3,4)
 ```
 
-## Section-3: Classes and Constructors
+## Section 3 Classes and Constructors
 
 [https://www.youtube.com/watch?v=n3zrCxB8sj8&list=PLC3y8-rFHvwhI0V5mE9Vu6Nm-nap8EcjV]
 
@@ -733,7 +733,7 @@ interface IStudent extends IPerson{
 export {IPerson, IPersonJuniorSchool as TeacherJrSchool, IStudent}
 ```
 
-## Section-4: Modules and Namespaces
+## Section IV: Modules and Namespaces
 
 Modules are executed in their own scope. To share code from one module to another, a module loader is required. Files are then exported from one module and can be used any any module that imports the exported module.
 
@@ -778,7 +778,7 @@ let feesPayed = studentPayments.calculateFees(4, 2000)
 
 - A note on the ts.config file - defines the complier being used - in this file you can see common.js is the compiler
 
-## Section-5: Libraries and Type Definitions
+## Section 5 Libraries and Type Definitions
 
 Type definitions are used when there are JavaScript libraries or a host APIs. Each library has it's own type definitions and to get these definitions, they are in `.d.ts` files.
 
