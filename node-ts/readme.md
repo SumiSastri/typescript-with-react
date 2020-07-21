@@ -15,7 +15,7 @@ This section covers the fundamentals of TypeScript using node as a compiler and 
 
 [RESOURCES](#RESOURCES)
 
-##### Scaffolding & File Structure
+##### Scaffolding and File Structure
 
 `npm install - g` - install node
 `npm install -g typescript` install TypeScript
@@ -77,7 +77,7 @@ If you want to see this on the front end, create a html file and import the scri
 </html>
 ```
 
-##### Node terminal commands for TS & JS
+##### Node terminal commands for TS and JS
 
 - tsc filename - this runs the tsc (TypeScript compiler) on the `.ts` file and compiles it to JavaScript
 - node filename - The terminal console should print your message as the node environment is set up
@@ -90,7 +90,7 @@ I found at this stage this video tutorial very good for the set-up and scaffoldi
 - CodeEvolution: (Vishwas)
   Learn TypeScript in 50 mins (Good examples and scaffolding of typescript with node) [https://www.youtube.com/watch?v=WBPrJSw7yQA]
 
-## Section 1: Basic Concepts & Types
+## Section 1: Basic Concepts and Types
 
 Documentation: [https://www.typescriptlang.org/docs/handbook/basic-types.html]
 
