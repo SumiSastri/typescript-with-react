@@ -1,8 +1,20 @@
-# To-do-list in React with Typescript
+# TypeScript-React-ReactHooks
 
-The learning objective in this section is to apply the knowledge of TypeScript, JavaScript, to React & Hooks with a classic "To-do-list".
+![To-Do-List with TypeScript & React Hooks](/to-do-list-ts/src/assets/app-screenshot.png = 250x250)
 
-##### Scaffolding & File Structure
+This section takes the documentation of TypeScript and applies it to a JavaScript library - React and uses React Hooks. The `useState` hook is used and outlines how type-guards with TypeScript interfaces are used with React. The learning objective in this section is to apply the knowledge of TypeScript, JavaScript, to React & Hooks with a classic "To-do-list".
+
+#### Table of Contents
+
+1. [Scaffolding](#Scaffolding)
+2. [Hooks a brief intro](#Hooks-a-brief-intro)
+3. [App initial setup](#App-initial-setup)
+4. [Event Handling](#Event-Handling)
+5. [Setting up Interfaces for Classes](#Setting-up-Interfaces-for-Classes)
+6. [Implementing Interfaces and rendering the list](#Implementing-Interfaces-and-rendering-the-list)
+7. [Conditional Rendering](#Conditional-Rendering)
+
+##### Scaffolding
 
 - Make sure you have node and npm, install create react app `npm install create-react-app`
 - cd into the project and create a new folder `npx create-react-app to-do-list-ts`
@@ -13,7 +25,9 @@ The learning objective in this section is to apply the knowledge of TypeScript, 
 - download React developer tools as browser extension to debug
 - Create to-do component with hooks and test adding a console.log and debugger to take a deep dive into the function called from `useState` hook
 
-##### React Hooks
+##### Hooks a brief intro
+
+- [Back to Table of Contents](#Table-of-Contents)]
 
 React Hooks was introduced in React version 16.8 and upwards and allows you to use state and other React features without writing a class. You will now find running `create-react-app` compiles and has no stateful components in the main `app.js`. It is backwards compatible with previous versions with no breaking changes.
 
@@ -31,7 +45,9 @@ Using State as a hook sets state to an array. `const [value, setValue] = useStat
 
 This is a deconstruction of the array where a value is set, `setValue` as you will see in the debugger is a function.
 
-##### To-Do-App initial set up
+##### App initial setup
+
+- [Back to Table of Contents](#Table-of-Contents)]
 
 - Once the app is up and running, by importing the Fragment and useState HOC's create the basic form and test. The code should look like this at this stage and your basic to-do input and submit button should render as indented when you runn `npm run start` and check port 3000.
 
@@ -86,6 +102,8 @@ You can now pass the value of the `useState` hook to the form as a value.
 
 ##### Event Handling
 
+- [Back to Table of Contents](#Table-of-Contents)]
+
 - To handle the event submit, you can now proceed to write your `handleSubmit` function and pass it to the form jsx element to trigger the submit action.
 
 However, because we are writing React with TypeScript, it is important to know the exact type of event this is and how it is notated in TypeScript.
@@ -132,6 +150,8 @@ export default App;
 
 ##### Setting up Interfaces for Classes
 
+- [Back to Table of Contents](#Table-of-Contents)]
+
 Now that we have the form and submit form event handler set up, we can change the value in the form and set up the TypeScript interface needed for the React Hook, `useState`.
 
 Under the hood, the hook calls a class-based componenet via an API and therefore the interface outlines the type contract between the class constructor and state.
@@ -149,7 +169,9 @@ State is the text of the to-do item and if it is done the flag of done to be tog
 
 ##### Implementing Interfaces and rendering the list
 
-To add a single to-do we write our factory-function. The new to-do will be passed by value to the `handleSubmit` function. With every user input, on submitting the form and clicking the submit button, the event triggers the adding of the single todo to the empty array. Each new call of the `onSubmit` function adds a new to-do item to the array. State in the deconstructed array is now set to the new state of the to-do that is added and is passed again by value to the `useState` hook. It works exactly like `this.setState` in a stateful component but this time instead of creating state in the component we hook to the stateful component via the `useState` method and the API that connects the method to the stateful component.
+- [Back to Table of Contents](#Table-of-Contents)]
+
+  To add a single to-do we write our factory-function. The new to-do will be passed by value to the `handleSubmit` function. With every user input, on submitting the form and clicking the submit button, the event triggers the adding of the single todo to the empty array. Each new call of the `onSubmit` function adds a new to-do item to the array. State in the deconstructed array is now set to the new state of the to-do that is added and is passed again by value to the `useState` hook. It works exactly like `this.setState` in a stateful component but this time instead of creating state in the component we hook to the stateful component via the `useState` method and the API that connects the method to the stateful component.
 
 The factory function can be written like so:
 
@@ -202,6 +224,8 @@ The to-dos are an array, whose type we have outlined in the interface declaratio
 ![Render List Working](/to-do-list-ts/src/assets/map-and-render-list.png)
 
 ##### Conditional Rendering
+
+- [Back to Table of Contents](#Table-of-Contents)]
 
 Toggle Tasks Completed compared to those not completed and rendering them conditionally in jsx and fragments.
 
@@ -289,7 +313,7 @@ render this
 ```
 
 At the conclusion of this project the code can also be split into separate components and imported and exported. The main app code at this stage for reference is like so:
-![app screen shot](/to-do-list-ts/src/assets/app-screenshot.png)
+![app screen shot](/to-do-list-ts/src/assets/app-screenshot.png =250x250)
 
 ```
 import React, { Fragment, useState } from "react";

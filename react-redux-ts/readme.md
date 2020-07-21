@@ -7,11 +7,10 @@ This is the last section which adds another layer of complexity to my understand
 #### Table of Contents
 
 1. [Scaffolding](#Scaffolding-with-babel-and-webpack)
-2. [Brief Intro to React Hooks](#Brief-intro-to-React-Hooks)
-3. [Use Effect Hook with an API Call](#Use-Effect-Hook-with-an-API-call)
-4. [Refactoring to add Redux](#Refactoring-to-add-Redux)
-5. [React Reach Router](#React-Reach-Router)
-6. [Final Refactor folder structure and files based on Redux flows](#Putting-Redux-into-context-and-why-I-refactored-the-folder-structure)
+2. [Use Effect Hook with an API Call](#Use-Effect-Hook-with-an-API-call)
+3. [Refactoring to add Redux](#Refactoring-to-add-Redux)
+4. [React Reach Router](#React-Reach-Router)
+5. [Final Refactor folder structure and files based on Redux flows](#Putting-Redux-into-context-and-why-I-refactored-the-folder-structure)
 
 ## Scaffolding with babel and webpack
 
@@ -198,26 +197,6 @@ ReactDOM.render(<App />, root)
 ```
 
 - Run scripts to check if app works with `npm run start` the h1 & h2 jsx tags should render correctly on port 5000.
-
-## Brief intro to React Hooks
-
-- [Back to Table of Contents](#Table-of-Contents)]
-
-React Hooks was introduced in React version 16.8 and upwards and allows you to use state and other React features without writing a class. You will now find running `create-react-app` compiles and has no stateful components in the main `app.js`. It is backwards compatible with previous versions with no breaking changes.
-
-Documentation [https://reactjs.org/docs/hooks-intro.html] There is a 1 hour video that may not be worth watching at this stage. A lot of the video is summarized in the documentation. Worth watching it a few times after you have used Hooks in a project.
-
-Hooks is an API to props, state, context, refs and lifecycle hooks. It makes the app faster. You can use hooks selectively experimenting with a few components at a time, there is no need to rewrite legacy code.
-
-Challenges with React that Hooks solve:
-
-- Inability to use state in another component, hooks allows for a better primitive sharing of state between compoinents
-- Life-cycle methods difficult to maintain between components, hooks allows you to break down lifecycle methods into smaller funcitons and reuse them
-- Class-based components rely on prototype inheritance, this can be difficult to learn and use due to call, bind methods of lexical `this` in state and props. Hooks simplifies the use case of class based components.
-
-Using State as a hook sets state to an array. `const [value, setValue] = useState ('')` where state is defined as an empty string.
-
-This is a deconstruction of the array where a value is set, `setValue` as you will see in the debugger is a function.
 
 ## Use Effect Hook with an API call
 
