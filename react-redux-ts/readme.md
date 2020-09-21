@@ -1,5 +1,7 @@
 # React-Redux-TypeScript
 
+Access project - cd into folder - `npm run start`
+
 <img src="/react-redux-ts/src/assets/app-image.png" alt="Rick & Morty App" height="350"/>
 
 This is the last section which adds another layer of complexity to my understanding of TypeScript. In addition to using React and React-Hooks, I have added Redux and an external API-call to see how all the moving parts work with TypeScript. I also wanted to revise how to scaffold the project with webpack and babel as I have been using the create-react-app for several side projects.
