@@ -8,33 +8,37 @@
 
 #### Project goals
 
-This project is one in a series of tutorials following documentation. In this project, I explore the documentation of TypeScript with JavaScript, React & React-Redux.
+The Ricky-and-Morty Episode Picker app is the key project that applies the knowledge of TypeScript with React, React-Hooks & React-Redux
 
-#### Folder structure
+The project as a whole follows the TypeScript documentation along with a set of Udemy & Linked-in learning tutorials with their excercises.
 
-There are 3 folders in this project - each section adds a level of complexity to the learning process. Each folder has its own readme to document what I have learnt. It simplifies the documentation I have read, research from blogs and following some tutorials for specific areas that I found difficult to understand. It serves as a place I can go to for quick reference to code snippets.
+#### Certifications
+
+
+
+Key folders for code base
 
 1. [TypeScript Fundamentals - with vanilla JS](https://github.com/SumiSastri/Typescript-with-React/tree/master/node-ts)
 
-Pure tutorial with code snippet examples
+Pure tutorial with code snippet examples in the node-ts folder
 
 2. [TypeScript and React-Hooks](https://github.com/SumiSastri/Typescript-with-React/tree/master/to-do-list-ts)
 
-A to-do-list application
+A to-do-list application - Richard Oliver Bray Udemy in the to-do-list-ts folder
 
 3. [TypeScript and React-Redux](https://github.com/SumiSastri/Typescript-with-React/tree/master/react-redux-ts)
 
-An API call to the Rick & Morty show, using the Reach Router and creating a favorites episode page.
+Ricky-and-Morty Episode Pikcer using the Reach Router  - Richard Oliver Bray Udemy in the react-redux-ts folder
 
 #### Project access
 
 **Install dependencies**
 
-npm install
+npm install -y
 
 **Run React apps**
 
-npm run start
+npm run start - check read-me docs for each folder for dependencies
 
 **Run logs with vanilla JS files**
 
