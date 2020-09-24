@@ -1,11 +1,11 @@
-import React, { useContext, Suspense, lazy } from "react";
+import React, { useContext, Suspense, lazy } from 'react';
 
-import { Store } from "../store/store";
-import { toggleFave } from "../actions-and-reducers/actions";
-import { IEpisodeProps } from "../interfaces/interfaces";
+import { Store } from '../store/store';
+import { toggleFave } from '../actions-and-reducers/actions';
+import { IEpisodeProps } from '../interfaces/interfaces';
 
 const EpisodeList = lazy<any>(() =>
-  import("./EpisodeList").then((module) => ({ default: module.EpisodeList }))
+  import('./EpisodeList').then((module) => ({ default: module.EpisodeList }))
 );
 export default function MyFavourites(): JSX.Element {
   const { state, dispatch } = useContext(Store);
@@ -18,10 +18,9 @@ export default function MyFavourites(): JSX.Element {
   return (
     <section
       style={{
-        margin: "5px",
-        padding: "5px",
-        display: "flex",
-        backgroundColor: "blanchedAlmond",
+        display: 'flex',
+        justifyContent: 'space-between',
+        position: 'sticky',
       }}
     >
       <Suspense fallback={<div>IMAGES LOADING...</div>}>

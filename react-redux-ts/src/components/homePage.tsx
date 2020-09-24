@@ -24,15 +24,12 @@ export default function HomePage() {
   return (
     <section
       style={{
-        margin: '5px',
-        padding: '5px',
         display: 'flex',
         justifyContent: 'space-between',
         position: 'sticky',
-        backgroundColor: 'blue',
       }}
     >
-      <react.Suspense fallback={<div>IMAGES LOADING...</div>}>
+      <react.Suspense fallback={<div>LOADING IMAGES</div>}>
         <section>
           <EpisodeList {...props} />
         </section>

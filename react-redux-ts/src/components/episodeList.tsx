@@ -10,10 +10,8 @@ export function EpisodeList(props: any): Array<JSX.Element> {
     return (
       <section
         style={{
-          backgroundColor: 'yellow',
-          padding: '2px',
-          display: 'flex',
-          // display: 'grid',
+          backgroundColor: 'darkOliveGreen',
+          border: 'solid 1px white',
         }}
       >
         :
@@ -22,32 +20,49 @@ export function EpisodeList(props: any): Array<JSX.Element> {
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 4fr)',
             gridTemplateRows: 'auto',
-            backgroundColor: 'red',
+            borderRadius: '5%',
           }}
           key={episode.id}
         >
           <img
             src={episode.image.medium}
-            style={{ borderRadius: '5%', height: '35vh', padding: '10px' }}
+            style={{
+              borderRadius: '5%',
+              height: 'auto',
+              width: '100%',
+              padding: '5px',
+              margin: '5px',
+              backgroundColor: 'darkGreen',
+              border: 'solid 3px white',
+            }}
           />
           <h5
             style={{
               color: 'white',
               fontSize: '20px',
               fontFamily: 'Caveat',
+              padding: '25px',
+              margin: '25px',
+              backgroundColor: 'darkSlateGrey',
+              height: '20%',
+              width: 'auto',
+              border: 'solid 2px white',
+              borderRadius: '5%',
             }}
           >
             {episode.name}
           </h5>
           <button
             style={{
-              backgroundColor: 'iceBlue',
-              color: 'navyBlue',
+              color: 'white',
+              backgroundColor: 'red',
               fontSize: '16px',
-              height: '40px',
+              height: '20%',
               fontFamily: 'Caveat',
-              width: '30vh',
-              margin: '5px',
+              width: '80%',
+              margin: '50px 5px 25px 5px',
+              border: 'solid 2px white',
+              borderRadius: '5%',
             }}
             type="button"
             onClick={() => toggleFave(state, dispatch, episode)}
@@ -60,12 +75,14 @@ export function EpisodeList(props: any): Array<JSX.Element> {
           </button>
           <h6
             style={{
-              color: 'black',
+              color: 'darkSlateGray',
               fontSize: '15px',
               fontFamily: 'Caveat',
-              backgroundColor: 'white',
-              width: '100%',
+              backgroundColor: 'lightYellow',
+              width: '95%',
               height: 'auto',
+              margin: '2px 85px 10px 0px',
+              borderRadius: '2%',
             }}
           >
             Season{episode.season} Episode{episode.number}

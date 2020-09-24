@@ -1,13 +1,14 @@
 .App {
   text-align: center;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: navy;
 }
 input {
   text-align: right;
 }
 
-h6{
+h6 {
   font-size: 16px;
   text-align: left;
   margin: 50px;
@@ -18,5 +19,6 @@ button {
   margin: 10px;
   border-radius: 5%;
   outline: grey;
-  background-color: powderblue;
+  background-color: rgb255, 218, 26;
+  background-color: d;
 }
