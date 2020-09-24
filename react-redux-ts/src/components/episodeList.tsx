@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import { IEpisode } from "../interfaces/interfaces";
+import { IEpisode } from '../interfaces/interfaces';
 
 export function EpisodeList(props: any): Array<JSX.Element> {
   const { episodes, toggleFave, favourites, store } = props;
@@ -10,43 +10,44 @@ export function EpisodeList(props: any): Array<JSX.Element> {
     return (
       <section
         style={{
-          backgroundColor: "darkgrey",
-          padding: "2px",
-          display: "flex",
+          backgroundColor: 'yellow',
+          padding: '2px',
+          display: 'flex',
+          // display: 'grid',
         }}
       >
         :
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 4fr)",
-            gridTemplateRows: "auto",
-            backgroundColor: "blanchedalmond",
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 4fr)',
+            gridTemplateRows: 'auto',
+            backgroundColor: 'red',
           }}
           key={episode.id}
         >
           <img
             src={episode.image.medium}
-            style={{ borderRadius: "5%", height: "35vh", padding: "10px" }}
+            style={{ borderRadius: '5%', height: '35vh', padding: '10px' }}
           />
           <h5
             style={{
-              color: "darkgrey",
-              fontSize: "20px",
-              fontFamily: "Caveat",
+              color: 'white',
+              fontSize: '20px',
+              fontFamily: 'Caveat',
             }}
           >
             {episode.name}
           </h5>
           <button
             style={{
-              backgroundColor: "iceBlue",
-              color: "navyBlue",
-              fontSize: "16px",
-              height: "40px",
-              fontFamily: "Caveat",
-              width: "30vh",
-              margin: "5px",
+              backgroundColor: 'iceBlue',
+              color: 'navyBlue',
+              fontSize: '16px',
+              height: '40px',
+              fontFamily: 'Caveat',
+              width: '30vh',
+              margin: '5px',
             }}
             type="button"
             onClick={() => toggleFave(state, dispatch, episode)}
@@ -54,14 +55,17 @@ export function EpisodeList(props: any): Array<JSX.Element> {
             {favourites.find(
               (favourite: IEpisode) => favourite.id === episode.id
             )
-              ? "Fave - Click to Unfave"
-              : "Unfaved - Click to make Fave"}
+              ? 'Fave - Click to Unfave'
+              : 'Unfaved - Click to make Fave'}
           </button>
           <h6
             style={{
-              color: "darkgrey",
-              fontSize: "15px",
-              fontFamily: "Caveat",
+              color: 'black',
+              fontSize: '15px',
+              fontFamily: 'Caveat',
+              backgroundColor: 'white',
+              width: '100%',
+              height: 'auto',
             }}
           >
             Season{episode.season} Episode{episode.number}
