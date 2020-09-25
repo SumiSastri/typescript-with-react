@@ -14,7 +14,10 @@ The project as a whole follows the TypeScript documentation along with a set of 
 
 #### Certifications
 
-
+1. Complete TypeScript For Beginners
+2. Introduction To TypeScript
+3. TypeScript Fundamentals
+4. TypeScript With Modern React - Hooks, Context, Suspense
 
 Key folders for code base
 
@@ -28,7 +31,7 @@ A to-do-list application - Richard Oliver Bray Udemy in the to-do-list-ts folder
 
 3. [TypeScript and React-Redux](https://github.com/SumiSastri/Typescript-with-React/tree/master/react-redux-ts)
 
-Ricky-and-Morty Episode Pikcer using the Reach Router  - Richard Oliver Bray Udemy in the react-redux-ts folder
+Ricky-and-Morty Episode Pikcer using the Reach Router - Richard Oliver Bray Udemy in the react-redux-ts folder
 
 #### Project access
 
