@@ -1,10 +1,9 @@
 # Table of Contents
 
 1. [Project goals](#Project-goals)
-2. [Folder structure](#Folder-structure)
+2. [Certifications](#Certifications)
 3. [Project access](#Project-access)
-
-   [RESOURCES](#Resources)
+4. [RESOURCES](#Resources)
 
 #### Project goals
 
@@ -31,7 +30,7 @@ A to-do-list application - Richard Oliver Bray Udemy in the to-do-list-ts folder
 
 3. [TypeScript and React-Redux](https://github.com/SumiSastri/Typescript-with-React/tree/master/react-redux-ts)
 
-Ricky-and-Morty Episode Pikcer using the Reach Router - Richard Oliver Bray Udemy in the react-redux-ts folder
+Rick-and-Morty Episode Pikcer using the Reach Router - Richard Oliver Bray Udemy in the react-redux-ts folder
 
 #### Project access
 
